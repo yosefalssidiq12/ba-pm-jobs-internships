@@ -1,301 +1,711 @@
-<!-- DERIVED corpus preview (58 records, eligibility overlay eligibility-260-accepted.json, generated 2026-11-09); NOT the published 262 baseline -->
 <!doctype html>
 <html lang="en" dir="ltr">
-<script>(function(){try{if(localStorage.getItem("ci-lang-v1")==="ar"){document.documentElement.lang="ar";document.documentElement.dir="rtl"}}catch(e){}})();</script>
 <head>
-<script>(function(){try{var t=localStorage.getItem('ci-theme-v1');if(!t){var o=localStorage.getItem('jobs-theme');if(o){t=o==='light'?'white':o==='dark'?'black':(o==='navy'||o==='graphite')?o:null;if(t)localStorage.setItem('ci-theme-v1',t);localStorage.removeItem('jobs-theme')}}if(['white','black','navy','graphite'].indexOf(t)<0)t=null;document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'black':'white')}catch(e){document.documentElement.dataset.theme='white'}})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Product Management and Business Analysis jobs and internships in Egypt, the Gulf and beyond. Snapshot of 2026-11-08; every listing carries its source and verification status.">
-<link rel="canonical" href="https://ba-pm-jobs-internships.vercel.app/">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; font-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<title>BA & PM Jobs & Internships</title>
+<meta name="description" content="Business Analysis and Product Management jobs and internships, each individually checked against its live source on the snapshot date. Contradictory or missing evidence is marked, never guessed.">
+<meta name="theme-color" content="#0d0f16">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%237c6cf0'/%3E%3C/svg%3E">
+<meta property="og:title" content="BA & PM Jobs & Internships">
+<meta property="og:description" content="Business Analysis and Product Management jobs and internships, each individually checked against its live source on the snapshot date. Contradictory or missing evidence is marked, never guessed.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="BA &amp; PM Jobs &amp; Internships">
-<meta property="og:description" content="Product Management and Business Analysis jobs and internships in Egypt, the Gulf and beyond. Dated snapshot; every listing carries its source.">
-<meta property="og:url" content="https://ba-pm-jobs-internships.vercel.app/">
+<meta property="og:url" content="https://pm-ba-opportunities.vercel.app">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BA &amp; PM Jobs &amp; Internships">
-<meta name="twitter:description" content="Product Management and Business Analysis jobs and internships in Egypt, the Gulf and beyond. Dated snapshot; every listing carries its source.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F5F7FA">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C1016">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23234F9A'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='26' font-weight='bold' fill='white' text-anchor='middle'%3EBA%3C/text%3E%3C/svg%3E">
-<title>BA &amp; PM Jobs &amp; Internships</title>
+<meta name="twitter:title" content="BA & PM Jobs & Internships">
+<meta name="twitter:description" content="Business Analysis and Product Management jobs and internships, each individually checked against its live source on the snapshot date. Contradictory or missing evidence is marked, never guessed.">
 <style>
+:root{
+  --ease:cubic-bezier(.22,.9,.28,1);
+  --r-lg:18px; --r-md:12px; --r-sm:9px;
+}
+html[data-theme="dark"]{
+  --bg:#0d1117; --bg2:#111827; --card:rgba(255,255,255,.045); --card-brd:rgba(255,255,255,.09);
+  --text:#e8edf5; --muted:#93a0b4; --chip:rgba(255,255,255,.06); --chip-brd:rgba(255,255,255,.12);
+  --accent:hsl(var(--hue) 85% 62%); --accent2:hsl(calc(var(--hue) + 40) 80% 60%);
+  --accent-cta:hsl(var(--hue) 85% 69%); --accent-cta2:hsl(calc(var(--hue) + 40) 80% 69%); --accent-text:hsl(var(--hue) 85% 70%);
+  --accent-ink:#0b0f16; --glow:hsla(var(--hue) 85% 60%/.16);
+  --ok:#34d399; --warn:#fbbf24; --dead:#f87171; --shadow:0 10px 34px rgba(0,0,0,.42);
+  color-scheme:dark;
+}
+html[data-theme="light"]{
+  --bg:#f6f7fb; --bg2:#ffffff; --card:#ffffff; --card-brd:#e5e9f2;
+  --text:#141a26; --muted:#5b6678; --chip:#eef1f7; --chip-brd:#dde3ee;
+  --accent:hsl(var(--hue) 72% 42%); --accent2:hsl(calc(var(--hue) + 40) 70% 46%);
+  --accent-cta:hsl(var(--hue) 72% 28%); --accent-cta2:hsl(calc(var(--hue) + 40) 70% 28%); --accent-text:hsl(var(--hue) 72% 30%);
+  --accent-ink:#ffffff; --glow:hsla(var(--hue) 75% 55%/.10);
+  --ok:#0e9f6e; --warn:#b45309; --dead:#dc2626; --shadow:0 8px 26px rgba(20,26,38,.09);
+  color-scheme:light;
+}
+html[data-theme="graphite"]{
+  --bg:#1c1d21; --bg2:#232428; --card:rgba(255,255,255,.05); --card-brd:rgba(255,255,255,.10);
+  --text:#eceef2; --muted:#a3a8b3; --chip:rgba(255,255,255,.07); --chip-brd:rgba(255,255,255,.13);
+  --accent:hsl(var(--hue) 60% 66%); --accent2:hsl(calc(var(--hue) + 40) 58% 64%);
+  --accent-cta:hsl(var(--hue) 60% 67%); --accent-cta2:hsl(calc(var(--hue) + 40) 58% 67%); --accent-text:hsl(var(--hue) 60% 68%);
+  --accent-ink:#17181c; --glow:hsla(var(--hue) 60% 62%/.14);
+  --ok:#4ade80; --warn:#fcd34d; --dead:#fca5a5; --shadow:0 10px 30px rgba(0,0,0,.38);
+  color-scheme:dark;
+}
+html[data-theme="navy"]{
+  --bg:#0a1628; --bg2:#0f1e36; --card:rgba(255,255,255,.05); --card-brd:rgba(160,190,255,.14);
+  --text:#e6eefb; --muted:#93a7c7; --chip:rgba(140,175,255,.09); --chip-brd:rgba(140,175,255,.20);
+  --accent:hsl(var(--hue) 88% 66%); --accent2:hsl(calc(var(--hue) + 40) 84% 62%);
+  --accent-cta:hsl(var(--hue) 88% 70%); --accent-cta2:hsl(calc(var(--hue) + 40) 84% 70%); --accent-text:hsl(var(--hue) 88% 70%);
+  --accent-ink:#081226; --glow:hsla(var(--hue) 88% 62%/.18);
+  --ok:#34d399; --warn:#fbbf24; --dead:#f87171; --shadow:0 12px 36px rgba(2,8,23,.55);
+  color-scheme:dark;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--page);color:var(--ink);font:14px/22px system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Arabic",Tahoma,"Geeza Pro",Arial,sans-serif}
-.wrap{max-width:1040px;margin:0 auto;padding:24px 20px 48px}
-@media(min-width:768px){.wrap{padding:36px 36px 64px}}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--hair)}
-.seg{display:inline-flex;gap:8px;flex-wrap:wrap}
-button{font:inherit;color:var(--ink);cursor:pointer}
-.chip{background:var(--page);border:1px solid var(--ctlb);border-radius:6px;min-height:40px;padding:0 14px;box-shadow:0 1px 2px var(--shadow)}
-.chip[aria-pressed=true]{background:var(--btn);border-color:var(--ctlb);color:var(--btntxt)}
-h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:30px;line-height:36px;letter-spacing:-.02em;margin:28px 0 6px}
-@media(min-width:768px){h1{font-size:38px;line-height:44px}}
-.fact{color:var(--ink2);margin:0 0 10px}.intro{margin:0 0 4px}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:20px 0}
-.stats .stat:last-child{grid-column:span 2}@media(min-width:600px){.stats{grid-template-columns:repeat(5,1fr)}.stats .stat:last-child{grid-column:auto}}
-.stat{background:var(--raised);border-radius:12px;padding:14px 16px}.stat b{display:block;font-size:28px;line-height:32px}.stat span{font-size:12px;color:var(--ink2)}.stat.w b{color:var(--warn)}.newb{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--raised);color:var(--ink2)}.newb.on{background:#1f8a4c;color:#fff}
-.panel{border:1px solid var(--hair);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:14px}
-.panel h2{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
-.row label{display:block;color:var(--ink2);margin-bottom:6px}
-.sec{margin-top:32px;padding-top:18px;border-top:1px solid var(--hair)}.sec.top{border-top:3px solid var(--teal)}
-.sh{display:flex;align-items:center;gap:10px}.sh h2{margin:0;font-family:Georgia,serif;font-weight:400;font-size:25px;line-height:30px}
-.count{background:var(--ink);color:var(--page);border-radius:999px;padding:0 10px;font-size:12px;line-height:22px;font-weight:600}.sec.more .count{background:var(--raised);color:var(--ink)}
-.sub{margin:4px 0 16px;color:var(--ink2)}
-.jobs{display:grid;gap:14px;grid-template-columns:1fr}@media(min-width:768px){.jobs{grid-template-columns:1fr 1fr}}
-.job{--acc:var(--ink2);--acct:var(--ink2-t);border:1px solid var(--hair);border-inline-start:5px solid var(--acc);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0;background:var(--page)}
-.hd{display:flex;align-items:center;gap:8px}.n{color:var(--ink2);font-size:12px;min-width:18px}.src{margin-inline-start:auto;font-size:12px;color:var(--ink2)}
-.tag{background:var(--acc);color:var(--acct,var(--tagtext));border-radius:6px;padding:0 8px;font-size:12px;line-height:20px;font-weight:600}
-.job h3{margin:0;font-size:18px;line-height:24px;overflow-wrap:anywhere}
-.co{display:flex;flex-direction:row;align-items:center;gap:10px}.co .ct span{color:var(--ink2)}
-dl.f{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:2px 0;padding:10px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-dl.f dt{font-size:11px;line-height:16px;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em}dl.f dd{margin:0;font-weight:600;overflow-wrap:anywhere}
-dd.g{color:var(--teal)}
-.note{background:var(--warnbg);border-radius:8px;padding:8px 10px;font-size:13px}.note b{display:block;color:var(--warn)}
-.foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-a.apply{display:inline-flex;align-items:center;min-height:36px;padding:0 16px;border-radius:6px;background:var(--btn);color:var(--btntxt);text-decoration:none;font-weight:600}
-.meta{font-size:12px;color:var(--ink2)}
-.empty{color:var(--ink2)}
-.more-btn{min-height:44px;padding:0 20px;border-radius:6px;border:1px solid var(--ctlb);background:var(--page)}
-footer{margin-top:36px;color:var(--ink2);font-size:12px}
-
-.topbar{border:1px solid var(--frame);border-radius:14px;padding:14px 16px;background:var(--raised)}
-.stat{border:1px solid var(--frame2)}.panel{border-color:var(--frame);background:var(--raised)}
-.job{border-color:var(--frame);border-inline-start-color:var(--acc);background:var(--raised)}
-.newb{background:transparent;border:1px solid var(--frame2)}.newb.on{background:var(--ok);border-color:var(--ok);color:var(--oktxt)}
-a.apply{background:var(--pc,#3f3f46);color:#fff;border-radius:8px;min-height:40px;font-size:14px;gap:6px}
-a.apply[data-p=LinkedIn]{--pc:#0a66c2}a.apply[data-p=Bayt]{--pc:#0f7c99}a.apply[data-p=NaukriGulf]{--pc:#c2410c}
-.acts{display:flex;gap:8px;flex-wrap:wrap}
-.act{background:var(--page);border:1px solid var(--ctlb);border-radius:6px;min-height:36px;padding:0 12px;font-size:13px}
-.act[aria-pressed=true]{background:var(--btn);border-color:var(--ctlb);color:var(--btntxt)}
-.noteedit input{width:100%;min-height:40px;padding:8px 12px;border-radius:8px;border:1px solid var(--ctlb);background:var(--page);color:var(--ink);font:inherit}
-.noteview{background:var(--raised);border:1px dashed var(--frame2);border-radius:8px;padding:8px 10px;font-size:13px;color:var(--ink2)}
-.priv{font-size:12px;color:var(--ink2);margin:0}
-/* === THEME TOKEN SOURCE OF TRUTH (PRD 12 / Playbook 19): System Default, White, Black, Navy, Graphite === */
-:root, html[data-theme=white]{--page:#F5F7FA;--raised:#FFFFFF;--ink:#162235;--ink2:#59677A;--hair:#D9E0E9;--frame:#D9E0E9;--ctlb:#80858a;--frame2:#ccd3db;--teal:#1E4FA6;--btn:#234F9A;--btntxt:#FFFFFF;--warn:#8a5a00;--warnbg:rgba(216,183,106,.25);--shadow:rgba(22,34,53,.08);--ok:#19703f;--oktxt:#FFFFFF;--tt:#1E4FA6;--surfmut:#EEF2F7;--focus:#315D9B;--tagbg:#E8EEF8;--tagtext:#234F9A;--ink2-t:#F5F7FA;--egypt:#bb5855;--egypt-t:#FFFFFF;--uae:#5c76ad;--uae-t:#FFFFFF;--saudi:#447c5c;--saudi-t:#FFFFFF;--gulf:#836e8b;--gulf-t:#FFFFFF;--usa:#d08a2e;--usa-t:#162235;--europe:#706f9c;--europe-t:#FFFFFF;--world:#297c88;--world-t:#FFFFFF;}
-html[data-theme=black]{--page:#0C1016;--raised:#151B24;--ink:#F4F6FA;--ink2:#B8C1CD;--hair:#303A47;--frame:#303A47;--ctlb:#697079;--frame2:#49525d;--teal:#9EC1FF;--btn:#315DAD;--btntxt:#FFFFFF;--warn:#e8c06a;--warnbg:rgba(232,192,106,.16);--shadow:rgba(0,0,0,.4);--ok:#3fbf79;--oktxt:#0C1016;--tt:#9EC1FF;--surfmut:#1C2430;--focus:#9EC1FF;--tagbg:#23334A;--tagtext:#C4D8FF;--ink2-t:#0C1016;--egypt:#e88a86;--egypt-t:#0C1016;--uae:#8ba6e0;--uae-t:#0C1016;--saudi:#7fc79a;--saudi-t:#0C1016;--gulf:#c2a4cb;--gulf-t:#0C1016;--usa:#e8b060;--usa-t:#0C1016;--europe:#a4a3d6;--europe-t:#0C1016;--world:#6fd0dd;--world-t:#0C1016;}
-html[data-theme=navy]{--page:#111F33;--raised:#1A2C43;--ink:#F5F8FD;--ink2:#C0CEE0;--hair:#344B67;--frame:#344B67;--ctlb:#6b7c90;--frame2:#4c6179;--teal:#A8C9FF;--btn:#3567A9;--btntxt:#FFFFFF;--warn:#e8c06a;--warnbg:rgba(232,192,106,.16);--shadow:rgba(0,0,0,.4);--ok:#3fbf79;--oktxt:#0C1016;--tt:#A8C9FF;--surfmut:#20344C;--focus:#A8C9FF;--tagbg:#263C59;--tagtext:#D2E3FF;--ink2-t:#111F33;--egypt:#e88a86;--egypt-t:#0C1016;--uae:#8ba6e0;--uae-t:#0C1016;--saudi:#7fc79a;--saudi-t:#0C1016;--gulf:#c2a4cb;--gulf-t:#0C1016;--usa:#e8b060;--usa-t:#0C1016;--europe:#a4a3d6;--europe-t:#0C1016;--world:#6fd0dd;--world-t:#0C1016;}
-html[data-theme=graphite]{--page:#252A31;--raised:#333A43;--ink:#F4F5F7;--ink2:#CBD1D9;--hair:#505862;--frame:#505862;--ctlb:#80868d;--frame2:#656c75;--teal:#C1D0E2;--btn:#64758A;--btntxt:#FFFFFF;--warn:#e8c06a;--warnbg:rgba(232,192,106,.16);--shadow:rgba(0,0,0,.4);--ok:#3fbf79;--oktxt:#0C1016;--tt:#C1D0E2;--surfmut:#3D444D;--focus:#C1D0E2;--tagbg:#454E59;--tagtext:#EEF2F7;--ink2-t:#252A31;--egypt:#e88a86;--egypt-t:#0C1016;--uae:#8ba6e0;--uae-t:#0C1016;--saudi:#7fc79a;--saudi-t:#0C1016;--gulf:#c2a4cb;--gulf-t:#0C1016;--usa:#e8b060;--usa-t:#0C1016;--europe:#a4a3d6;--europe-t:#0C1016;--world:#6fd0dd;--world-t:#0C1016;}
-/* theme swatch previews (mirror the token block above) */
-.sw{display:inline-flex;gap:3px}.sw i{width:11px;height:11px;border-radius:50%;border:1px solid rgba(128,128,128,.4)}.sw i:nth-child(1){background:var(--c1)}.sw i:nth-child(2){background:var(--c2)}.sw i:nth-child(3){background:var(--c3)}
-.sw[data-t=white]{--c1:#F5F7FA;--c2:#234F9A;--c3:#59677A}.sw[data-t=black]{--c1:#0C1016;--c2:#315DAD;--c3:#9EC1FF}.sw[data-t=navy]{--c1:#111F33;--c2:#3567A9;--c3:#A8C9FF}.sw[data-t=graphite]{--c1:#252A31;--c2:#64758A;--c3:#CBD1D9}.sw[data-t=system]{--c1:#F5F7FA;--c2:#0C1016;--c3:#59677A}
-.tp{position:relative;display:inline-block}
-.tp-btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:6px;border:1px solid var(--ctlb);background:var(--page);box-shadow:0 1px 2px var(--shadow);color:var(--ink);font:inherit;cursor:pointer}
-.tp-list{position:absolute;inset-inline-end:0;top:calc(100% + 4px);z-index:30;margin:0;padding:4px;list-style:none;min-width:200px;border:1px solid var(--frame);border-radius:10px;background:var(--raised);box-shadow:0 8px 24px rgba(0,0,0,.28)}
-.tp-opt{display:flex;align-items:center;gap:8px;min-height:40px;padding:6px 10px;border-radius:8px;cursor:pointer;color:var(--ink)}
-.tp-opt:hover{background:var(--hair)}.tp-opt[aria-selected=true]{box-shadow:inset 0 0 0 1px var(--teal)}
-:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-/* phase 20: header, metrics, card hierarchy */
-.brand{display:flex;flex-direction:column;gap:2px;min-width:0}
-.brand-name{font-family:Georgia,"Times New Roman",serif;font-size:18px;line-height:24px;font-weight:600}
-.brand-sub{color:var(--ink2);font-size:12px}
-.sites{display:flex;gap:4px;flex-wrap:wrap}
-.sites a,.sites .cur{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:6px;font-size:13px;text-decoration:none;color:var(--ink2)}
-.sites a:hover{background:var(--hair);color:var(--ink)}
-.sites .cur{color:var(--ink);font-weight:600;box-shadow:inset 0 -2px 0 var(--teal)}
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:20px 0;padding:12px;border:1px solid var(--frame);border-radius:14px;background:var(--raised)}
-button.met{font:inherit;color:inherit;cursor:pointer;text-align:start;border-color:var(--ctlb)}
-.met{border:1px solid var(--frame2);background:var(--page);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-height:44px}
-.met b{font-size:22px;line-height:26px}.met b.sm{font-size:14px;line-height:20px;font-weight:600}
-.met span{font-size:11px;line-height:15px;color:var(--ink2)}
-button.met[aria-pressed=true]{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal)}
-.mono{flex:none;width:28px;height:28px;border-radius:8px;background:var(--acc);color:var(--acct,var(--tagtext));display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:.02em}
-.co .ct{display:flex;flex-direction:column;min-width:0}
-.job h3{font-weight:600}
-[lang=ar] h1,[lang=ar] .sh h2{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Arabic",Tahoma,Arial,sans-serif;letter-spacing:0}
-.job h3,.co .ct b,.co .ct span,.note,.noteview,.src,.tag,.newb{unicode-bidi:isolate}
-button:focus-visible,a:focus-visible,input:focus-visible,[role=option]:focus-visible,[tabindex="-1"]:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px}
-@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
-.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,"Noto Kufi Arabic","Noto Sans Arabic",sans-serif;
+  background:var(--bg); color:var(--text); min-height:100vh;
+  transition:background .5s var(--ease), color .5s var(--ease);
+  -webkit-font-smoothing:antialiased;
+}
+/* ambient motion layer */
+.ambient{position:fixed; inset:0; z-index:-2; overflow:hidden; pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 85% -10%, var(--glow), transparent 55%),
+    radial-gradient(110% 80% at -10% 110%, var(--glow), transparent 50%),
+    var(--bg);
+  transition:background .5s var(--ease);
+}
+.blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; will-change:transform}
+.blob.b1{width:44vmax;height:44vmax; top:-16vmax; inset-inline-end:-12vmax; background:hsla(var(--hue) 85% 55%/.16); animation:drift1 26s var(--ease) infinite alternate}
+.blob.b2{width:36vmax;height:36vmax; bottom:-14vmax; inset-inline-start:-10vmax; background:hsla(calc(var(--hue) + 40) 80% 55%/.13); animation:drift2 32s var(--ease) infinite alternate}
+.blob.b3{width:22vmax;height:22vmax; top:38%; inset-inline-start:34%; background:hsla(calc(var(--hue) - 30) 80% 58%/.10); animation:drift3 38s var(--ease) infinite alternate}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(-6vmax,5vmax) scale(1.12)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1.05)}to{transform:translate(5vmax,-6vmax) scale(.94)}}
+@keyframes drift3{from{transform:translate(0,0)}to{transform:translate(-4vmax,-4vmax) scale(1.15)}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important; transition:none!important; scroll-behavior:auto!important}
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 18px}
+.skip{position:absolute; inset-inline-start:-999px; top:0; background:var(--accent-cta); color:var(--accent-ink); padding:8px 14px; border-radius:0 0 var(--r-sm) 0; z-index:50}
+.skip:focus{inset-inline-start:0}
+/* header */
+header.bar{position:sticky; top:0; z-index:20; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  background:color-mix(in srgb, var(--bg) 78%, transparent); border-bottom:1px solid var(--card-brd)}
+.bar-in{display:flex; align-items:center; gap:14px; padding:12px 22px; flex-wrap:wrap}
+.sites{display:flex; gap:8px; justify-content:center; padding:0 22px 10px; flex-wrap:wrap}
+.site-link{font-size:12.5px; font-weight:650; color:var(--muted); text-decoration:none; padding:5px 12px; border-radius:999px; border:1px solid var(--line); transition:color .18s, border-color .18s}
+.site-link:hover{color:var(--text); border-color:var(--acc)}
+.site-link.cur{color:var(--acc); border-color:var(--acc); background:color-mix(in srgb, var(--acc) 10%, transparent)}
+.brand{font-weight:800; font-size:17px; letter-spacing:.2px; display:flex; align-items:center; gap:9px}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 0 14px var(--glow); animation:pulse 3.4s var(--ease) infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.25);opacity:.75}}
+.bar-sp{flex:1}
+.ctl-group{display:flex; align-items:center; gap:8px}
+.ctl-lbl{font-size:12px; color:var(--muted)}
+.seg{display:flex; background:var(--chip); border:1px solid var(--chip-brd); border-radius:999px; padding:3px; gap:2px}
+.seg button{border:0; background:transparent; color:var(--muted); font:inherit; font-size:12.5px; font-weight:650;
+  padding:6px 12px; border-radius:999px; cursor:pointer; transition:all .22s var(--ease)}
+.seg button:hover{color:var(--text)}
+.seg button[aria-pressed="true"]{background:linear-gradient(135deg,var(--accent-cta),var(--accent-cta2)); color:var(--accent-ink)}
+.swatches{display:flex; gap:7px}
+.sw{width:40px;height:40px;border-radius:50%;cursor:pointer;border:2px solid transparent; padding:8px;background-clip:content-box;
+  transition:transform .22s var(--ease), border-color .22s var(--ease)}
+.sw:hover{transform:scale(1.18)}
+.sw[aria-pressed="true"]{border-color:var(--accent); transform:scale(1.14)}
+.sw[data-t="light"]{background:linear-gradient(135deg,#ffffff,#dfe5f0)}
+.sw[data-t="dark"]{background:linear-gradient(135deg,#141a26,#2b3648)}
+.sw[data-t="graphite"]{background:linear-gradient(135deg,#3a3b40,#6a6c74)}
+.sw[data-t="navy"]{background:linear-gradient(135deg,#0f1e36,#2b4a7f)}
+/* hero */
+.hero{padding:52px 0 8px}
+.hero h1{font-size:clamp(30px,4.6vw,46px); line-height:1.14; margin:0 0 12px; font-weight:850; letter-spacing:-.5px;
+  background:linear-gradient(120deg,var(--text) 30%,var(--accent-text) 75%,var(--accent-text)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+.hero .sub{color:var(--muted); font-size:15.5px; max-width:760px; line-height:1.75; margin:0 0 18px}
+.snap{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--muted);
+  background:var(--chip); border:1px solid var(--chip-brd); border-radius:999px; padding:6px 14px}
+.snap b{color:var(--text); font-weight:700}
+/* breakdown */
+.breaks{display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 4px}
+.bchip{display:inline-flex; align-items:baseline; gap:7px; background:var(--card); border:1px solid var(--card-brd);
+  border-radius:999px; padding:7px 14px; font-size:13px; box-shadow:var(--shadow)}
+.bchip b{font-size:16px; font-weight:800; color:var(--accent-text); font-variant-numeric:tabular-nums}
+.bchip span{color:var(--muted)}
+/* search */
+.search-zone{position:relative; margin:26px 0 18px; max-width:640px}
+.search-box{display:flex; align-items:center; gap:10px; background:var(--card); border:1px solid var(--card-brd);
+  border-radius:999px; padding:5px 8px 5px 20px; box-shadow:var(--shadow); transition:border-color .25s var(--ease), box-shadow .25s var(--ease)}
+[dir="rtl"] .search-box{padding:5px 20px 5px 8px}
+.search-box:focus-within{border-color:var(--accent); box-shadow:0 0 0 4px var(--glow)}
+.search-box svg{flex:none; stroke:var(--muted)}
+.search-box input{flex:1; border:0; background:transparent; color:var(--text); font:inherit; font-size:15px; padding:10px 0; outline:none}
+.search-box input::placeholder{color:var(--muted)}
+.sug{position:absolute; top:calc(100% + 8px); inset-inline:0; background:var(--bg2); border:1px solid var(--card-brd);
+  border-radius:var(--r-lg); box-shadow:var(--shadow); overflow:hidden; z-index:15; display:none}
+.sug.open{display:block; animation:pop .18s var(--ease)}
+@keyframes pop{from{opacity:0; transform:translateY(-6px)}to{opacity:1; transform:none}}
+.sug button{display:flex; width:100%; align-items:center; gap:10px; padding:11px 18px; border:0; background:transparent;
+  color:var(--text); font:inherit; font-size:14px; cursor:pointer; text-align:start}
+.sug button.hl, .sug button:hover{background:var(--chip); outline:none;}
+.sug button:hover,.sug button:focus-visible{background:var(--chip)}
+.sug .k{font-size:11px; color:var(--muted); border:1px solid var(--chip-brd); border-radius:999px; padding:2px 9px}
+.sug .n{margin-inline-start:auto; color:var(--accent-text); font-weight:750; font-size:13px}
+/* filters */
+.filters{margin:6px 0 10px}
+.f-row{display:flex; align-items:flex-start; gap:12px; margin:10px 0; flex-wrap:wrap}
+.f-lbl{flex:none; width:86px; padding-top:8px; font-size:12px; font-weight:750; letter-spacing:.8px; text-transform:uppercase; color:var(--muted)}
+.chips{display:flex; flex-wrap:wrap; gap:7px}
+.chip{border:1px solid var(--chip-brd); background:var(--chip); color:var(--text); font:inherit; font-size:13px; font-weight:600;
+  padding:7px 14px; border-radius:999px; cursor:pointer; transition:all .2s var(--ease)}
+.chip:hover{border-color:var(--accent); transform:translateY(-1px)}
+.chip:active{transform:scale(.96)}
+.chip[aria-pressed="true"]{background:linear-gradient(135deg,var(--accent-cta),var(--accent-cta2)); color:var(--accent-ink); border-color:transparent; font-weight:750}
+.chip .c{opacity:.75; font-size:11.5px; font-variant-numeric:tabular-nums}
+.reset{margin-inline-start:auto; align-self:center}
+/* results meta */
+.meta-line{display:flex; align-items:center; gap:10px; margin:16px 0 14px; font-size:13px; color:var(--muted); flex-wrap:wrap}
+.meta-line b{color:var(--text)}
+.export{margin-inline-start:auto}
+.btn{border:0; font:inherit; font-weight:700; font-size:13px; border-radius:999px; padding:9px 18px; cursor:pointer;
+  transition:all .22s var(--ease); background:var(--chip); color:var(--text); border:1px solid var(--chip-brd)}
+.btn:hover{transform:translateY(-1px); border-color:var(--accent)}
+.btn.primary{background:linear-gradient(135deg,var(--accent-cta),var(--accent-cta2)); color:var(--accent-ink); border:0; box-shadow:0 6px 20px var(--glow)}
+.btn.primary:hover{transform:translateY(-2px); box-shadow:0 10px 26px var(--glow)}
+/* cards */
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(345px,1fr)); gap:16px; padding-bottom:40px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.job{background:var(--card); border:1px solid var(--card-brd); border-radius:var(--r-lg); padding:18px 18px 14px;
+  box-shadow:var(--shadow); backdrop-filter:blur(6px); position:relative; overflow:hidden;
+  opacity:0; transform:translateY(16px); transition:opacity .5s var(--ease), transform .5s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease)}
+.job.in{opacity:1; transform:none}
+.job:hover{transform:translateY(-3px); border-color:color-mix(in srgb, var(--accent) 45%, var(--card-brd)); box-shadow:0 16px 40px var(--glow)}
+.job::before{content:""; position:absolute; inset-inline-start:0; top:0; bottom:0; width:3px;
+  background:linear-gradient(180deg,var(--accent),var(--accent2)); opacity:.85}
+.job-top{display:flex; align-items:center; gap:8px; margin-bottom:9px; flex-wrap:wrap}
+.job-n{font-size:11.5px; color:var(--muted); font-variant-numeric:tabular-nums}
+.tag{font-size:11px; font-weight:750; padding:3px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--chip-brd)}
+.badge{font-size:11px; font-weight:700; padding:3px 10px; border-radius:999px}
+.badge.new{background:color-mix(in srgb, var(--ok) 18%, transparent); color:var(--ok)}
+.badge.old{background:var(--chip); color:var(--muted)}
+.badge.dead{background:color-mix(in srgb, var(--dead) 16%, transparent); color:var(--dead)}
+.job-src{margin-inline-start:auto; font-size:11.5px; color:var(--muted)}
+.job h3{margin:2px 0 8px; font-size:16.5px; line-height:1.45; font-weight:750}
+.co{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:13.5px; margin-bottom:12px}
+.av{flex:none; width:30px; height:30px; border-radius:9px; display:grid; place-items:center; font-size:10.5px; font-weight:800;
+  color:var(--accent-ink); background:linear-gradient(135deg,var(--accent-cta),var(--accent-cta2))}
+.specs{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:0 0 10px; padding:10px 0; border-top:1px solid var(--card-brd); border-bottom:1px solid var(--card-brd)}
+.spec .k{font-size:10px; letter-spacing:.7px; text-transform:uppercase; color:var(--muted); margin-bottom:3px}
+.spec .v{font-size:12.5px; font-weight:650}
+.dates{display:flex; gap:18px; font-size:11.5px; color:var(--muted); margin-bottom:10px; flex-wrap:wrap}
+.dates b{color:var(--text); font-weight:650}
+.note{font-size:12.5px; line-height:1.65; border-radius:var(--r-md); padding:10px 12px; margin-bottom:10px;
+  background:color-mix(in srgb, var(--warn) 12%, transparent); border:1px solid color-mix(in srgb, var(--warn) 30%, transparent)}
+.note b{display:block; color:var(--warn); margin-bottom:2px; font-size:12px}
+.elig{font-size:12px; color:var(--muted); margin-bottom:10px; line-height:1.6}
+.elig b{color:var(--text)}
+.actions{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:4px}
+.apply{display:inline-flex; align-items:center; gap:7px; text-decoration:none; font-size:13.5px; font-weight:750;
+  padding:10px 18px; border-radius:999px; color:var(--accent-ink); background:linear-gradient(135deg,var(--accent-cta),var(--accent-cta2));
+  box-shadow:0 6px 18px var(--glow); transition:all .22s var(--ease)}
+.apply:hover{transform:translateY(-2px) scale(1.02); box-shadow:0 10px 26px var(--glow)}
+.apply .ext{font-size:12px; opacity:.85}
+.avail{font-size:11px; color:var(--muted)}
+.mini{display:flex; gap:6px; width:100%; margin-top:8px; flex-wrap:wrap}
+.mini button{font:inherit; font-size:12px; font-weight:650; padding:7px 13px; border-radius:999px; cursor:pointer;
+  background:transparent; color:var(--muted); border:1px solid var(--chip-brd); transition:all .2s var(--ease)}
+.mini button:hover{color:var(--text); border-color:var(--accent)}
+.mini button.on{background:color-mix(in srgb, var(--accent) 20%, transparent); color:var(--accent-text); border-color:var(--accent)}
+.notes{width:100%; margin-top:8px}
+.notes textarea{width:100%; min-height:64px; resize:vertical; border-radius:var(--r-md); border:1px solid var(--chip-brd);
+  background:var(--bg2); color:var(--text); font:inherit; font-size:13px; padding:10px 12px; outline:none}
+.notes textarea:focus{border-color:var(--accent)}
+/* empty */
+.empty{grid-column:1/-1; text-align:center; padding:64px 20px; color:var(--muted)}
+.empty .big{font-size:42px; margin-bottom:10px}
+.empty h2{color:var(--text); font-size:19px; margin:0 0 8px}
+/* footer */
+footer.site{border-top:1px solid var(--card-brd); padding:26px 0 44px; color:var(--muted); font-size:12.5px; line-height:1.9}
+footer.site b{color:var(--text)}
+:focus-visible{outline:2.5px solid var(--accent); outline-offset:2px; border-radius:6px}
+@media (max-width:760px){
+  .hero{padding:36px 0 4px}
+  .f-lbl{width:100%; padding-top:2px}
+  .specs{grid-template-columns:repeat(2,1fr)}
+  .reset{margin-inline-start:0}
+}
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .55s var(--ease), transform .55s var(--ease)}
+.reveal.in{opacity:1; transform:none}
+details.archive{margin:0 0 40px; border:1px dashed var(--chip-brd); border-radius:var(--r-lg); padding:14px 18px}
+details.archive summary{cursor:pointer; font-size:13.5px; font-weight:700; color:var(--muted)}
+details.archive summary:hover{color:var(--text)}
+details.archive .job{opacity:1; transform:none; filter:saturate(.55)}
+.count-sep{margin:0 4px}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header class="topbar"><div class="brand"><span class="brand-name">BA &amp; PM</span><span class="brand-sub"><span id="madefor">Made for</span> <b dir="rtl" lang="ar">يوسف الصديق</b></span></div>
-<nav class="sites" aria-label="Job sites"><span class="cur" aria-current="page">BA &amp; PM</span><a href="https://marketing-jobs-internships.vercel.app/">Marketing</a><a href="https://ai-automation-jobs-internships.vercel.app/">AI &amp; Automation</a></nav>
-<div><small id="themelbl" style="display:block;color:var(--ink2);font-size:12px">Theme</small><div class="tp" id="theme"></div></div><div><small id="langlbl" style="display:block;color:var(--ink2);font-size:12px">Language</small><div class="seg" id="langsw" role="group" aria-label="Language"><button class="chip" type="button" data-l="en" aria-pressed="true">EN</button><button class="chip" type="button" data-l="ar" aria-pressed="false" lang="ar">العربية</button></div></div></header>
-<main>
-<h1 id="h1t">BA &amp; PM Jobs &amp; Internships</h1>
-<p class="fact" id="factp"></p>
-<p class="intro" id="intro">Product Management and Business Analysis jobs and internships in Egypt, the Gulf, the USA and Europe. This is a dated snapshot (work in progress): listings may have changed or closed since it was made.</p>
-<p class="intro" id="derived-note"></p>
-<div class="metrics" id="metrics"></div>
-<section class="panel"><h2 id="lFilter">Filter</h2>
-<div class="row" role="group" aria-labelledby="lWhere"><label id="lWhere">Where</label><div class="seg" id="f-region"></div></div>
-<div class="row" role="group" aria-labelledby="lType"><label id="lType">Job type</label><div class="seg" id="f-type"></div></div>
-<div class="row" role="group" aria-labelledby="lSort"><label id="lSort">Sort by</label><div class="seg" id="f-sort"></div></div>
-<div class="row" role="group" aria-labelledby="lLists"><label id="lLists">My lists</label><div class="seg" id="f-list"></div><button class="chip" id="csv" type="button" hidden>Export saved jobs (CSV)</button></div>
-<p class="priv" id="privnote">Save, Applied, Hide and notes stay in this browser on this device only. Nothing is uploaded or synced.</p>
-<p class="priv" id="storenote" hidden>Browser storage is unavailable, so these actions and your theme and language choices will reset when you close this tab.</p>
-<div><button class="chip" id="clear" hidden>Clear filters</button></div></section>
-<section class="sec top" id="sectop"><div class="sh"><h2 id="t1">Top picks</h2><span class="count" id="c1"></span></div><p class="sub" id="sub1">Up to 12 picks from this snapshot, drawn from a shortlist spanning Egypt, the Gulf and abroad, most recently posted first.</p><div id="top"></div></section>
-<section class="sec more"><div class="sh"><h2 id="t2">More openings</h2><span class="count" id="c2"></span></div><p class="sub" id="sub2">More listings from the same snapshot, outside the top picks.</p><div id="rest"></div></section>
+<a class="skip" href="#main" id="skip">Skip to jobs</a>
+<div class="ambient" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<header class="bar">
+  <div class="wrap bar-in">
+    <div class="brand"><span class="dot" aria-hidden="true"></span><span id="brand">BA & PM Opportunities</span></div>
+    <div class="bar-sp"></div>
+    <div class="ctl-group">
+      <span class="ctl-lbl" id="theme-lbl">Theme</span>
+      <div class="swatches" role="group" id="swatches" aria-label="Theme"></div>
+    </div>
+    <div class="ctl-group">
+      <span class="ctl-lbl" id="lang-lbl">Language</span>
+      <div class="seg" role="group" id="langseg">
+        <button type="button" data-l="en">EN</button>
+        <button type="button" data-l="ar">العربية</button>
+      </div>
+    </div>
+  </div>
+  <nav class="sites wrap" id="sites" aria-label="Career sites"></nav>
+</header>
+<main class="wrap" id="main">
+  <section class="hero reveal">
+    <h1 id="h1">BA & PM Jobs & Internships</h1>
+    <p class="sub" id="sub"></p>
+    <span class="snap" id="snap"></span>
+    <div class="breaks" id="breaks"></div>
+  </section>
+  <div class="search-zone reveal">
+    <div class="search-box">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+      <input id="q" type="search" autocomplete="off" aria-haspopup="listbox" aria-expanded="false">
+    </div>
+    <div class="sug" id="sug" role="listbox"></div>
+  </div>
+  <section class="filters reveal" aria-label="Filters">
+    <div class="f-row"><span class="f-lbl" id="l-where">Where</span><div class="chips" id="f-region"></div></div>
+    <div class="f-row"><span class="f-lbl" id="l-type">Job type</span><div class="chips" id="f-type"></div></div>
+    <div class="f-row"><span class="f-lbl" id="l-place">Workplace</span><div class="chips" id="f-place"></div></div>
+    <div class="f-row"><span class="f-lbl" id="l-sort">Sort by</span><div class="chips" id="f-sort"></div>
+      <div class="chips" id="f-list" style="margin-inline-start:auto"></div>
+      <button class="btn reset" id="reset" type="button">Clear</button>
+    </div>
+  </section>
+  <div class="meta-line">
+    <span id="count" aria-live="polite"></span>
+    <button class="btn export" id="csv" type="button">Export CSV</button>
+  </div>
+  <div class="grid" id="grid"></div>
+  <details class="archive" id="archive" hidden>
+    <summary id="archive-sum"></summary>
+    <div class="grid" id="archive-grid" style="padding-top:14px"></div>
+  </details>
 </main>
-<footer id="foot">Availability was not re-verified after this snapshot was made; a listing may have changed or closed since. Nothing is applied for or sent from this page. Always read eligibility notes on the original posting.</footer>
-</div>
+<footer class="site">
+  <div class="wrap" id="foot"></div>
+</footer>
 <script>
-const DATA={"updated": "2026-11-08 19:24", "date": "2026-11-08", "jobs": [{"id": "bs-business-analyst-mena-a-now-75389302-", "title": "Business Analyst - MENA, A-Now", "company": "Amazon.", "region": "Egypt", "location": "Cairo, Egypt", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-05", "source": "Bayt", "url": "https://www.bayt.com/en/egypt/jobs/business-analyst-mena-a-now-75389302/", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "bayt:75389302", "elig": "Yes"}, {"id": "contract-remote-octopus-by-rtg-75389294-", "title": "Senior Business Analyst ( 3-4 Months Contract ) - Remote - Octopus by RTG", "company": "robusta", "region": "Egypt", "location": "Cairo, Egypt", "workplace": "Remote", "type": "Not stated", "posted": "2026-11-05", "source": "Bayt", "url": "https://www.bayt.com/en/egypt/jobs/senior-business-analyst-3-4-months-contract-remote-octopus-by-rtg-75389294/", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "bayt:75389294", "elig": "Yes"}, {"id": "er-at-2p-perfect-presentation-4485812217", "title": "Product Owner", "company": "2P Perfect Presentation", "region": "Egypt", "location": "Giza, Al Jizah, Egypt", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-05", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-owner-at-2p-perfect-presentation-4485812217", "note": null, "level": "Mid-Senior level", "applicants": "120 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4485812217", "elig": "Yes"}, {"id": "n-johnson-innovative-medicine-4487740671", "title": "Senior Business Analyst IM EM", "company": "Johnson & Johnson Innovative Medicine", "region": "Egypt", "location": "Cairo, Cairo, Egypt", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-05", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/senior-business-analyst-im-em-at-johnson-johnson-innovative-medicine-4487740671", "note": null, "level": null, "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487740671", "elig": "Yes"}, {"id": "en-egypt-jobs-business-analyst-75393708-", "title": "Business Analyst", "company": "IntouchCX", "region": "Egypt", "location": "Cairo, Egypt", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-06", "source": "Bayt", "url": "https://www.bayt.com/en/egypt/jobs/business-analyst-75393708/", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "bayt:75393708", "elig": "Yes"}, {"id": "t-jobs-senior-business-analyst-75393709-", "title": "Senior Business Analyst", "company": "Tamem", "region": "Egypt", "location": "Cairo, Egypt", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-06", "source": "Bayt", "url": "https://www.bayt.com/en/egypt/jobs/senior-business-analyst-75393709/", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "bayt:75393709", "elig": "Yes"}, {"id": "siness-analyst-digital-banking-75399922-", "title": "Business Analyst - Digital Banking", "company": "MigrationIT", "region": "Egypt", "location": "Cairo, Egypt", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-08", "source": "Bayt", "url": "https://www.bayt.com/en/egypt/jobs/business-analyst-digital-banking-75399922/", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "bayt:75399922", "elig": "Yes"}, {"id": "analyst-at-argaam-investments-4486694669", "title": "Business Analyst", "company": "Argaam Investments", "region": "Egypt", "location": "Giza, Al Jizah, Egypt", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-at-argaam-investments-4486694669", "note": null, "level": "Associate", "applicants": "91 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4486694669", "elig": "Yes"}, {"id": "ct-manager-prepit-at-dsquares-4488777622", "title": "Product Manager - Prepit", "company": "Dsquares", "region": "Egypt", "location": "6th of October, Cairo, Egypt", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-prepit-at-dsquares-4488777622", "note": null, "level": "Mid-Senior level", "applicants": "57 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4488777622", "elig": "Yes"}, {"id": "s-analyst-sailpoint-riyadh-ksa-75399914-", "title": "IAM Business Analyst (SailPoint) - Riyadh, KSA", "company": "DeepSource Technologies", "region": "Egypt", "location": "Cairo, Egypt", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-08", "source": "Bayt", "url": "https://www.bayt.com/en/egypt/jobs/iam-business-analyst-sailpoint-riyadh-ksa-75399914/", "note": "Location check: the title says Riyadh but the listing shows Cairo, Egypt. Confirm the real work location in the posting.", "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "bayt:75399914", "elig": "Review"}, {"id": "alyst-intern-at-ededge-groups-4486572155", "title": "Business Analyst Intern", "company": "Ededge Groups", "region": "Europe", "location": "United Kingdom", "workplace": "Remote", "type": "Internship", "posted": "2026-11-05", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-intern-at-ededge-groups-4486572155", "note": null, "level": "Internship", "applicants": "96 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4486572155", "elig": "Unknown"}, {"id": "alyst-intern-at-ededge-groups-4487389668", "title": "Business Analyst Intern", "company": "Ededge Groups", "region": "Europe", "location": "Ireland", "workplace": "Remote", "type": "Internship", "posted": "2026-11-07", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-intern-at-ededge-groups-4487389668", "note": null, "level": "Internship", "applicants": "44 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487389668", "elig": "Unknown"}, {"id": "-manager-us-cards-at-lendable-4473358697", "title": "Associate Product Manager (US Cards)", "company": "Lendable", "region": "Europe", "location": "London, England, United Kingdom", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/associate-product-manager-us-cards-at-lendable-4473358697", "note": null, "level": "Entry level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4473358697", "elig": "Unknown"}, {"id": "view-product-owner-at-m-group-4487286307", "title": "Product Owner", "company": "M Group", "region": "Europe", "location": "Newcastle Upon Tyne, England, United Kingdom", "workplace": "Hybrid", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-owner-at-m-group-4487286307", "note": null, "level": "Mid-Senior level", "applicants": "31 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487286307", "elig": "Unknown"}, {"id": "iew-business-analyst-at-wiraa-4487625003", "title": "Business Analyst", "company": "Wiraa", "region": "Europe", "location": "Baden-Württemberg, Germany", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-at-wiraa-4487625003", "note": null, "level": "Associate", "applicants": "25 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487625003", "elig": "Unknown"}, {"id": "yst-in-provision-at-hdi-group-4426733590", "title": "Business Analyst:In Provision", "company": "HDI Group", "region": "Europe", "location": "Hamburg, Hamburg, Germany", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-in-provision-at-hdi-group-4426733590", "note": null, "level": "Entry level", "applicants": "93 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4426733590", "elig": "Unknown"}, {"id": "-manager-remote-uk-at-lifebit-4417337050", "title": "Product Manager - Remote - UK", "company": "Lifebit", "region": "Europe", "location": "London, England, United Kingdom", "workplace": "Remote", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-remote-uk-at-lifebit-4417337050", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4417337050", "elig": "Unknown"}, {"id": "siness-analyst-intern-at-mezx-4487650582", "title": "Business Analyst Intern", "company": "MezX", "region": "Other", "location": "Dhaka, Bangladesh", "workplace": "Remote", "type": "Internship", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-intern-at-mezx-4487650582", "note": null, "level": "Internship", "applicants": "25 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487650582", "elig": "Unknown"}, {"id": "-10-years-n-cd-40002317-jid-061126501570", "title": "Product Manager (Technical & Go-To-Market)", "company": "Rits Qatar", "region": "Other Gulf", "location": "Doha, Qatar", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-06", "source": "NaukriGulf", "url": "https://www.naukrigulf.com/product-manager-jobs-in-doha-qatar-in-rits-qatar-5-to-10-years-n-cd-40002317-jid-061126501570", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "naukrigulf:061126501570", "elig": "Unknown"}, {"id": "ager-ai-applications-at-scale-4488413290", "title": "Product Manager, AI Applications", "company": "Scale", "region": "Other Gulf", "location": "Kuwait City, Al Asimah, Kuwait", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-06", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-ai-applications-at-scale-4488413290", "note": null, "level": "Mid-Senior level", "applicants": "47 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4488413290", "alternate_links": ["https://kw.linkedin.com/jobs/view/product-manager-ai-applications-at-scale-4488413290"], "elig": "Unknown"}, {"id": "-30-years-n-cd-10001800-jid-041126501930", "title": "Product Manager", "company": "Takamol Holding", "region": "Saudi Arabia", "location": "Riyadh, Saudi Arabia", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-04", "source": "NaukriGulf", "url": "https://www.naukrigulf.com/product-manager-jobs-in-riyadh-saudi-arabia-in-takamol-holding-7-to-30-years-n-cd-10001800-jid-041126501930", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "naukrigulf:041126501930", "elig": "Unknown"}, {"id": "iew-business-analyst-at-shory-4486379152", "title": "Business Analyst", "company": "Shory", "region": "Saudi Arabia", "location": "Riyadh, Saudi Arabia", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-04", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-at-shory-4486379152", "note": null, "level": "Associate", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4486379152", "elig": "Unknown"}, {"id": "er-at-nsg-geospatial-services-4485078378", "title": "Product Manager", "company": "NSG Geospatial Services", "region": "Saudi Arabia", "location": "Riyadh, Saudi Arabia", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-04", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-at-nsg-geospatial-services-4485078378", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4485078378", "elig": "Unknown"}, {"id": "global-public-sector-at-scale-4363534320", "title": "Product Manager of AI Applications, Global Public Sector", "company": "Scale", "region": "Saudi Arabia", "location": "Riyadh, Riyadh, Saudi Arabia", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-04", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-of-ai-applications-global-public-sector-at-scale-4363534320", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4363534320", "elig": "Unknown"}, {"id": "siness-analyst-erp-at-dafater-4487245043", "title": "Business Analyst - ERP", "company": "Dafater", "region": "Saudi Arabia", "location": "Riyadh, Saudi Arabia", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-04", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-erp-at-dafater-4487245043", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487245043", "elig": "Unknown"}, {"id": "tal-payments-at-paytech-group-4487324066", "title": "Product Manager - Acquiring (Digital Payments)", "company": "PayTech Group", "region": "Saudi Arabia", "location": "Riyadh, Riyadh, Saudi Arabia", "workplace": "Onsite", "type": "Contract", "posted": "2026-11-06", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-acquiring-digital-payments-at-paytech-group-4487324066", "note": "Check eligibility: the posting mentions \"work authorization\".", "level": null, "applicants": "127 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487324066", "elig": "Unknown"}, {"id": "-10-years-n-cd-10051411-jid-061126500520", "title": "ServiceNow Senior Business Analyst", "company": "Client of Salt", "region": "Saudi Arabia", "location": "Riyadh, Saudi Arabia", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-06", "source": "NaukriGulf", "url": "https://www.naukrigulf.com/servicenow-senior-business-analyst-jobs-in-riyadh-saudi-arabia-in-client-of-salt-7-to-10-years-n-cd-10051411-jid-061126500520", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "naukrigulf:061126500520", "elig": "Unknown"}, {"id": "nager-ai-smart-cities-at-aiqu-4487649354", "title": "Product Manager(AI ,Smart Cities)", "company": "AIQU", "region": "Saudi Arabia", "location": "Riyadh, Saudi Arabia", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-ai-smart-cities-at-aiqu-4487649354", "note": null, "level": "Mid-Senior level", "applicants": "180 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487649354", "alternate_links": ["https://sa.linkedin.com/jobs/view/product-manager-ai-smart-cities-at-aiqu-4487649354"], "elig": "Unknown"}, {"id": "en-uae-jobs-product-manager-fx-75389069-", "title": "Product Manager - FX", "company": "Standard Chartered", "region": "UAE", "location": "Dubai, UAE", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-05", "source": "Bayt", "url": "https://www.bayt.com/en/uae/jobs/product-manager-fx-75389069/", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "bayt:75389069", "elig": "Unknown"}, {"id": "ew-product-owner-at-binghatti-4487749982", "title": "Product Owner", "company": "Binghatti", "region": "UAE", "location": "Dubai, United Arab Emirates", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-05", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-owner-at-binghatti-4487749982", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487749982", "elig": "Unknown"}, {"id": "duct-owner-web-apps-at-etihad-4485063290", "title": "Product Owner - Web Apps", "company": "Etihad", "region": "UAE", "location": "Abu Dhabi, Abu Dhabi Emirate, United Arab Emirates", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-05", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-owner-web-apps-at-etihad-4485063290", "note": null, "level": null, "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4485063290", "elig": "Unknown"}, {"id": "-lending-uae-national-at-hsbc-4487769101", "title": "Product Manager, Secured Lending (UAE National)", "company": "HSBC", "region": "UAE", "location": "Dubai, Dubai, United Arab Emirates", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-05", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-secured-lending-uae-national-at-hsbc-4487769101", "note": "Check eligibility: the posting mentions \"UAE National\".", "level": "Mid-Senior level", "applicants": "37 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487769101", "elig": "No"}, {"id": "o-8-years-n-cd-40005253-jid-061126501658", "title": "Senior Product Manager (Loyalty)", "company": "inDrive", "region": "UAE", "location": "Abu Dhabi, United Arab Emirates", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-06", "source": "NaukriGulf", "url": "https://www.naukrigulf.com/senior-product-manager-jobs-in-abu-dhabi-uae-in-indrive-3-to-8-years-n-cd-40005253-jid-061126501658", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Availability not verified", "canonical_key": "naukrigulf:061126501658", "elig": "Unknown"}, {"id": "iew-product-manager-3-at-noon-4488127680", "title": "Product Manager 3", "company": "noon", "region": "UAE", "location": "Dubai, United Arab Emirates", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-06", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-3-at-noon-4488127680", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4488127680", "elig": "Unknown"}, {"id": "-at-abu-dhabi-commercial-bank-4486209328", "title": "Product Owner ( Wealth Management, Brokerage & Custody)", "company": "Abu Dhabi Commercial Bank", "region": "UAE", "location": "Abu Dhabi Emirate, United Arab Emirates", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-06", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-owner-wealth-management-brokerage-custody-at-abu-dhabi-commercial-bank-4486209328", "note": null, "level": "Mid-Senior level", "applicants": "136 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4486209328", "elig": "Unknown"}, {"id": "ech-dubai-on-site-at-comfi-ai-4486252287", "title": "Product Owner — Origination Platform (Lending & Financing) | Fintech, Dubai | On-site", "company": "Comfi.ai", "region": "UAE", "location": "Dubai, United Arab Emirates", "workplace": "Onsite", "type": "Full-time", "posted": "2026-11-06", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-owner-%E2%80%94-origination-platform-lending-financing-fintech-dubai-on-site-at-comfi-ai-4486252287", "note": "Check eligibility: the posting mentions \"Visa sponsorship\".", "level": "Director", "applicants": "167 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4486252287", "elig": "Unknown"}, {"id": "-worldwide-technical-services-4486214762", "title": "Senior Business Analyst — Primavera & Procore for EPC Infrastructure in UAE", "company": "Procer Worldwide Technical Services", "region": "UAE", "location": "Abu Dhabi Emirate, United Arab Emirates", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-06", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/senior-business-analyst-%E2%80%94-primavera-procore-for-epc-infrastructure-in-uae-at-procer-worldwide-technical-services-4486214762", "note": null, "level": "Mid-Senior level", "applicants": "34 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4486214762", "elig": "Unknown"}, {"id": "ception-at-the-greater-change-4488499544", "title": "Product Manager (Multi-Modal Experience & Perception)", "company": "The Greater Change", "region": "UAE", "location": "Dubai, Dubai, United Arab Emirates", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-07", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-multi-modal-experience-perception-at-the-greater-change-4488499544", "note": null, "level": "Mid-Senior level", "applicants": "85 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4488499544", "elig": "Unknown"}, {"id": "rs-immediate-joiners-at-aldar-4487622943", "title": "Junior Product Manager - Emirati Future Leaders ( Immediate Joiners)", "company": "ALDAR", "region": "UAE", "location": "Abu Dhabi Emirate, United Arab Emirates", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/junior-product-manager-emirati-future-leaders-immediate-joiners-at-aldar-4487622943", "note": "Check eligibility: the posting mentions \"Emirati\".", "level": "Entry level", "applicants": "114 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4487622943", "elig": "No"}, {"id": "-at-veranda-hotels-residences-4446274915", "title": "Business Analyst", "company": "Veranda Hotels & Residences", "region": "UAE", "location": "Al Ain, Abu Dhabi Emirate, United Arab Emirates", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-at-veranda-hotels-residences-4446274915", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4446274915", "elig": "Unknown"}, {"id": "027-remote-at-bae-systems-inc-4459989113", "title": "Business Analyst Intern III, Summer 2027 (Remote)", "company": "BAE Systems, Inc.", "region": "USA", "location": "Endicott, NY", "workplace": "Remote", "type": "Internship", "posted": "2026-11-05", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-intern-iii-summer-2027-remote-at-bae-systems-inc-4459989113", "note": null, "level": "Internship", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4459989113", "elig": "Unknown"}, {"id": "careers-positions-8356842-gh_jid-8356842", "title": "Product Manager II", "company": "Coinbase", "region": "USA", "location": "Remote - USA", "workplace": "Remote", "type": "Not stated", "posted": "2026-11-05", "source": "Company careers", "url": "https://www.coinbase.com/careers/positions/8356842?gh_jid=8356842", "note": "Remote only for the locations listed: Remote - USA", "level": null, "applicants": null, "live": true, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Open on source: Company careers", "canonical_key": "greenhouse-gh_jid:8356842", "elig": "No"}, {"id": "careers-positions-8360386-gh_jid-8360386", "title": "Senior Product Manager", "company": "Coinbase", "region": "USA", "location": "Remote - USA", "workplace": "Remote", "type": "Not stated", "posted": "2026-11-06", "source": "Company careers", "url": "https://www.coinbase.com/careers/positions/8360386?gh_jid=8360386", "note": "Remote only for the locations listed: Remote - USA", "level": null, "applicants": null, "live": true, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Open on source: Company careers", "canonical_key": "greenhouse-gh_jid:8360386", "elig": "No"}, {"id": "ermarket-parts-at-hillphoenix-4477327358", "title": "Product Management Intern, Aftermarket Parts", "company": "Hillphoenix", "region": "USA", "location": "Conyers, GA", "workplace": "Remote", "type": "Internship", "posted": "2026-11-06", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-management-intern-aftermarket-parts-at-hillphoenix-4477327358", "note": null, "level": "Internship", "applicants": "97 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4477327358", "elig": "Unknown"}, {"id": "siness-analyst-2-at-primerica-4463601983", "title": "Business Analyst 2", "company": "Primerica", "region": "USA", "location": "Duluth, GA", "workplace": "Hybrid", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-2-at-primerica-4463601983", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4463601983", "elig": "Unknown"}, {"id": "ct-manager-level-i-at-medrisk-4467899110", "title": "Product Manager Level I", "company": "MedRisk", "region": "USA", "location": "United States", "workplace": "Remote", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-level-i-at-medrisk-4467899110", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4467899110", "elig": "Unknown"}, {"id": "e-markets-deals-at-alphasense-4480577193", "title": "Product Manager, Financial Data - Private Markets & Deals", "company": "AlphaSense", "region": "USA & Canada", "location": "Canada", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-07", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-financial-data-private-markets-deals-at-alphasense-4480577193", "note": null, "level": "Entry level", "applicants": "82 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4480577193", "elig": "Unknown"}, {"id": "ess-analyst-at-caa-club-group-4451248321", "title": "Business Analyst", "company": "CAA Club Group", "region": "USA & Canada", "location": "Vaughan, Ontario, Canada", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-08", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-at-caa-club-group-4451248321", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Availability not verified", "canonical_key": "linkedin:4451248321", "elig": "Unknown"}, {"id": "ps-stripe-com-jobs-search-gh_jid-7812856", "title": "Staff Product Manager, Enterprise", "company": "Stripe", "region": "Worldwide", "location": "San Francisco, Seattle, New York, Chicago, Atlanta, Remote", "workplace": "Remote", "type": "Not stated", "posted": "2026-04-21", "source": "Company careers", "url": "https://stripe.com/jobs/search?gh_jid=7812856", "note": "Remote only for the locations listed: San Francisco, Seattle, New York, Chicago, Atlanta, Remote", "level": null, "applicants": null, "live": true, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": true, "vlabel": "Open on source: Company careers", "canonical_key": "greenhouse-gh_jid:7812856", "elig": "No"}, {"id": "ers-open-positions-job-gh_jid-8831555002", "title": "Staff Product Manager, US Public Sector", "company": "Databricks", "region": "Worldwide", "location": "Remote - California; Remote - Virginia; Remote - Washington D.C.", "workplace": "Remote", "type": "Not stated", "posted": "2026-09-23", "source": "Company careers", "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8831555002", "note": "Remote only for the locations listed: Remote - California; Remote - Virginia; Remote - Washington D.C.", "level": null, "applicants": null, "live": true, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": true, "vlabel": "Open on source: Company careers", "canonical_key": "greenhouse-gh_jid:8831555002", "elig": "No"}, {"id": "-jobs-business-analyst-manager-75382273-", "title": "Business analyst manager", "company": "Tamem", "region": "Egypt", "location": "Cairo, Egypt", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-03", "source": "Bayt", "url": "https://www.bayt.com/en/egypt/jobs/business-analyst-manager-75382273/", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": false, "vlabel": "Availability not verified", "canonical_key": "bayt:75382273", "elig": "Yes"}, {"id": "en-egypt-jobs-business-analyst-75385637-", "title": "Business Analyst", "company": "Fawry MSME Finance", "region": "Egypt", "location": "Cairo, Egypt", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-04", "source": "Bayt", "url": "https://www.bayt.com/en/egypt/jobs/business-analyst-75385637/", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": false, "vlabel": "Availability not verified", "canonical_key": "bayt:75385637", "elig": "Yes"}, {"id": "view-product-manager-at-bokra-4486513364", "title": "Product Manager", "company": "Bokra", "region": "Egypt", "location": "Cairo, Cairo, Egypt", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-04", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-manager-at-bokra-4486513364", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": false, "vlabel": "Availability not verified", "canonical_key": "linkedin:4486513364", "elig": "Yes"}, {"id": "-product-owner-at-banque-misr-4477063347", "title": "Product Owner", "company": "Banque Misr", "region": "Egypt", "location": "Cairo, Egypt", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-04", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/product-owner-at-banque-misr-4477063347", "note": null, "level": "Mid-Senior level", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": false, "vlabel": "Availability not verified", "canonical_key": "linkedin:4477063347", "elig": "Yes"}, {"id": "mes-retail-banking-at-mashreq-4479002364", "title": "Senior Product Manager.Egypt- SMEs.Retail Banking", "company": "Mashreq", "region": "Egypt", "location": "Egypt", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-04", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/senior-product-manager-egypt-smes-retail-banking-at-mashreq-4479002364", "note": null, "level": "Mid-Senior level", "applicants": "113 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": false, "vlabel": "Availability not verified", "canonical_key": "linkedin:4479002364", "elig": "Yes"}, {"id": "-10-years-n-cd-40003525-jid-041126502345", "title": "Senior Product Owner", "company": "Bornan Sports Technology", "region": "Other Gulf", "location": "Doha, Qatar", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-04", "source": "NaukriGulf", "url": "https://www.naukrigulf.com/senior-product-owner-jobs-in-doha-qatar-in-bornan-sports-technology-5-to-10-years-n-cd-40003525-jid-041126502345", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": false, "vlabel": "Availability not verified", "canonical_key": "naukrigulf:041126502345", "elig": "Unknown"}, {"id": "di-arabia-jobs-product-manager-75382729-", "title": "Product Manager", "company": "Aramex", "region": "Saudi Arabia", "location": "Riyadh, Saudi Arabia", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-03", "source": "Bayt", "url": "https://www.bayt.com/en/saudi-arabia/jobs/product-manager-75382729/", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 19:24", "status": "new_update", "featured": false, "vlabel": "Availability not verified", "canonical_key": "bayt:75382729", "elig": "Unknown"}, {"id": "D9-85-D8-B1-D8-A7-D8-B9-D9-8A-4486827400", "title": "Business Analyst", "company": "Almarai - المراعي", "region": "Saudi Arabia", "location": "Riyadh, Saudi Arabia", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-03", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/business-analyst-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4486827400", "note": null, "level": "Associate", "applicants": "Over 200 applicants", "live": false, "first_seen": "2026-11-08", "first_seen_at": "2026-11-08 16:34", "status": "earlier_today", "featured": false, "vlabel": "Availability not verified", "canonical_key": "linkedin:4486827400", "elig": "Unknown"}], "_derived": {"baseline": "PM-BA-jobs-2026-11-08.html", "transform": "PB06 merge application v1", "immutable_input": true, "publication": "reserved"}};
-const J=DATA.jobs;
-const I18N={en:{"docTitle":"BA & PM Jobs & Internships","metaDesc":"Product Management and Business Analysis jobs and internships in Egypt, the Gulf and beyond. Dated snapshot; every listing carries its source.","h1":"BA & PM Jobs & Internships","intro":"Product Management and Business Analysis jobs and internships in Egypt, the Gulf, the USA and Europe. This is a dated snapshot (work in progress): listings may have changed or closed since it was made.","sub1":"Up to 12 picks from this snapshot, drawn from a shortlist spanning Egypt, the Gulf and abroad, most recently posted first.","filter":"Filter","where":"Where","jobtype":"Job type","sortby":"Sort by","mylists":"My lists","exportCsv":"Export saved jobs (CSV)","priv":"Save, Applied, Hide and notes stay in this browser on this device only. Nothing is uploaded or synced.","storenote":"Browser storage is unavailable, so these actions and your theme and language choices will reset when you close this tab.","clearFilters":"Clear filters","topPicks":"Top picks","matchingTopPicks":"Matching top picks","moreOpenings":"More openings","sub2":"More listings from the same snapshot, outside the top picks.","noMatch":"No openings match the active filters","noPicks":"No picks match these filters.","nothingMore":"Nothing more matches these filters.","inThisSnapshot":"in this snapshot · target 100","egypt":"Egypt","gulf":"Gulf","restWorld":"Rest of world","newInSnapshot":"new in this snapshot","earlierInSnapshot":"earlier in this snapshot","internshipsTarget":"internships · target 15","openEgypt":"open to Egypt-based · posting-supported; not re-verified","derivedNote":"Eligibility figures use evidence recorded from each posting, with contradictory or missing evidence left for review or marked unknown. They are not a legal eligibility determination and have not been re-verified against live sources. This derived preview is not the published baseline.","notReverified":"Not re-verified","availChanged":"availability may have changed since this snapshot","lWorkplace":"Workplace","lType":"Type","lSeniority":"Seniority","lPosted":"Posted","lFirstSeen":"First seen","seePosting":"See posting","notShown":"Not shown","availNotVerified":"Availability not verified","checkLocation":"Check location","checkEligibility":"Check eligibility","companySite":"Company site","badgeNew":"New in this snapshot","badgeEarlier":"Earlier in this snapshot","badgeSeen":"Seen before","save":"Save","saved":"Saved","markApplied":"Mark applied","applied":"Applied","hide":"Hide","restore":"Restore","note":"Note","notePlaceholder":"Private note - saved in this browser only","sortedBy":"sorted by","themeLabel":"Theme","langLabel":"Language","newTab":" (opens in a new tab)","madeFor":"Made for","arrow":"↗","footer":"Availability was not re-verified after this snapshot was made; a listing may have changed or closed since. Nothing is applied for or sent from this page. Always read eligibility notes on the original posting.","reg":{"all":"All","Egypt":"Egypt","UAE":"UAE","Saudi Arabia":"Saudi Arabia","Other Gulf":"Other Gulf","USA":"USA","USA & Canada":"USA & Canada","Europe":"Europe","Remote world":"Remote world","Other":"Other"},"types":{"Full-time":"Full-time","Part-time":"Part-time","Contract":"Contract","Internship":"Internship","Temporary":"Temporary","Volunteer":"Volunteer","Apprenticeship":"Apprenticeship","Not stated":"Not stated"},"sorts":{"new":"Recently posted","old":"Oldest posted","intern":"Internships first","comp":"Least competition"},"listTitles":{"saved":"Saved jobs","applied":"Applied jobs","hidden":"Hidden jobs"},"listSubs":{"saved":"Jobs you saved in this browser.","applied":"Jobs you marked as applied in this browser.","hidden":"Jobs you hid in this browser. Restore any of them below."},"listEmpty":{"saved":"No saved jobs yet. Use Save on any job card to build your list.","applied":"No jobs marked as applied yet.","hidden":"No hidden jobs."},"lists":{"all":"All","saved":"Saved","applied":"Applied","hidden":"Hidden"},"themes":{"system":"System Default","white":"White","black":"Black","navy":"Navy","graphite":"Graphite"},showMore:(n,m)=>`Show ${n} more of ${m} openings`,openOn:n=>`Open on ${n}`,openOnAsOf:(s,d)=>`Open on ${s} as of the ${d} snapshot`,fact:(u,n)=>'Snapshot date: '+esc(u)+' Cairo time'},ar:{"docTitle":"وظائف وتدريب BA & PM","metaDesc":"وظائف وتدريب في إدارة المنتجات وتحليل الأعمال في مصر والخليج وخارجها. لقطة مؤرخة؛ كل إعلان يحمل مصدره.","h1":"وظائف وتدريب BA & PM","intro":"وظائف وتدريب في إدارة المنتجات وتحليل الأعمال في مصر والخليج والولايات المتحدة وأوروبا. هذه لقطة مؤرخة (قيد الإعداد): قد تكون الإعلانات قد تغيرت أو أُغلقت منذ إعدادها.","sub1":"حتى 12 اختيارًا من هذه اللقطة من قائمة قصيرة تشمل مصر والخليج وخارجها، مرتبة بالأحدث نشرًا أولًا.","filter":"تصفية","where":"المكان","jobtype":"نوع العمل","sortby":"الترتيب","mylists":"قوائمي","exportCsv":"تصدير الوظائف المحفوظة (CSV)","priv":"تبقى إجراءات الحفظ والتقديم والإخفاء والملاحظات في هذا المتصفح على هذا الجهاز فقط. لا يُرفع أو يُزامَن أي شيء.","storenote":"مساحة التخزين في المتصفح غير متاحة، لذلك ستُعاد هذه الإجراءات واختيار المظهر واللغة عند إغلاق هذا التبويب.","clearFilters":"مسح التصفية","topPicks":"مختارات مميزة","matchingTopPicks":"المختارات المطابقة","moreOpenings":"وظائف أخرى","sub2":"وظائف أخرى من نفس اللقطة خارج المختارات.","noMatch":"لا توجد وظائف تطابق عوامل التصفية الحالية","noPicks":"لا توجد مختارات تطابق هذه العوامل.","nothingMore":"لا يوجد مزيد يطابق هذه العوامل.","inThisSnapshot":"في هذه اللقطة · الهدف 100","egypt":"مصر","gulf":"الخليج","restWorld":"بقية العالم","newInSnapshot":"جديدة في هذه اللقطة","earlierInSnapshot":"سابقة في هذه اللقطة","internshipsTarget":"تدريب · الهدف 15","openEgypt":"متاحة للمقيمين في مصر · مدعومة بنص الإعلان؛ غير مُعاد التحقق","derivedNote":"تستند أرقام الأهلية إلى الدليل المسجل من نص كل إعلان، وتُترك الحالات ذات الدليل المناقض أو المفقود للمراجعة أو تُوسم غير معروفة. هذه الأرقام ليست حكمًا قانونيًا بالأهلية ولم يُعَد التحقق منها من مصادر مباشرة. هذه المعاينة المشتقة ليست اللقطة المنشورة.","notReverified":"لم يُعَد التحقق","availChanged":"قد يكون التوفر قد تغير منذ هذه اللقطة","lWorkplace":"مكان العمل","lType":"النوع","lSeniority":"المستوى","lPosted":"تاريخ النشر","lFirstSeen":"أول رصد","seePosting":"انظر الإعلان","notShown":"غير موضح","availNotVerified":"التوفر غير مُتحقق منه","checkLocation":"تحقق من الموقع","checkEligibility":"تحقق من الأهلية","companySite":"الموقع الرسمي","badgeNew":"جديدة في هذه اللقطة","badgeEarlier":"سابقة في هذه اللقطة","badgeSeen":"مرصودة سابقًا","save":"حفظ","saved":"محفوظة","markApplied":"تسجيل التقديم","applied":"تم التقديم","hide":"إخفاء","restore":"استعادة","note":"ملاحظة","notePlaceholder":"ملاحظة خاصة - تُحفظ في هذا المتصفح فقط","sortedBy":"مرتبة حسب","themeLabel":"المظهر","langLabel":"اللغة","newTab":" (يفتح في تبويب جديد)","madeFor":"أُعدّت لـ","arrow":"↖","footer":"لم يُعَد التحقق من التوفر بعد إعداد هذه اللقطة؛ فقد يكون الإعلان تغير أو أُغلق منذ ذلك الحين. لا يتم التقديم أو الإرسال من هذه الصفحة. اقرأ دائمًا ملاحظات الأهلية في الإعلان الأصلي.","reg":{"all":"الكل","Egypt":"مصر","UAE":"الإمارات","Saudi Arabia":"السعودية","Other Gulf":"دول خليجية أخرى","USA":"الولايات المتحدة","USA & Canada":"الولايات المتحدة وكندا","Europe":"أوروبا","Remote world":"عن بُعد (عالمي)","Other":"أخرى"},"types":{"Full-time":"دوام كامل","Part-time":"دوام جزئي","Contract":"عقد","Internship":"تدريب","Temporary":"عمل مؤقت","Volunteer":"تطوع","Apprenticeship":"تدريب مهني","Not stated":"غير محدد"},"sorts":{"new":"الأحدث نشرًا","old":"الأقدم نشرًا","intern":"التدريب أولًا","comp":"الأقل منافسة"},"listTitles":{"saved":"الوظائف المحفوظة","applied":"وظائف تم التقديم عليها","hidden":"الوظائف المخفية"},"listSubs":{"saved":"وظائف حفظتها في هذا المتصفح.","applied":"وظائف سجلت التقديم عليها في هذا المتصفح.","hidden":"وظائف أخفيتها في هذا المتصفح. يمكنك استعادة أي منها أدناه."},"listEmpty":{"saved":"لا توجد وظائف محفوظة بعد. استخدم زر الحفظ على أي بطاقة وظيفة لبناء قائمتك.","applied":"لا توجد وظائف مسجل التقديم عليها بعد.","hidden":"لا توجد وظائف مخفية."},"lists":{"all":"الكل","saved":"محفوظة","applied":"تم التقديم","hidden":"مخفية"},"themes":{"system":"افتراضي النظام","white":"فاتح","black":"داكن","navy":"كحلي","graphite":"جرافيت"},showMore:(n,m)=>`عرض ${n} من أصل ${m} وظيفة متبقية`,openOn:n=>`فتح على ${n}`,openOnAsOf:(s,d)=>`فتح على ${s} بحسب لقطة ${d}`,fact:(u,n)=>'تاريخ اللقطة: '+esc(u)+' بتوقيت القاهرة'}};
-let LANG='en';const T=()=>I18N[LANG];
-const LANG_KEY='ci-lang-v1';let memLang;
-function storedLang(){try{const l=localStorage.getItem(LANG_KEY);return l==='ar'||l==='en'?l:null}catch(e){return memLang!==undefined?memLang:null}}
-function regLbl(r){const k=RL[r]||r;return T().reg[k]||k}
-function typeLbl(v){return v==='all'?T().lists.all:(T().types[v]||v)}
-function fmtDate(d){if(!d)return'';try{const dt=new Date(d+'T00:00:00');if(!isNaN(dt))return dt.toLocaleDateString(LANG==='ar'?'ar-EG-u-nu-latn':'en-GB',{year:'numeric',month:'short',day:'numeric'})}catch(e){}return d}
-function fmtDateTime(s){try{const dt=new Date(String(s).replace(' ','T'));if(!isNaN(dt))return dt.toLocaleString(LANG==='ar'?'ar-EG-u-nu-latn':'en-GB',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false})}catch(e){}return s}
-function setLang(l){memLang=l;try{localStorage.setItem(LANG_KEY,l)}catch(e){const n=$('storenote');if(n)n.hidden=false}LANG=l;applyLang()}
-function applyLang(){document.documentElement.lang=LANG;document.documentElement.dir=LANG==='ar'?'rtl':'ltr';applyStatic();renderTP();render();renderLangSw()}
-function renderLangSw(){const sw=$('langsw');if(!sw)return;[...sw.querySelectorAll('button')].forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===LANG))}
-function applyStatic(){const t=T();
-document.title=t.docTitle;
-const md=document.querySelector('meta[name="description"]');if(md)md.setAttribute('content',t.metaDesc);
-$('h1t').textContent=t.h1;
-const nw=DATA.jobs.filter(j=>j.status==='new_update').length;
-$('factp').innerHTML=t.fact(fmtDateTime(DATA.updated),nw);
-$('intro').textContent=t.intro;{const _dn=$('derived-note');if(_dn)_dn.textContent=t.derivedNote}$('sub1').textContent=t.sub1;
-$('lFilter').textContent=t.filter;$('lWhere').textContent=t.where;$('lType').textContent=t.jobtype;$('lSort').textContent=t.sortby;$('lLists').textContent=t.mylists;
-$('csv').textContent=t.exportCsv;$('clear').textContent=t.clearFilters;
-$('privnote').textContent=t.priv;$('storenote').textContent=t.storenote;
-$('foot').textContent=t.footer;$('themelbl').textContent=t.themeLabel;$('langlbl').textContent=t.langLabel;$('madefor').textContent=t.madeFor}
+"use strict";
+const SITE = {"key": "bapm", "sub_en_rel": "Business Analysis and Product Management jobs and internships, each individually checked against its live source on the snapshot date. Contradictory or missing evidence is marked, never guessed.", "sub_ar_rel": "وظائف وتدريبات تحليل الأعمال وإدارة المنتجات، كل إعلان فيها اتراجع مقابل مصدره الحي يوم اللقطة. أي دليل ناقص أو متضارب متوضح، ومش متخمن.", "repo": "ba-pm-jobs-internships", "hue": "245", "prod_url": "https://pm-ba-opportunities.vercel.app", "fav": "%237c6cf0", "theme_color": "#0d0f16", "title_en": "BA & PM Jobs & Internships", "title_ar": "وظائف وتدريبات BA وPM", "brand_en": "BA & PM Opportunities", "brand_ar": "فرص BA وPM", "sub_en_pvm": "Business Analysis and Product Management jobs and internships collected from established public job APIs. Each card shows whether its listing was individually verified; unverified means fetched, not confirmed.", "sub_ar_pvm": "وظائف وتدريبات تحليل الأعمال وإدارة المنتجات متجمّعة من واجهات برمجية عامة موثقة المصدر. كل كارت يوضح هل إعلانه اتحقق منه على مستوى الإعلان نفسه؛ غير الموثق يعني جُلب ولم يُؤكَّد بعد.", "sub_en": "Business Analysis and Product Management jobs and internships in Egypt, the Gulf, the USA and Europe. Every listing was checked by hand when captured; contradictory or missing evidence is marked, never guessed.", "sub_ar": "وظائف وتدريبات تحليل الأعمال وإدارة المنتجات في مصر والخليج وأمريكا وأوروبا. كل إعلان اتراجع يدويًا وقت رصده؛ أي دليل ناقص أو متضارب متوضح، ومش متخمن.", "roles": ["Product Manager", "Product Owner", "Business Analyst", "Project Manager", "Program Manager", "Product Designer", "UX", "Scrum Master", "Intern", "Senior"]};
+/* sibling sites of the family — stable production URLs */
+const SITENAV = [
+  ["bapm", "BA & PM", "BA وPM", "https://pm-ba-opportunities.vercel.app/"],
+  ["ai", "Applied AI", "الذكاء التطبيقي", "https://ai-automation-jobs-internships.vercel.app/"],
+  ["marketing", "Marketing", "التسويق", "https://marketing-jobs-internships.vercel.app/"],
+];
+const DATA = {"updated": "2026-11-21 23:16 UTC", "date": "2026-11-22", "release_candidate": true, "verification_model": "v5-individual-revalidated-2026-11-22", "publishable_verified_only": true, "jobs": [{"id": "senior-outbound-product-manager-harness-156222", "title": "Senior Outbound Product Manager", "company": "Harness", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-21", "source": "Jobicy", "url": "https://jobicy.com/jobs/156222-senior-outbound-product-manager", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:156222", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "localisation-project-manager-smartling-156175", "title": "Localisation Project Manager", "company": "Smartling", "region": "Europe", "location": "Ireland,  UK", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-21", "source": "Jobicy", "url": "https://jobicy.com/jobs/156175-localisation-project-manager", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:156175", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "technical-program-manager-phaidra-145850", "title": "Technical Program Manager", "company": "Phaidra", "region": "USA & Canada", "location": "Canada,  USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-21", "source": "Jobicy", "url": "https://jobicy.com/jobs/145850-technical-program-manager-2", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:145850", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-project-manager-professional-services-zscaler-163439", "title": "Senior Project Manager, Professional Services", "company": "Zscaler", "region": "Europe", "location": "UK", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Jobicy", "url": "https://jobicy.com/jobs/163439-senior-project-manager-professional-services", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163439", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-program-manager-juniper-square-155920", "title": "Senior Program Manager", "company": "Juniper Square", "region": "USA & Canada", "location": "Canada,  USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-19", "source": "Jobicy", "url": "https://jobicy.com/jobs/155920-senior-program-manager-2", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155920", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-project-manager-welo-global-163046", "title": "Senior Project Manager", "company": "Welo Global", "region": "Other", "location": "Argentina,  Mexico", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/163046-senior-project-manager", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163046", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-localization-project-manager-welo-global-163045", "title": "Senior Localization Project Manager", "company": "Welo Global", "region": "Other", "location": "Argentina,  Mexico", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/163045-senior-localization-project-manager", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163045", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "associate-director-program-management-natera-162978", "title": "Associate Director, Program Management", "company": "Natera", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/162978-associate-director-program-management", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162978", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-technical-program-manager-i-axon-162830", "title": "Senior Technical Program Manager I", "company": "Axon", "region": "Europe", "location": "Germany,  Netherlands", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/162830-senior-technical-program-manager-i", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162830", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "program-manager-life-sciences-smartling-162761", "title": "Program Manager, Life Sciences", "company": "Smartling", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/162761-program-manager-life-sciences", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162761", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "project-manager-customer-experience-fixed-term-amplify-162646", "title": "Project Manager, Customer Experience (Fixed-Term)", "company": "Amplify", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Contract", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162646-project-manager-customer-experience-fixed-term", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162646", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-audiobooks-format-foundations-spotify-156179", "title": "Senior Product Manager - Audiobooks Format Foundations", "company": "Spotify", "region": "Europe", "location": "Sweden,  UK", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-21", "source": "Jobicy", "url": "https://jobicy.com/jobs/156179-senior-product-manager-audiobooks-format-foundations", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:156179", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "lead-product-manager-genai-envato-156131", "title": "Lead Product Manager - GenAI", "company": "Envato", "region": "Other", "location": "Australia,  New Zealand", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-21", "source": "Jobicy", "url": "https://jobicy.com/jobs/156131-lead-product-manager-genai", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:156131", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "head-of-product-dune-156144", "title": "Head of Product", "company": "Dune", "region": "USA", "location": "Europe,  USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-21", "source": "Jobicy", "url": "https://jobicy.com/jobs/156144-head-of-product-2", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:156144", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "staff-product-manager-fintech-new-bets-jobber-153625", "title": "Staff Product Manager, Fintech New Bets", "company": "Jobber", "region": "USA & Canada", "location": "Canada", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-21", "source": "Jobicy", "url": "https://jobicy.com/jobs/153625-staff-product-manager-fintech-new-bets", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:153625", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "sr-product-manager-shopping-experience-cookunity-163581", "title": "Sr. Product Manager, Shopping Experience", "company": "CookUnity", "region": "Other", "location": "Argentina", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Jobicy", "url": "https://jobicy.com/jobs/163581-sr-product-manager-shopping-experience", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163581", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "sr-product-manager-revenue-engine-cookunity-163578", "title": "Sr. Product Manager, Revenue Engine", "company": "CookUnity", "region": "Other", "location": "LATAM", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Jobicy", "url": "https://jobicy.com/jobs/163578-sr-product-manager-revenue-engine", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163578", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-prediction-markets-phantom-163507", "title": "Senior Product Manager (Prediction Markets)", "company": "Phantom", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Jobicy", "url": "https://jobicy.com/jobs/163507-senior-product-manager-prediction-markets", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163507", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-manager-data-ai-freshpaint-163491", "title": "Product Manager, Data & AI", "company": "Freshpaint", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Jobicy", "url": "https://jobicy.com/jobs/163491-product-manager-data-ai", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163491", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-dscout-163480", "title": "Senior Product Manager", "company": "dscout", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Jobicy", "url": "https://jobicy.com/jobs/163480-senior-product-manager-19", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163480", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-customer-experience-jobber-163432", "title": "Senior Product Manager, Customer Experience", "company": "Jobber", "region": "USA & Canada", "location": "Canada", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Jobicy", "url": "https://jobicy.com/jobs/163432-senior-product-manager-customer-experience", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163432", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "technical-product-manager-ai-data-analytics-workwave-155984", "title": "Technical Product Manager - AI & Data Analytics", "company": "WorkWave", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Jobicy", "url": "https://jobicy.com/jobs/155984-technical-product-manager-ai-data-analytics", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155984", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "principal-product-manager-identity-trust-life360-155974", "title": "Principal Product Manager, Identity & Trust", "company": "Life360", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Jobicy", "url": "https://jobicy.com/jobs/155974-principal-product-manager-identity-trust", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155974", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "principal-staff-product-manager-risk-advisory-fieldguide-163272", "title": "Principal/Staff Product Manager, Risk Advisory", "company": "Fieldguide", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-19", "source": "Jobicy", "url": "https://jobicy.com/jobs/163272-principal-staff-product-manager-risk-advisory", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163272", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "head-of-product-payo-digital-bank-stablecoin-payoneer-163225", "title": "Head of Product, PAYO Digital Bank - Stablecoin", "company": "Payoneer", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-19", "source": "Jobicy", "url": "https://jobicy.com/jobs/163225-head-of-product-payo-digital-bank-stablecoin", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163225", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "principal-product-strategist-ai-engagement-leader-able-155832", "title": "Principal Product Strategist, AI Engagement Leader", "company": "Able", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-19", "source": "Jobicy", "url": "https://jobicy.com/jobs/155832-principal-product-strategist-ai-engagement-leader", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155832", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "principal-product-manager-network-economics-betterhelp-163201", "title": "Principal Product Manager, Network Economics", "company": "BetterHelp", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-18", "source": "Jobicy", "url": "https://jobicy.com/jobs/163201-principal-product-manager-network-economics", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163201", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-universal-kyc-metamask-passport-conse-163125", "title": "Senior Product Manager – Universal KYC (MetaMask Passport)", "company": "Consensys", "region": "USA", "location": "EMEA,  USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-18", "source": "Jobicy", "url": "https://jobicy.com/jobs/163125-senior-product-manager-universal-kyc-metamask-passport", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163125", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-lead-ai-investing-bjak-163108", "title": "Product Lead - AI Investing", "company": "BJAK", "region": "Europe", "location": "Portugal", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-18", "source": "Jobicy", "url": "https://jobicy.com/jobs/163108-product-lead-ai-investing", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163108", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "principal-product-manager-fraud-and-risk-proof-163076", "title": "Principal Product Manager, Fraud and Risk", "company": "Proof", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-18", "source": "Jobicy", "url": "https://jobicy.com/jobs/163076-principal-product-manager-fraud-and-risk", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163076", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-owner-payments-and-infrastructure-flex-155771", "title": "Product Owner, Payments and Infrastructure", "company": "Flex", "region": "USA & Canada", "location": "Brazil,  Canada,  Mexico,  USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-18", "source": "Jobicy", "url": "https://jobicy.com/jobs/155771-product-owner-payments-and-infrastructure", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155771", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-owner-growth-flex-155770", "title": "Product Owner, Growth", "company": "Flex", "region": "USA & Canada", "location": "Brazil,  Canada,  Mexico,  USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-18", "source": "Jobicy", "url": "https://jobicy.com/jobs/155770-product-owner-growth", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155770", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-digital-risk-protection-takedowns-rec-153444", "title": "Senior Product Manager, Digital Risk Protection Takedowns", "company": "Recorded Future, Inc.", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-18", "source": "Jobicy", "url": "https://jobicy.com/jobs/153444-senior-product-manager-digital-risk-protection-takedowns", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:153444", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-lead-infrastructure-supabase-153453", "title": "Product Lead - Infrastructure", "company": "Supabase", "region": "Worldwide", "location": "Anywhere", "workplace": "Remote", "type": "Full-time", "posted": "2026-11-18", "source": "Jobicy", "url": "https://jobicy.com/jobs/153453-product-lead-infrastructure", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:153453", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-owner-ai-pod-enumerate-163037", "title": "Product Owner, AI Pod", "company": "Enumerate", "region": "Other", "location": "LATAM", "workplace": "Not stated", "type": "Contract", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/163037-product-owner-ai-pod", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:163037", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "associate-director-director-of-product-management-signatera--162975", "title": "Associate Director / Director of Product Management, Signatera Hematologic Oncology (Heme)", "company": "Natera", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/162975-associate-director-director-of-product-management-signatera-hematologic-oncology-heme", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162975", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-manager-technical-rithum-162774", "title": "Product Manager, Technical", "company": "Rithum", "region": "Europe", "location": "UK", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/162774-product-manager-technical-2", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162774", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-peerspace-155597", "title": "Senior Product Manager", "company": "Peerspace", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/155597-senior-product-manager-10", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155597", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-director-local-growth-okx-150798", "title": "(Senior) Product Director, Local Growth", "company": "OKX", "region": "Other", "location": "LATAM", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/150798-senior-product-director-local-growth", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:150798", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "head-of-product-archive-150707", "title": "Head of Product", "company": "Archive", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/150707-head-of-product", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:150707", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-manager-meta-150668", "title": "Product Manager", "company": "Meta", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-17", "source": "Jobicy", "url": "https://jobicy.com/jobs/150668-product-manager-2", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:150668", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-owner-revenue-management-fp-a-amplify-162665", "title": "Product Owner, Revenue Management & FP&A", "company": "Amplify", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162665-product-owner-revenue-management-fpa", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162665", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-credit-cards-canada-nerdwallet-162663", "title": "Senior Product Manager (Credit Cards) - Canada", "company": "NerdWallet", "region": "USA & Canada", "location": "Canada", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162663-senior-product-manager-credit-cards-canada", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162663", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-credit-cards-nerdwallet-162659", "title": "Senior Product Manager (Credit Cards)", "company": "NerdWallet", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162659-senior-product-manager-credit-cards", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162659", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "staff-product-manager-self-hosted-and-connected-temporal-tem-162622", "title": "Staff Product Manager, Self-Hosted and Connected Temporal", "company": "Temporal Technologies", "region": "USA & Canada", "location": "Canada,  USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162622-staff-product-manager-self-hosted-and-connected-temporal", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162622", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-field-systems-salesforce-smartsheet-162562", "title": "Senior Product Manager, Field Systems (Salesforce)", "company": "Smartsheet", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162562-senior-product-manager-field-systems-salesforce", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162562", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-fraud-risk-tala-162561", "title": "Senior Product Manager, Fraud & Risk", "company": "Tala", "region": "Other", "location": "APAC", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162561-senior-product-manager-fraud-risk", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162561", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "staff-product-manager-marketing-automation-us-luxury-presenc-162560", "title": "Staff Product Manager, Marketing Automation - US", "company": "Luxury Presence", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162560-staff-product-manager-marketing-automation-us", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162560", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-manager-casino-rush-street-interactive-162518", "title": "Product Manager, Casino", "company": "Rush Street Interactive", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162518-product-manager-casino", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162518", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-staff-product-manager-automotive-commerce-fintech-aut-162516", "title": "Senior/Staff Product Manager - Automotive Commerce & Fintech", "company": "AutoFi", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/162516-senior-staff-product-manager-automotive-commerce-fintech", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:162516", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "revenue-product-lead-classdojo-155525", "title": "Revenue Product Lead", "company": "ClassDojo", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/155525-revenue-product-lead", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155525", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "monetization-growth-product-manager-classdojo-155530", "title": "Monetization Growth Product Manager", "company": "ClassDojo", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/155530-monetization-growth-product-manager", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155530", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "0-1-product-leader-classdojo-155521", "title": "0→1 Product Leader", "company": "ClassDojo", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/155521-0%e2%86%921-product-leader", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155521", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "lead-product-manager-digital-assets-certik-155441", "title": "Lead Product Manager, Digital Assets", "company": "CertiK", "region": "Other", "location": "APAC", "workplace": "Not stated", "type": "Contract", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/155441-lead-product-manager-digital-assets", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:155441", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-ai-receptionist-boulevard-153291", "title": "Senior Product Manager, AI Receptionist", "company": "Boulevard", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/153291-senior-product-manager-ai-receptionist", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:153291", "elig": "Unknown", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "head-of-product-conversations-help-scout-153221", "title": "Head of Product, Conversations", "company": "Help Scout", "region": "USA", "location": "USA", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-16", "source": "Jobicy", "url": "https://jobicy.com/jobs/153221-head-of-product-conversations", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Active per Jobicy official status endpoint 2026-11-22", "verification_method": "jobicy_status_endpoint", "canonical_key": "jobicy:153221", "elig": "See posting", "link_status": "active", "vlabel_ar": "نشط وفق نقطة الحالة الرسمية لـ Jobicy بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-project-manager-m-w-d-print-digital-bewegtbild-wpppro-senior-project-manager-print-", "title": "Senior Project Manager (m/w/d) / Print, Digital & Bewegtbild", "company": "Wppproduction", "region": "Europe", "location": "Berlin", "workplace": "Not stated", "type": "Not stated", "posted": "2026-11-21", "source": "Arbeitnow", "url": "https://www.arbeitnow.com/jobs/companies/wppproduction/senior-project-manager-print-digital-bewegtbild-berlin-167568", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Listing page live, title matched, no expiry notice 2026-11-22", "verification_method": "bounded_content_check", "canonical_key": "arbeitnow:senior-project-manager-print-digital-bewegtbild-berlin-167568", "elig": "Unknown", "link_status": null, "vlabel_ar": "صفحة الإعلان تعمل والعنوان مطابق وبلا إشعار انتهاء بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "langfuse-product-designer-clickhouse-langfuse-product-designer-berlin-465839", "title": "Langfuse - Product Designer", "company": "Clickhouse", "region": "Europe", "location": "Germany", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-21", "source": "Arbeitnow", "url": "https://www.arbeitnow.com/jobs/companies/clickhouse/langfuse-product-designer-berlin-465839", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Listing page live, title matched, no expiry notice 2026-11-22", "verification_method": "bounded_content_check", "canonical_key": "arbeitnow:langfuse-product-designer-berlin-465839", "elig": "Unknown", "link_status": null, "vlabel_ar": "صفحة الإعلان تعمل والعنوان مطابق وبلا إشعار انتهاء بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-owner-dashboards-f-m-d-adjoe-product-owner-dashboards-hamburg-422972", "title": "Product Owner - Dashboards (f/m/d)", "company": "adjoe", "region": "Other", "location": "Hamburg", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-21", "source": "Arbeitnow", "url": "https://www.arbeitnow.com/jobs/companies/adjoe/product-owner-dashboards-hamburg-422972", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Listing page live, title matched, no expiry notice 2026-11-22", "verification_method": "bounded_content_check", "canonical_key": "arbeitnow:product-owner-dashboards-hamburg-422972", "elig": "Unknown", "link_status": null, "vlabel_ar": "صفحة الإعلان تعمل والعنوان مطابق وبلا إشعار انتهاء بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "senior-product-manager-core-experience-n8n-senior-product-manager-core-experience-berlin-3", "title": "Senior Product Manager - Core Experience", "company": "N8N", "region": "Europe", "location": "Berlin, Germany", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Arbeitnow", "url": "https://www.arbeitnow.com/jobs/companies/n8n/senior-product-manager-core-experience-berlin-328661", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Listing page live, title matched, no expiry notice 2026-11-22", "verification_method": "bounded_content_check", "canonical_key": "arbeitnow:senior-product-manager-core-experience-berlin-328661", "elig": "See posting", "link_status": null, "vlabel_ar": "صفحة الإعلان تعمل والعنوان مطابق وبلا إشعار انتهاء بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "product-design-manager-n8n-product-design-manager-germany-410873", "title": "Product Design Manager", "company": "N8N", "region": "Europe", "location": "Germany", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Arbeitnow", "url": "https://www.arbeitnow.com/jobs/companies/n8n/product-design-manager-germany-410873", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Listing page live, title matched, no expiry notice 2026-11-22", "verification_method": "bounded_content_check", "canonical_key": "arbeitnow:product-design-manager-germany-410873", "elig": "See posting", "link_status": null, "vlabel_ar": "صفحة الإعلان تعمل والعنوان مطابق وبلا إشعار انتهاء بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}, {"id": "head-of-product-design-n8n-head-of-product-design-berlin-398688", "title": "Head of Product Design", "company": "N8N", "region": "Europe", "location": "Berlin, Germany", "workplace": "Not stated", "type": "Full-time", "posted": "2026-11-20", "source": "Arbeitnow", "url": "https://www.arbeitnow.com/jobs/companies/n8n/head-of-product-design-berlin-398688", "note": null, "level": null, "applicants": null, "live": false, "first_seen": "2026-11-21", "first_seen_at": "2026-11-21 10:14", "status": "new_update", "featured": false, "verified": true, "vlabel": "Listing page live, title matched, no expiry notice 2026-11-22", "verification_method": "bounded_content_check", "canonical_key": "arbeitnow:head-of-product-design-berlin-398688", "elig": "See posting", "link_status": null, "vlabel_ar": "صفحة الإعلان تعمل والعنوان مطابق وبلا إشعار انتهاء بتاريخ ٢٠٢٦-١١-٢٢", "new_vs_baseline": true}]};
+const ALL = DATA.jobs;
+const isDead = j => j.link_status && String(j.link_status).startsWith("dead");
+const JOBS = ALL.filter(j => !isDead(j));
+const PVM = DATA.verification_model === "pipeline";
+const REL = DATA.release_candidate === true;
+const VERN = PVM ? JOBS.filter(j => j.verified === true).length : JOBS.length;
+const ARCHIVED = ALL.filter(j => isDead(j));
 
-const RL={'Worldwide':'Remote world'};
-const REGORD=['Egypt','UAE','Saudi Arabia','Other Gulf','USA','USA & Canada','Europe','Worldwide','Other'];
-const regions=[['all','all'],...REGORD.filter(r=>J.some(j=>j.region===r)).map(r=>[r,r])];
-const TYPORD=['Full-time','Part-time','Contract','Internship','Temporary','Volunteer','Apprenticeship','Not stated'];
-const types=[['all','all'],...TYPORD.filter(t=>J.some(j=>j.type===t)).map(t=>[t,t])];
-const RC={'Egypt':'egypt','UAE':'uae','Saudi Arabia':'saudi','Other Gulf':'gulf','USA':'usa','USA & Canada':'usa','Europe':'europe','Worldwide':'world'};
-const PF=u=>{let h='';try{h=new URL(u).hostname.toLowerCase()}catch(e){}return h.includes('linkedin.')?'LinkedIn':h.includes('bayt.')?'Bayt':h.includes('naukrigulf.')?'NaukriGulf':h.includes('indeed.')?'Indeed':h.includes('wuzzuf.')?'Wuzzuf':'Company site'};
-const GO=r=>r==='Egypt'?'egypt':['UAE','Saudi Arabia','Other Gulf'].includes(r)?'gulf':'rest';
-const $=id=>document.getElementById(id);
-const safeUrl=u=>/^https?:\/\//i.test(String(u||''))?u:'#';
-const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const mono=c=>{const w=String(c||'').replace(/[^\p{L}\p{N} ]/gu,' ').trim().split(/\s+/).filter(Boolean);if(!w.length)return '?';return (w.length>1?w[0][0]+w[1][0]:w[0].slice(0,2)).toUpperCase()};
-function showDate(d){return d?fmtDate(d):T().notShown}
-function seg(el,opts,key,cb){const av=document.activeElement&&document.activeElement.closest('#'+el.id+' button');const avv=av?av.dataset.v:null;el.innerHTML=opts.map(([v,l])=>`<button class="chip" aria-pressed="${S[key]===v}" data-v="${esc(v)}">${esc(l)}</button>`).join('');if(!el._bound){el._bound=1;el.onclick=e=>{const b=e.target.closest('button');if(b)cb(b.dataset.v)}};if(avv!=null){const nb=[...el.querySelectorAll('button')].find(b=>b.dataset.v===avv);if(nb)nb.focus()}}
-function card(j,n){const st=v=>v==='Not stated'?T().seePosting:v;const note=j.note?`<div class="note" dir="auto"><b>${j.note.includes('Location check')?T().checkLocation:T().checkEligibility}</b>${esc(j.note.replace('Check eligibility: ','').replace('Location check: ','').replace(/^the/,'The'))}</div>`:'';
-return `<article class="job" data-id="${esc(j.id)}" style="--acc:var(--${RC[j.region]||'ink2'});--acct:var(--${RC[j.region]||'ink2'}-t)"><div class="hd"><span class="n">${n}</span><span class="tag" style="background:var(--${RC[j.region]||'ink2'});color:var(--${RC[j.region]||'ink2'}-t)">${esc(regLbl(j.region))}</span><span class="newb ${j.status==='new_update'?'on':''}">${j.status==='new_update'?T().badgeNew:j.status==='earlier_today'?T().badgeEarlier:T().badgeSeen}</span><span class="src">${esc(j.source==='Company careers'?T().companySite:j.source)}</span></div><h3 dir="auto">${esc(j.title)}</h3><div class="co"><span class="mono" aria-hidden="true">${mono(j.company)}</span><span class="ct"><b dir="auto">${esc(j.company)}</b><span dir="auto">${esc(j.location)}</span></span></div><dl class="f"><div><dt>${T().lWorkplace}</dt><dd class="${j.workplace==='Remote'?'g':''}">${esc(st(j.workplace))}</dd></div><div><dt>${T().lType}</dt><dd class="${j.type==='Internship'?'g':''}">${esc(j.type==='Not stated'?T().seePosting:typeLbl(j.type))}</dd></div>${j.level&&j.level!=='Not Applicable'?`<div><dt>${T().lSeniority}</dt><dd>${esc(j.level)}</dd></div>`:''}<div><dt>${T().lPosted}</dt><dd>${esc(showDate(j.posted))}</dd></div><div><dt>${T().lFirstSeen}</dt><dd>${esc(j.first_seen?fmtDate(j.first_seen):T().notShown)}</dd></div></dl>${note}<div class="foot"><a class="apply" data-p="${PF(j.url)}" href="${esc(safeUrl(j.url))}" target="_blank" rel="noopener noreferrer">${T().openOn(PF(j.url)==='Company site'?esc(j.company)+' careers':PF(j.url))} ${T().arrow}<span class="vh">${T().newTab}</span></a><span class="meta">${vtruth(j)}</span></div>${acts(j)}</article>`}
-const PAGE=20,PICKS=12;
-const S={group:'all',region:'all',type:'all',sort:'new',list:'all',shown:PAGE};
-const parseApps=a=>{if(a==null)return null;const s=String(a),l=s.toLowerCase();const m=s.replace(/,/g,'').match(/\d+/);if(!m)return null;const n=+m[0];const over=/\bover\b|\bmore than\b|\+/.test(l);const basis=/\bapplicants?\b/.test(l)?'applicants':/\bapplications?\b/.test(l)?'applications':null;if(!basis)return null;return{n,basis,lb:over}};
-const compBasis=(()=>{const c={};for(const j of J){const p=parseApps(j.applicants);if(p)c[p.basis]=(c[p.basis]||0)+1}const e=Object.entries(c).sort((a,b)=>b[1]-a[1]);return e.length?e[0][0]:null})();
-const compN=compBasis?J.filter(j=>{const p=parseApps(j.applicants);return p&&p.basis===compBasis}).length:0;
-const compOK=compN>=2&&compN/J.length>=0.5;
-const SORTS=[['new','new'],['old','old'],['intern','intern'],...(compOK?[['comp','comp']]:[])];
-const fsa=j=>j.first_seen_at||j.first_seen||'';
-const tie=(a,b)=>fsa(b).localeCompare(fsa(a))||(a.title||'').localeCompare(b.title||'');
-function cmpNew(a,b){const pa=a.posted||'',pb=b.posted||'';if(pa&&pb&&pa!==pb)return pb.localeCompare(pa);if(pa&&!pb)return-1;if(!pa&&pb)return 1;return tie(a,b)}
-function cmpOld(a,b){const pa=a.posted||'',pb=b.posted||'';if(pa&&pb&&pa!==pb)return pa.localeCompare(pb);if(pa&&!pb)return-1;if(!pa&&pb)return 1;return tie(a,b)}
-function cmpIntern(a,b){return((a.type==='Internship'?0:1)-(b.type==='Internship'?0:1))||cmpNew(a,b)}
-function cmpComp(a,b){const pa=parseApps(a.applicants),pb=parseApps(b.applicants);const ca=pa&&pa.basis===compBasis?pa:null,cb=pb&&pb.basis===compBasis?pb:null;if(ca&&cb){if(ca.n!==cb.n)return ca.n-cb.n;if(ca.lb!==cb.lb)return ca.lb?1:-1;return cmpNew(a,b)}if(ca)return-1;if(cb)return 1;return cmpNew(a,b)}
-const CMP={'new':cmpNew,'old':cmpOld,'intern':cmpIntern,'comp':cmpComp};
-const PICKSET=new Set(J.filter(j=>j.featured).sort(cmpNew).slice(0,PICKS).map(j=>j.id));
-function vtruth(j){const raw=j.vlabel||'';if(raw.startsWith('Open on source: '))return T().openOnAsOf(esc(raw.slice(16)),esc(fmtDate(DATA.date)));return raw==='Availability not verified'||!raw?T().availNotVerified:esc(raw)}
-function activeLabels(){const t=T();const l=[];if(S.group!=='all')l.push(S.group==='egypt'?t.egypt:S.group==='gulf'?t.gulf:t.restWorld);if(S.region!=='all')l.push(regLbl(S.region));if(S.type!=='all')l.push(typeLbl(S.type));if(S.sort!=='new')l.push(t.sortedBy+' '+t.sorts[S.sort]);return l}
+const I18N = {
+en:{
+  skip:"Skip to jobs", theme:"Theme", lang:"Language", sub:REL?(SITE.sub_en_rel||SITE.sub_en):PVM?(SITE.sub_en_pvm||SITE.sub_en):SITE.sub_en,
+  snapshot:d=>REL?`Snapshot dated ${d} · Cairo time. Every listing was individually checked against its live source at snapshot time — official status endpoint or listing-page check, labeled per card; listings may still have changed or closed since. Apply links open the original posting.`:PVM?`Snapshot dated ${d} · Cairo time. Collected from established public job APIs; listings may have changed or closed since. Each card shows its own verification state.`:`Snapshot dated ${d} · Cairo time. This is a dated, work-in-progress snapshot: listings may have changed or closed since. Availability has not been re-verified against live sources.`,
+  searchPh:"Search title, company, city…", where:"Where", type:"Job type", place:"Workplace", sort:"Sort by",
+  all:"All", clear:"Clear filters", csv:"Export CSV",
+  sorts:{recent:"Recently posted",oldest:"Oldest posted",intern:"Internships first",comp:"Least competition"},
+  lists:{all:"All jobs",saved:"Saved",applied:"Applied",hidden:"Hidden"},
+  count:(n,t)=>REL?`Showing ${n} of ${t} snapshot listings`:PVM?`Showing ${n} of ${t} snapshot listings · ${VERN} listing-verified`:`Showing ${n} of ${t} verified snapshot listings`,
+  archive:n=>`${n} listing${n===1?"":"s"} reported closed since the snapshot (kept for the record, excluded from all counts)`, arcMatch:n=>`${n} match${n===1?"":"es"} current filters`,
+  internships:n=>`${n} internships in this snapshot`,
+  workplace:"Workplace", jtype:"Type", seniority:"Seniority", posted:"Posted", first:"First seen",
+  open:p=>`Open on ${p}`, avail:"Availability not verified", availDead:"Link reported closed on 21 Nov 2026 — verify before applying",
+  save:"Save", saved:"Saved", applied:"Mark applied", appliedOn:"Applied", hide:"Hide", hidden:"Hidden", note:"Note",
+  notePh:"Private note — stored only in this browser",
+  badgeNew:"New vs last published snapshot", badgeOld:"Also in last published snapshot", deadTag:"Link dead",
+  remote:"Remote world", notStated:"See posting",
+  emptyT:"No jobs match", emptyB:"Try removing a filter or a search word — every suggestion below has real results.",
+  foot:(d,n)=>REL?`Verified snapshot data from ${d} · ${n} listings, each individually checked against its live source at snapshot time (official status endpoint or listing-page check, labeled per card). Eligibility notes summarize what the original posting stated; they are not a legal eligibility determination. Saved lists and notes stay in this browser only — nothing leaves your device. `:PVM?`Snapshot data from ${d} · ${n} listings collected from established public job APIs; ${VERN} listing-verified, the rest fetched but not yet verified. Eligibility notes summarize what the original posting stated; they are not a legal eligibility determination. Saved lists and notes stay in this browser only — nothing leaves your device. `:`Verified snapshot data from ${d} · ${n} listings, each checked by hand at capture time and never re-verified since. Eligibility notes summarize what the original posting stated; they are not a legal eligibility determination. Saved lists and notes stay in this browser only — nothing leaves your device. `,
+  sugKind:{Role:"Role",City:"City",Company:"Company"},
+  regions:{"Egypt":"Egypt","UAE":"UAE","Saudi Arabia":"Saudi Arabia","Other Gulf":"Other Gulf","USA":"USA","USA & Canada":"USA & Canada","Europe":"Europe","Worldwide":"Remote world","Other":"Other"}
+},
+ar:{
+  skip:"انتقل للوظائف", theme:"المظهر", lang:"اللغة", sub:REL?(SITE.sub_ar_rel||SITE.sub_ar):PVM?(SITE.sub_ar_pvm||SITE.sub_ar):SITE.sub_ar,
+  snapshot:d=>REL?`لقطة بتاريخ \u2066${d}\u2069 · بتوقيت القاهرة. كل إعلان اتراجع مقابل مصدره الحي وقت اللقطة — إما عبر نقطة الحالة الرسمية أو بفحص صفحة الإعلان، والطريقة موضحة على كل كارت؛ وممكن الإعلانات اتغيرت أو اتقفلت بعدها. زر التقديم يفتح الإعلان الأصلي.`:PVM?`لقطة بتاريخ \u2066${d}\u2069 · بتوقيت القاهرة. متجمّعة من واجهات برمجية عامة موثقة المصدر؛ ممكن الإعلانات اتغيرت أو اتقفلت بعدها. كل كارت يوضح حالة التحقق الخاصة به.`:`لقطة بتاريخ \u2066${d}\u2069 · بتوقيت القاهرة. دي لقطة مؤرخة وشغل تحت التطوير: ممكن الإعلانات اتغيرت أو اتقفلت بعدها. التوفر لم يُعَد التحقق منه مقابل المصادر الحية.`,
+  searchPh:"دوّر بالمسمى أو الشركة أو المدينة…", where:"المكان", type:"نوع العمل", place:"نظام العمل", sort:"ترتيب",
+  all:"الكل", clear:"مسح الفلاتر", csv:"تصدير CSV",
+  sorts:{recent:"الأحدث نشرًا",oldest:"الأقدم نشرًا",intern:"التدريبات أولًا",comp:"الأقل منافسة"},
+  lists:{all:"كل الوظائف",saved:"المحفوظة",applied:"قُدِّم عليها",hidden:"المخفية"},
+  count:(n,t)=>REL?`بنعرض ${n} من ${t} إعلان موثق`:PVM?`بنعرض ${n} من ${t} إعلان في اللقطة · ${VERN} موثق فعليًا`:`بنعرض ${n} من ${t} إعلان موثق في اللقطة`,
+  archive:n=>`${n} إعلان اتبلغ عنه كمغلق بعد اللقطة (محفوظ للسجل، ومش محسوب في الأعداد)`, arcMatch:n=>`${n} مطابق للفلاتر الحالية`,
+  internships:n=>`${n} تدريب في اللقطة دي`,
+  workplace:"نظام العمل", jtype:"النوع", seniority:"المستوى", posted:"النشر", first:"أول رصد",
+  open:p=>`قدّم على ${p}`, avail:"التوفر غير متحقق منه", availDead:"الرابط اتبلغ عنه كمغلق في ٢١ نوفمبر ٢٠٢٦ — تأكد قبل التقديم",
+  save:"احفظ", saved:"محفوظة", applied:"علّم كمُقدَّم", appliedOn:"تم التقديم", hide:"إخفاء", hidden:"مخفية", note:"ملاحظة",
+  notePh:"ملاحظة خاصة — بتتحفظ في المتصفح ده بس",
+  badgeNew:"جديد عن آخر لقطة منشورة", badgeOld:"موجود في آخر لقطة منشورة", deadTag:"رابط مغلق",
+  remote:"عن بُعد عالمي", notStated:"انظر الإعلان",
+  emptyT:"مفيش نتايج مطابقة", emptyB:"جرّب تشيل فلتر أو كلمة بحث — كل اقتراح تحته ليه نتايج حقيقية.",
+  foot:(d,n)=>REL?`بيانات موثقة بتاريخ \u2066${d}\u2069 · ${n} إعلان، كل واحد اتراجع مقابل مصدره الحي وقت اللقطة (نقطة حالة رسمية أو فحص صفحة، والطريقة موضحة على الكارت). ملاحظات الأهلية بتلخص اللي الإعلان الأصلي ذكره؛ ومش حكم قانوني على الأهلية. القوائم المحفوظة والملاحظات بتفضل في متصفحك بس. `:PVM?`بيانات لقطة بتاريخ ${d} · ${n} إعلان متجمّع من واجهات برمجية عامة موثقة المصدر؛ ${VERN} منها متحقق على مستوى الإعلان، والباقي جُلب ولم يُتحقق منه بعد. ملاحظات الأهلية تلخص ما ورد في الإعلان الأصلي وليست فتوى أهلية. المحفوظات والملاحظات تبقى في هذا المتصفح فقط — لا شيء يغادر جهازك. `:`بيانات لقطة موثقة من ${d} · ${n} إعلان، كل واحد اتراجع يدويًا وقت الرصد ولم يُعَد التحقق منه من ساعتها. ملاحظات الأهلية بتلخص اللي الإعلان الأصلي ذكره، ومش حكم قانوني على الأهلية. القوائم المحفوظة والملاحظات بتفضل في المتصفح ده بس — مفيش حاجة بتسيب جهازك. `,
+  sugKind:{Role:"مسمى",City:"مدينة",Company:"شركة"},
+  regions:{"Egypt":"مصر","UAE":"الإمارات","Saudi Arabia":"السعودية","Other Gulf":"خليجي آخر","USA":"أمريكا","USA & Canada":"أمريكا وكندا","Europe":"أوروبا","Worldwide":"عن بُعد عالمي","Other":"أخرى"}
+}};
+const REGORD = ["Egypt","UAE","Saudi Arabia","Other Gulf","USA","USA & Canada","Europe","Worldwide","Other"];
+const TYPORD = ["Full-time","Part-time","Contract","Internship","Temporary","Volunteer","Apprenticeship","Not stated"];
+const PLCORD = ["Remote","Hybrid","Onsite","Not stated"];
+const LSKEY = "ci-state-" + SITE.key + "-v1";
+const LANGKEY = "ci-lang-v1";
+const THEMEKEY = "ci-theme-v2";
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const stated = (v, t) => (v && v !== "Not stated") ? v : t.notStated;
+/* Arabic display labels for English source values (filter chips, card meta, eligibility). Values themselves stay English in data. */
+const VALS = { "Full-time":"دوام كامل", "Part-time":"دوام جزئي", "Contract":"عقد", "Internship":"تدريب", "Temporary":"مؤقت", "Volunteer":"تطوع", "Apprenticeship":"تلمذة مهنية", "Not stated":"غير محدد", "Remote":"عن بُعد", "Hybrid":"هجين", "Onsite":"من المقر", "Entry level":"مستوى مبتدئ", "Mid-Senior level":"متوسط-أول", "Associate":"مشارك", "Not Applicable":"غير منطبق", "Executive":"تنفيذي", "Director":"مدير", "Yes":"نعم", "No":"لا", "Unknown":"غير معروف", "See posting":"انظر الإعلان" };
+const tv = v => lang === "ar" ? (VALS[v] || v) : v;
+function platformOf(url){
+  let h = ""; try { h = new URL(url).hostname.toLowerCase(); } catch(e){}
+  for (const p of ["linkedin","bayt","forasna","jobicy","arbeitnow","remotive","naukrigulf","indeed","wuzzuf"])
+    if (h.includes(p + ".")) return p === "naukrigulf" ? "NaukriGulf" : p[0].toUpperCase() + p.slice(1);
+  return "Company site";
+}
+const safeUrl = u => /^https:\/\//i.test(String(u || "")) ? u : null;
+
+/* state */
+let state = { saved:{}, applied:{}, hidden:{}, notes:{} };
+try { const s = JSON.parse(localStorage.getItem(LSKEY)); if (s && typeof s === "object") state = Object.assign(state, s); } catch(e){}
+const persist = () => { try { localStorage.setItem(LSKEY, JSON.stringify(state)); } catch(e){} };
+/* one-time preserving migration from the previous build's store (ci-jobstate-v1:<site>, shape {jobs:{id:{saved,applied,hidden,note}}}).
+   Runs only when the new key is absent, copies values (ISO timestamps kept as truthy flags), never deletes or overwrites the old key. */
+try {
+  if (!localStorage.getItem(LSKEY)) {
+    const old = JSON.parse(localStorage.getItem("ci-jobstate-v1:" + SITE.key) || "null");
+    if (old && old.jobs && typeof old.jobs === "object") {
+      let moved = 0;
+      for (const [id, s] of Object.entries(old.jobs)) {
+        if (!s || typeof s !== "object") continue;
+        if (s.saved) { state.saved[id] = s.saved; moved++; }
+        if (s.applied) { state.applied[id] = s.applied; moved++; }
+        if (s.hidden) { state.hidden[id] = s.hidden; moved++; }
+        if (s.note) { state.notes[id] = String(s.note); moved++; }
+      }
+      if (moved) persist();
+    }
+  }
+} catch(e){}
+let lang = localStorage.getItem(LANGKEY) === "ar" ? "ar" : "en";
+let theme = localStorage.getItem(THEMEKEY);
+if (!["light","dark","graphite","navy"].includes(theme)) theme = "dark";
+let f = { q:"", region:"all", type:"all", place:"all", sort:"recent", list:"all" };
+
+function applyTheme(){
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.setProperty("--hue", SITE.hue);
+  document.querySelectorAll(".sw").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t === theme)));
+  localStorage.setItem(THEMEKEY, theme);
+}
+function applyLang(){
+  const t = I18N[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.title = lang === "ar" ? SITE.title_ar : SITE.title_en;
+  $("h1").textContent = document.title;
+  $("brand").textContent = SITE["brand_" + lang];
+  $("skip").textContent = t.skip;
+  $("theme-lbl").textContent = t.theme;
+  $("lang-lbl").textContent = t.lang;
+  $("sub").textContent = t.sub;
+  $("snap").innerHTML = esc(t.snapshot(DATA.date));
+  $("q").placeholder = t.searchPh;
+  $("q").setAttribute("aria-label", t.searchPh);
+  $("l-where").textContent = t.where; $("l-type").textContent = t.type;
+  $("l-place").textContent = t.place; $("l-sort").textContent = t.sort;
+  $("reset").textContent = t.clear; $("csv").textContent = t.csv;
+  $("foot").innerHTML = "<b>" + esc(SITE["brand_" + lang]) + "</b> — " + esc(t.foot(DATA.date, JOBS.length));
+  document.querySelectorAll("#langseg button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.l === lang)));
+  localStorage.setItem(LANGKEY, lang);
+  const sn = $("sites");
+  if (sn && !sn.children.length) SITENAV.forEach(([key, en, ar, url]) => {
+    const a = document.createElement("a");
+    a.href = url; a.className = "site-link" + (key === SITE.key ? " cur" : "");
+    a.dataset.key = key; a.dataset.en = en; a.dataset.ar = ar;
+    if (key === SITE.key) a.setAttribute("aria-current", "page");
+    sn.appendChild(a);
+  });
+  sn.querySelectorAll("a").forEach(a => a.textContent = lang === "ar" ? a.dataset.ar : a.dataset.en);
+  renderBreaks(); renderFilters(); render();
+}
+
+/* filtering */
+const hay = j => [j.title, j.company, j.location, j.region, j.workplace, j.type, j.source].join(" ").toLowerCase();
+function matchQ(j, q){
+  const ws = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  if (!ws.length) return true;
+  const h = hay(j);
+  return ws.every(w => h.includes(w));
+}
+function matchF(j){
+  return matchQ(j, f.q) &&
+    (f.region === "all" || j.region === f.region) &&
+    (f.type === "all" || j.type === f.type) &&
+    (f.place === "all" || j.workplace === f.place);
+}
+function visible(){
+  let v = JOBS.filter(matchF);
+  if (f.list === "saved") v = v.filter(j => state.saved[j.id]);
+  else if (f.list === "applied") v = v.filter(j => state.applied[j.id]);
+  else if (f.list === "hidden") v = v.filter(j => state.hidden[j.id]);
+  else v = v.filter(j => !state.hidden[j.id]);
+  const byDate = (a,b) => (Date.parse(b.posted||b.first_seen)||0) - (Date.parse(a.posted||a.first_seen)||0);
+  if (f.sort === "recent") v.sort(byDate);
+  else if (f.sort === "oldest") v.sort((a,b) => -byDate(a,b));
+  else if (f.sort === "intern") v.sort((a,b) => (b.type==="Internship") - (a.type==="Internship") || byDate(a,b));
+  else if (f.sort === "comp") v.sort((a,b) => ((parseInt(a.applicants)||9999) - (parseInt(b.applicants)||9999)) || byDate(a,b));
+  return v;
+}
+
+/* filter chips */
+function chip(label, pressed, onclick, count){
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", String(pressed));
+  b.innerHTML = esc(label) + (count != null ? ` <span class="c">${count}</span>` : "");
+  b.onclick = onclick;
+  return b;
+}
+function renderFilters(){
+  const t = I18N[lang];
+  const reg = $("f-region"); reg.innerHTML = "";
+  reg.appendChild(chip(t.all, f.region === "all", () => { f.region = "all"; renderFilters(); render(); }));
+  REGORD.filter(r => JOBS.some(j => j.region === r)).forEach(r => {
+    const n = JOBS.filter(j => j.region === r).length;
+    reg.appendChild(chip(t.regions[r] || r, f.region === r, () => { f.region = r; renderFilters(); render(); }, n));
+  });
+  const ty = $("f-type"); ty.innerHTML = "";
+  ty.appendChild(chip(t.all, f.type === "all", () => { f.type = "all"; renderFilters(); render(); }));
+  TYPORD.filter(x => JOBS.some(j => j.type === x)).forEach(x => {
+    ty.appendChild(chip(tv(x), f.type === x, () => { f.type = x; renderFilters(); render(); }));
+  });
+  const pl = $("f-place"); pl.innerHTML = "";
+  pl.appendChild(chip(t.all, f.place === "all", () => { f.place = "all"; renderFilters(); render(); }));
+  PLCORD.filter(x => JOBS.some(j => j.workplace === x)).forEach(x => {
+    const lbl = tv(x);
+    pl.appendChild(chip(lbl, f.place === x, () => { f.place = x; renderFilters(); render(); }));
+  });
+  const so = $("f-sort"); so.innerHTML = "";
+  for (const k of ["recent","oldest","intern","comp"])
+    so.appendChild(chip(t.sorts[k], f.sort === k, () => { f.sort = k; renderFilters(); render(); }));
+  const li = $("f-list"); li.innerHTML = "";
+  const counts = { saved:Object.keys(state.saved).length, applied:Object.keys(state.applied).length, hidden:Object.keys(state.hidden).length };
+  li.appendChild(chip(t.lists.all, f.list === "all", () => { f.list = "all"; renderFilters(); render(); }));
+  li.appendChild(chip(t.lists.saved, f.list === "saved", () => { f.list = "saved"; renderFilters(); render(); }, counts.saved || null));
+  li.appendChild(chip(t.lists.applied, f.list === "applied", () => { f.list = "applied"; renderFilters(); render(); }, counts.applied || null));
+  li.appendChild(chip(t.lists.hidden, f.list === "hidden", () => { f.list = "hidden"; renderFilters(); render(); }, counts.hidden || null));
+}
+
+/* suggestions */
+const ROLE_WORDS = SITE.roles;
+function buildSug(){
+  const out = [];
+  ROLE_WORDS.forEach(w => { const n = JOBS.filter(j => matchQ(j, w)).length; if (n) out.push({ text:w, kind:"Role", n }); });
+  const cities = new Map(), cos = new Map();
+  JOBS.forEach(j => {
+    const c = (j.location || "").split(",")[0].trim(); if (c) cities.set(c, (cities.get(c)||0)+1);
+    const co = (j.company || "").trim().replace(/\.$/, ""); if (co) cos.set(co, (cos.get(co)||0)+1);
+  });
+  [...cities.entries()].sort((a,b)=>b[1]-a[1]).slice(0,10).forEach(([c]) => { const n = JOBS.filter(j=>matchQ(j,c)).length; if (n) out.push({ text:c, kind:"City", n }); });
+  [...cos.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,10).forEach(([c]) => { const n = JOBS.filter(j=>matchQ(j,c)).length; if (n) out.push({ text:c, kind:"Company", n }); });
+  return out;
+}
+let SUG = [];
+let sugIdx = -1;
+function renderSug(list){
+  const t = I18N[lang], s = $("sug");
+  s.innerHTML = ""; sugIdx = -1; $("q").removeAttribute("aria-activedescendant");
+  list.slice(0,9).forEach((x, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.setAttribute("role","option"); b.id = "sug-opt-" + i; b.setAttribute("aria-selected","false");
+    b.innerHTML = `<span>${esc(x.text)}</span><span class="k">${esc(t.sugKind[x.kind])}</span><span class="n">${x.n}</span>`;
+    b.onclick = () => { $("q").value = x.text; f.q = x.text; closeSug(); render(); };
+    s.appendChild(b);
+  });
+}
+function sugMove(d){
+  const opts = $("sug").querySelectorAll("[role=option]");
+  if (!opts.length) return;
+  sugIdx = (sugIdx + d + opts.length) % opts.length;
+  opts.forEach((o, i) => { const on = i === sugIdx; o.classList.toggle("hl", on); o.setAttribute("aria-selected", on ? "true" : "false"); });
+  $("q").setAttribute("aria-activedescendant", "sug-opt-" + sugIdx);
+  opts[sugIdx].scrollIntoView({ block: "nearest" });
+}
+function openSug(){ $("sug").classList.add("open"); $("q").setAttribute("aria-expanded","true"); }
+function closeSug(){ $("sug").classList.remove("open"); $("q").setAttribute("aria-expanded","false"); }
+
+/* cards */
+let io = null;
+function card(j, n){
+  const t = I18N[lang];
+  const el = document.createElement("article");
+  el.className = "job";
+  const isNew = REL ? j.new_vs_baseline === true : j.status === "new_update";
+  const dead = j.link_status && String(j.link_status).startsWith("dead");
+  const url = safeUrl(j.url);
+  const initials = (j.company || "?").trim().replace(/\.$/,"").split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase();
+  el.innerHTML = `
+    <div class="job-top">
+      <span class="job-n">${n}</span>
+      <span class="tag">${esc(t.regions[j.region] || j.region)}</span>
+      <span class="badge ${isNew ? "new" : "old"}">${isNew ? esc(t.badgeNew) : esc(t.badgeOld)}</span>
+      ${dead ? `<span class="badge dead">${esc(t.deadTag)}</span>` : ""}
+      <span class="job-src">${esc(j.source === "Company careers" ? "Company site" : j.source)}</span>
+    </div>
+    <h3>${esc(j.title)}</h3>
+    <div class="co"><span class="av" aria-hidden="true">${esc(initials)}</span><span>${esc((j.company||"").replace(/\.$/,""))} · ${esc(j.location || "")}</span></div>
+    <div class="specs">
+      <div class="spec"><div class="k">${esc(t.workplace)}</div><div class="v">${esc(tv(stated(j.workplace, t)))}</div></div>
+      <div class="spec"><div class="k">${esc(t.jtype)}</div><div class="v">${esc(tv(stated(j.type, t)))}</div></div>
+      <div class="spec"><div class="k">${esc(t.seniority)}</div><div class="v">${esc(tv(j.level || "—"))}</div></div>
+    </div>
+    <div class="dates"><span>${esc(t.posted)}: <b><bdi>${esc(j.posted || "—")}</bdi></b></span><span>${esc(t.first)}: <b><bdi>${esc(j.first_seen || "—")}</bdi></b></span>${j.applicants ? `<span>${esc(lang==="ar"?"متقدم":"Applicants")}: <b>${esc(j.applicants)}</b></span>` : ""}</div>
+    ${j.note ? `<div class="note"><b>${esc(lang==="ar"?"تنبيه من الإعلان":"Check the posting")}</b>${esc(j.note)}</div>` : ""}
+    ${j.elig ? `<div class="elig"><b>${esc(lang==="ar"?"الأهلية:":"Eligibility:")}</b> ${esc(tv(typeof j.elig === "string" ? j.elig : (j.elig[lang] || j.elig.en || "")))}</div>` : ""}
+    <div class="actions">
+      ${url ? `<a class="apply" href="${esc(url)}" target="_blank" rel="noopener noreferrer nofollow">${esc(t.open(platformOf(j.url)))} <span class="ext">↗</span></a>` : ""}
+      <span class="avail">${esc(dead ? t.availDead : (REL ? (lang==="ar" ? (j.vlabel_ar||j.vlabel||t.avail) : (j.vlabel||t.avail)) : t.avail))}</span>
+    </div>
+    <div class="mini">
+      <button type="button" data-a="save" class="${state.saved[j.id] ? "on" : ""}">${state.saved[j.id] ? esc(t.saved) : esc(t.save)}</button>
+      <button type="button" data-a="applied" class="${state.applied[j.id] ? "on" : ""}">${state.applied[j.id] ? esc(t.appliedOn) : esc(t.applied)}</button>
+      <button type="button" data-a="hide">${state.hidden[j.id] ? esc(t.hidden) : esc(t.hide)}</button>
+      <button type="button" data-a="note">${esc(t.note)}</button>
+    </div>
+    <div class="notes" hidden><textarea aria-label="${esc(t.note)}" placeholder="${esc(t.notePh)}">${esc(state.notes[j.id] || "")}</textarea></div>`;
+  el.querySelector('[data-a="save"]').onclick = () => { state.saved[j.id] ? delete state.saved[j.id] : state.saved[j.id] = 1; persist(); renderFilters(); render(); };
+  el.querySelector('[data-a="applied"]').onclick = () => { state.applied[j.id] ? delete state.applied[j.id] : state.applied[j.id] = 1; persist(); renderFilters(); render(); };
+  el.querySelector('[data-a="hide"]').onclick = () => { state.hidden[j.id] ? delete state.hidden[j.id] : state.hidden[j.id] = 1; persist(); renderFilters(); render(); };
+  const nw = el.querySelector(".notes");
+  el.querySelector('[data-a="note"]').onclick = () => { nw.hidden = !nw.hidden; if (!nw.hidden) nw.querySelector("textarea").focus(); };
+  nw.querySelector("textarea").oninput = e => { state.notes[j.id] = e.target.value; persist(); };
+  return el;
+}
 function render(){
- const counts=listCounts();
- let shown=J.filter(j=>(S.group==='all'||GO(j.region)===S.group)&&(S.region==='all'||j.region===S.region)&&(S.type==='all'||j.type===S.type));
- if(S.list==='saved')shown=shown.filter(j=>jstate(j.id).saved);
- else if(S.list==='applied')shown=shown.filter(j=>jstate(j.id).applied);
- else if(S.list==='hidden')shown=shown.filter(j=>jstate(j.id).hidden);
- else shown=shown.filter(j=>!jstate(j.id).hidden);
- const f=S.group!=='all'||S.region!=='all'||S.type!=='all'||S.sort!=='new'||S.list!=='all';
- seg($('f-region'),regions.map(([v])=>[v,regLbl(v)]),'region',v=>{S.region=v;S.group='all';S.shown=PAGE;render()});
- seg($('f-type'),types.map(([v])=>[v,typeLbl(v)]),'type',v=>{S.type=v;S.shown=PAGE;render()});
- seg($('f-sort'),SORTS.map(([v])=>[v,T().sorts[v]]),'sort',v=>{S.sort=v;S.shown=PAGE;render()});
- seg($('f-list'),listOpts(counts),'list',v=>{S.list=v;S.shown=PAGE;render()});
- $('clear').hidden=!f;
- $('csv').hidden=!counts.saved;
- metRender();
- const listView=S.list!=='all';
- $('sectop').hidden=listView;
- $('t2').textContent=listView?LIST_TITLES()[S.list]:T().moreOpenings;
- $('sub2').textContent=listView?LIST_SUBS()[S.list]:T().sub2;
- const top=shown.filter(j=>PICKSET.has(j.id)).sort(cmpNew),rest=listView?shown.slice().sort(CMP[S.sort]||cmpNew):shown.filter(j=>!PICKSET.has(j.id)).sort(CMP[S.sort]||cmpNew);
- $('t1').textContent=f?T().matchingTopPicks:T().topPicks;$('c1').textContent=top.length;$('c2').textContent=rest.length;
- S._rest=rest;S._tn=listView?0:top.length;
- if(!shown.length){const L=activeLabels();
-  if(listView){$('rest').innerHTML=`<p class="empty">${LIST_EMPTY()[S.list]}</p>`}
-  else{$('top').innerHTML=`<p class="empty">${T().noMatch}${L.length?' ('+esc(L.join(', '))+')':''}. <button type="button" class="more-btn" id="clr2">${T().clearFilters}</button></p>`;$('rest').innerHTML=''}}
- else{if(!listView)$('top').innerHTML=top.length?`<div class="jobs">${top.map((j,i)=>card(j,i+1)).join('')}</div>`:'<p class="empty">'+T().noPicks+'</p>';renderRest()}
- saveURL();
+  const t = I18N[lang];
+  const v = visible();
+  const g = $("grid");
+  g.innerHTML = "";
+  if (!v.length){
+    g.innerHTML = `<div class="empty"><div class="big">🔎</div><h2>${esc(t.emptyT)}</h2><p>${esc(t.emptyB)}</p></div>`;
+  } else {
+    const frag = document.createDocumentFragment();
+    v.forEach((j, i) => frag.appendChild(card(j, i + 1)));
+    g.appendChild(frag);
+    if (io) io.disconnect();
+    io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin:"0px 0px -8% 0px", threshold:.05 });
+    g.querySelectorAll(".job").forEach((el, i) => { el.style.transitionDelay = Math.min(i * 35, 350) + "ms"; io.observe(el); });
+  }
+  const intern = JOBS.filter(j => j.type === "Internship").length;
+  $("count").innerHTML = `<b>${v.length}</b> / ${JOBS.length} · ${esc(t.internships(intern))}`;
+  const arc = $("archive");
+  if (ARCHIVED.length){
+    arc.hidden = false;
+    const va = ARCHIVED.filter(matchF);
+    $("archive-sum").textContent = t.archive(ARCHIVED.length) + (va.length !== ARCHIVED.length ? " · " + t.arcMatch(va.length) : "");
+    const ag = $("archive-grid");
+    ag.innerHTML = "";
+    va.forEach((j, i) => ag.appendChild(card(j, "A" + (i + 1))));
+  }
 }
-function renderRest(){
- const rest=S._rest,slice=rest.slice(0,S.shown);
- $('rest').innerHTML=!rest.length?'<p class="empty">'+T().nothingMore+'</p>':`<div class="jobs">${slice.map((j,i)=>card(j,S._tn+i+1)).join('')}</div>`+(rest.length>S.shown?`<button type="button" class="more-btn" id="more">${T().showMore(Math.min(PAGE,rest.length-S.shown),rest.length-S.shown)}</button>`:'');
+
+/* breakdown */
+function renderBreaks(){
+  const t = I18N[lang];
+  const b = $("breaks");
+  b.innerHTML = "";
+  const groups = [[lang==="ar"?"مصر":"Egypt", r => r === "Egypt"], [lang==="ar"?"الخليج":"Gulf", r => ["UAE","Saudi Arabia","Other Gulf"].includes(r)], [lang==="ar"?"أمريكا وأوروبا":"US & Europe", r => ["USA","USA & Canada","Europe"].includes(r)], [t.remote, r => r === "Worldwide"]];
+  groups.forEach(([lbl, fn]) => {
+    const n = JOBS.filter(j => fn(j.region)).length;
+    if (!n) return;
+    const s = document.createElement("span");
+    s.className = "bchip";
+    s.innerHTML = `<b data-n="${n}">0</b><span>${esc(lbl)}</span>`;
+    b.appendChild(s);
+  });
+  const tot = document.createElement("span");
+  tot.className = "bchip";
+  if(REL){const ep=JOBS.filter(j=>j.verification_method==="jobicy_status_endpoint").length, bc=JOBS.length-ep;
+  tot.innerHTML = `<b data-n="${JOBS.length}">0</b><span>${esc(lang==="ar"?`إجمالي · ${ep} عبر نقطة الحالة الرسمية · ${bc} بفحص الصفحة`:`total · ${ep} status-endpoint · ${bc} page-checked`)}</span>`;
+ } else tot.innerHTML = PVM ? `<b data-n="${VERN}">0</b><span>${esc(lang==="ar"?"موثق فعليًا":"listing-verified")}</span>` : `<b data-n="${JOBS.length}">0</b><span>${esc(lang==="ar"?"إجمالي موثق":"total verified")}</span>`;
+  b.appendChild(tot);
+  if (PVM && JOBS.length - VERN > 0){
+    const pend = document.createElement("span");
+    pend.className = "bchip";
+    pend.innerHTML = `<b data-n="${JOBS.length - VERN}">0</b><span>${esc(lang==="ar"?"بانتظار التوثيق":"awaiting verification")}</span>`;
+    b.appendChild(pend);
+  }
 }
-function appendBatch(){
- const rest=S._rest,start=S.shown,batch=rest.slice(start,start+PAGE),grid=$('rest').querySelector('.jobs');
- if(!grid||!batch.length)return;
- grid.insertAdjacentHTML('beforeend',batch.map((j,i)=>card(j,S._tn+start+i+1)).join(''));
- S.shown+=batch.length;
- const btn=$('more'),remaining=rest.length-S.shown;
- if(btn){if(remaining>0)btn.textContent=T().showMore(Math.min(PAGE,remaining),remaining);else btn.remove()}
- const firstNew=grid.children[grid.children.length-batch.length];
- if(firstNew){firstNew.setAttribute('tabindex','-1');firstNew.focus()}
+function animateCounts(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches){ document.querySelectorAll("[data-n]").forEach(e => e.textContent = e.dataset.n); return; }
+  document.querySelectorAll("[data-n]").forEach(e => {
+    const target = +e.dataset.n, t0 = performance.now();
+    const step = now => { const p = Math.min((now - t0) / 750, 1); e.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
 }
-function saveURL(){try{const p=new URLSearchParams();if(S.group!=='all')p.set('group',S.group);if(S.region!=='all')p.set('region',S.region);if(S.type!=='all')p.set('type',S.type);if(S.sort!=='new')p.set('sort',S.sort);const qs=p.toString();history.replaceState(null,'',location.pathname+(qs?'?'+qs:''))}catch(e){}}
-function loadURL(){try{const p=new URLSearchParams(location.search);const pick=(k,vals)=>{const x=p.get(k);return x&&vals.includes(x)?x:null};S.region=pick('region',regions.map(o=>o[0]))||'all';S.type=pick('type',types.map(o=>o[0]))||'all';S.group=pick('group',['all','egypt','gulf','rest'])||'all';S.sort=pick('sort',SORTS.map(o=>o[0]))||'new'}catch(e){}}
-const STKEY='ci-jobstate-v1:bapm';
-let storeOK=true,ST={jobs:{}};
-function loadStore(){try{const raw=localStorage.getItem(STKEY);if(raw){const p=JSON.parse(raw);if(p&&p.jobs&&typeof p.jobs==='object')ST=p}}catch(e){storeOK=false}}
-function saveStore(){try{localStorage.setItem(STKEY,JSON.stringify(ST))}catch(e){storeOK=false}if(!storeOK)$('storenote').hidden=false}
-function jstate(id){return ST.jobs[id]||{}}
-function setJState(id,patch){ST.jobs[id]=Object.assign({},ST.jobs[id],patch);saveStore()}
-function listCounts(){const c={saved:0,applied:0,hidden:0};for(const k in ST.jobs){const s=ST.jobs[k];if(s.saved)c.saved++;if(s.applied)c.applied++;if(s.hidden)c.hidden++}return c}
-function listOpts(c){const t=T();return [['all',t.lists.all],['saved',t.lists.saved+' ('+c.saved+')'],['applied',t.lists.applied+' ('+c.applied+')'],['hidden',t.lists.hidden+' ('+c.hidden+')']]}
-const LIST_TITLES=()=>T().listTitles;
-const LIST_SUBS=()=>T().listSubs;
-const LIST_EMPTY=()=>T().listEmpty;
-function acts(j){const st=jstate(j.id);const inH=S.list==='hidden';
-const t=T();return `<div class="acts"><button type="button" class="act" data-act="save" aria-pressed="${!!st.saved}">${st.saved?t.saved:t.save}</button><button type="button" class="act" data-act="applied" aria-pressed="${!!st.applied}">${st.applied?t.applied:t.markApplied}</button><button type="button" class="act" data-act="hide">${inH?t.restore:t.hide}</button><button type="button" class="act" data-act="note" aria-pressed="${!!st.note}">${st.note?t.note+' \u2713':t.note}</button></div>${st.note?`<div class="noteview" dir="auto">${esc(st.note)}</div>`:''}`}
-function updateCardButtons(art,id){const st=jstate(id);const q=a=>art.querySelector(`[data-act="${a}"]`);q('save').setAttribute('aria-pressed',!!st.saved);const t=T();q('save').textContent=st.saved?t.saved:t.save;q('applied').setAttribute('aria-pressed',!!st.applied);q('applied').textContent=st.applied?t.applied:t.markApplied;q('note').setAttribute('aria-pressed',!!st.note);q('note').textContent=st.note?t.note+' \u2713':t.note}
-const relist=()=>{seg($('f-list'),listOpts(listCounts()),'list',v=>{S.list=v;S.shown=PAGE;render()});$('csv').hidden=!listCounts().saved};
-function toggleNote(art,id){let ne=art.querySelector('.noteedit');if(ne){ne.remove();return}art.insertAdjacentHTML('beforeend',`<div class="noteedit"><input type="text" maxlength="140" aria-label="${T().note}" placeholder="${T().notePlaceholder}" dir="auto" value="${esc(jstate(id).note||'')}"></div>`);const inp=art.querySelector('.noteedit input');inp.focus();inp.addEventListener('change',()=>{setJState(id,{note:inp.value.trim()||null});render()})}
-function onAct(e){const b=e.target.closest('button.act');if(!b)return;const art=b.closest('article.job');if(!art)return;const id=art.dataset.id,act=b.dataset.act,st=jstate(id);
-if(act==='save'){setJState(id,{saved:st.saved?null:new Date().toISOString()});updateCardButtons(art,id);if(S.list!=='all')render();else relist()}
-else if(act==='applied'){setJState(id,{applied:st.applied?null:new Date().toISOString()});updateCardButtons(art,id);if(S.list!=='all')render();else relist()}
-else if(act==='hide'){setJState(id,{hidden:st.hidden?null:new Date().toISOString()});render()}
-else if(act==='note'){toggleNote(art,id)}}
-function csvCell(v){v=String(v==null?'':v);if(/^[=+\-@]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"'}
-function exportCSV(){const rows=[['Title','Company','Location','Type','Source','Posted','First seen','Original link','Private note']];J.filter(j=>jstate(j.id).saved).forEach(j=>{const st=jstate(j.id);rows.push([j.title,j.company,j.location,j.type,j.source,j.posted||'',j.first_seen||'',j.url,st.note||''])});const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='saved-jobs-'+DATA.date+'.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>{try{URL.revokeObjectURL(a.href)}catch(e){}},2000)}
-function metRender(){const c=g=>J.filter(j=>GO(j.region)===g).length;const nw=J.filter(j=>j.status==='new_update').length,er=J.filter(j=>j.status==='earlier_today').length,it=J.filter(j=>j.type==='Internship').length;
-const gb=(k,n,l)=>`<button type="button" class="met" aria-pressed="${S.group===k}" data-g="${k}"><b>${n}</b><span>${l}</span></button>`;
-const stt=(n,l,sm)=>`<div class="met"><b${sm?' class="sm"':''}>${n}</b><span>${l}</span></div>`;
-/* open-to-Egypt-based = records with explicit positive eligibility evidence: 0 confirmed for the 2026-11-08 snapshot (Yes 0 / No 18 / Unknown 244 across sites) */
-$('metrics').innerHTML=gb('all',J.length,T().inThisSnapshot)+gb('egypt',c('egypt'),T().egypt)+gb('gulf',c('gulf'),T().gulf)+gb('rest',c('rest'),T().restWorld)+stt(nw,T().newInSnapshot)+stt(er,T().earlierInSnapshot)+`<button type="button" class="met" aria-pressed="${S.type==='Internship'}" data-t="Internship"><b>${it}</b><span>${T().internshipsTarget}</span></button>`+stt(J.filter(j=>j.elig==='Yes').length,T().openEgypt)+stt(T().notReverified,T().availChanged,1)}
-const THEME_KEY='ci-theme-v1',THEMES=['system','white','black','navy','graphite'];
-const mq=matchMedia('(prefers-color-scheme: dark)');
-let memTheme;
-function storedTheme(){try{const t=localStorage.getItem(THEME_KEY);return(t==='white'||t==='black'||t==='navy'||t==='graphite')?t:null}catch(e){return memTheme!==undefined?memTheme:null}}
-function effTheme(){const t=storedTheme();return t||(mq.matches?'black':'white')}
-function applyEff(){document.documentElement.dataset.theme=effTheme()}
-function setTheme(t){memTheme=t;try{t?localStorage.setItem(THEME_KEY,t):localStorage.removeItem(THEME_KEY)}catch(e){const n=$('storenote');if(n)n.hidden=false}applyEff();renderTP()}
-mq.addEventListener('change',()=>{if(!storedTheme())applyEff()});
-document.addEventListener('click',e=>{const l=$('tpl');if(l&&!l.hidden&&!$('theme').contains(e.target)){l.hidden=true;$('tpb').setAttribute('aria-expanded','false')}});
-function renderTP(){const cur=storedTheme()||'system',eff=effTheme(),box=$('theme');const lbl=t=>T().themes[t];
-box.innerHTML=`<button class="tp-btn" id="tpb" aria-haspopup="listbox" aria-expanded="false"><span class="sw" data-t="${cur}"><i></i><i></i><i></i></span><span>${esc(lbl(cur))}${cur==='system'?' ('+lbl(eff)+')':''}</span></button><ul class="tp-list" id="tpl" role="listbox" aria-label="${T().themeLabel}" hidden>${THEMES.map(v=>`<li class="tp-opt" role="option" tabindex="-1" data-v="${v}" aria-selected="${v===cur}"><span class="sw" data-t="${v}"><i></i><i></i><i></i></span>${T().themes[v]}</li>`).join('')}</ul>`;
-const b=$('tpb'),l=$('tpl'),opts=[...l.children];
-const open=()=>{l.hidden=false;b.setAttribute('aria-expanded','true');(opts.find(o=>o.getAttribute('aria-selected')==='true')||opts[0]).focus()};
-const close=f=>{l.hidden=true;b.setAttribute('aria-expanded','false');if(f)b.focus()};
-const pick=v=>{setTheme(v);$('tpb').focus()};
-b.onclick=()=>l.hidden?open():close(1);
-b.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();open()}});
-l.addEventListener('click',e=>{const o=e.target.closest('.tp-opt');if(!o)return;pick(o.dataset.v==='system'?null:o.dataset.v)});
-l.addEventListener('keydown',e=>{const i=opts.indexOf(document.activeElement);
-if(e.key==='ArrowDown'){e.preventDefault();opts[Math.min(i+1,opts.length-1)].focus()}
-else if(e.key==='ArrowUp'){e.preventDefault();opts[Math.max(i-1,0)].focus()}
-else if(e.key==='Home'){e.preventDefault();opts[0].focus()}
-else if(e.key==='End'){e.preventDefault();opts[opts.length-1].focus()}
-else if(e.key==='Enter'||e.key===' '){e.preventDefault();const o=document.activeElement;if(o&&o.dataset&&o.dataset.v!==undefined)pick(o.dataset.v==='system'?null:o.dataset.v)}
-else if(e.key==='Escape'){e.preventDefault();close(1)}
-else if(e.key==='Tab'){close()}})}
-loadStore();if(!storeOK)$('storenote').hidden=false;
-$('csv').onclick=exportCSV;
-$('clear').onclick=()=>{S.region=S.type=S.group='all';S.sort='new';S.list='all';S.shown=PAGE;render()};
-$('rest').addEventListener('click',e=>{if(e.target&&e.target.id==='more'){appendBatch();return}onAct(e)});
-$('top').addEventListener('click',e=>{if(e.target&&e.target.id==='clr2'){$('clear').click();return}onAct(e)});
-$('metrics').addEventListener('click',e=>{const x=e.target.closest('button.met');if(!x)return;if(x.dataset.t){S.type=S.type===x.dataset.t?'all':x.dataset.t;S.shown=PAGE;render();return}const g=x.dataset.g;if(!g)return;S.group=(g==='all'||S.group===g)?'all':g;S.region='all';S.shown=PAGE;render()});
-loadURL();LANG=storedLang()||'en';document.documentElement.lang=LANG;document.documentElement.dir=LANG==='ar'?'rtl':'ltr';$('langsw').onclick=e=>{const b=e.target.closest('button[data-l]');if(b)setLang(b.dataset.l)};applyEff();applyLang();
+
+/* csv */
+function csv(){
+  const v = visible();
+  const rows = [["title","company","location","region","workplace","type","posted","first_seen","source","url","availability"]];
+  v.forEach(j => rows.push([j.title,(j.company||"").replace(/\.$/,""),j.location,j.region,j.workplace,j.type,j.posted||"",j.first_seen||"",j.source,j.url, j.link_status ? "reported closed 2026-11-21" : (j.vlabel || "not verified")]));
+  const text = rows.map(r => r.map(x => `"${String(x ?? "").replace(/"/g,'""')}"`).join(",")).join("\r\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["﻿" + text], { type:"text/csv;charset=utf-8" }));
+  a.download = SITE.key + "-jobs-" + DATA.date + ".csv";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* wiring */
+function init(){
+  const sw = $("swatches");
+  [["light","Light"],["dark","Dark"],["graphite","Graphite"],["navy","Navy"]].forEach(([k, lbl]) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "sw"; b.dataset.t = k; b.title = lbl; b.setAttribute("aria-label", lbl + " theme");
+    b.onclick = () => { theme = k; applyTheme(); };
+    sw.appendChild(b);
+  });
+  document.querySelectorAll("#langseg button").forEach(b => b.onclick = () => { lang = b.dataset.l; applyLang(); document.querySelectorAll("[data-n]").forEach(e => e.textContent = e.dataset.n); });
+  $("reset").onclick = () => { f = { q:"", region:"all", type:"all", place:"all", sort:"recent", list:"all" }; $("q").value = ""; renderFilters(); render(); };
+  $("csv").onclick = csv;
+  const q = $("q");
+  q.addEventListener("input", () => {
+    f.q = q.value;
+    const v = q.value.trim().toLowerCase();
+    renderSug(v ? SUG.filter(x => x.text.toLowerCase().includes(v)) : SUG);
+    openSug();
+    render();
+  });
+  q.addEventListener("focus", () => { renderSug(q.value.trim() ? SUG.filter(x => x.text.toLowerCase().includes(q.value.trim().toLowerCase())) : SUG); if ($("sug").children.length) openSug(); });
+  q.addEventListener("keydown", e => {
+    if (e.key === "Escape") { closeSug(); return; }
+    if (!$("sug").classList.contains("open")) return;
+    if (e.key === "ArrowDown") { e.preventDefault(); sugMove(1); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); sugMove(-1); }
+    else if (e.key === "Enter" && sugIdx >= 0) { e.preventDefault(); const o = $("sug").querySelectorAll("[role=option]")[sugIdx]; if (o) o.click(); }
+  });
+  document.addEventListener("click", e => { if (!e.target.closest(".search-zone")) closeSug(); });
+  SUG = buildSug();
+  applyTheme(); renderBreaks(); applyLang(); animateCounts();
+  const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); ro.unobserve(e.target); } }), { threshold:.05 });
+  document.querySelectorAll(".reveal").forEach(el => ro.observe(el));
+}
+init();
 </script>
-</body></html>
+</body>
+</html>
