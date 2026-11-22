@@ -13,6 +13,7 @@ import json, re, time, hashlib, urllib.request, urllib.parse, datetime, sys, os
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 STATE = os.path.join(OUT, "pipeline-state.json")
+STAGED_STATE = STATE + ".next"  # written pre-gate; refresh.py promotes only after the publication gate passes
 NOW = datetime.datetime.now(datetime.timezone.utc)
 FRESH_DAYS = 30  # EXPERIMENTAL, not user-approved policy
 
@@ -71,9 +72,12 @@ def add(source, source_id, title, company, url, posted, desc, loc, jtype):
         "url": c, "source": source, "source_id": str(source_id) if source_id else None,
         "source_posted": posted.isoformat() if posted else None,
         "fetched_at": NOW.isoformat(), "last_verified": None, "verification": None,
+        "verified_this_run": None,
         "location": (loc or "").strip(), "type_raw": (jtype or "").strip(),
         "desc": re.sub(r"<[^>]+>", " ", desc or "")[:3000],
     })
+
+ERRORS = []  # per-source/scope collection errors; refresh.py fails closed on any entry
 
 def fetch_all():
     for ind in ["marketing", "seo", "project-management", "management", "business", "data-science"]:
@@ -87,6 +91,7 @@ def fetch_all():
             time.sleep(1)
         except Exception as e:
             print("jobicy", ind, "ERR", e, file=sys.stderr)
+            ERRORS.append({"source": "jobicy", "scope": str(ind), "error": type(e).__name__ + ": " + str(e)[:160]})
     for cat in (["marketing", "product", "project-management", "artificial-intelligence"] if os.environ.get("CAREER_ENABLE_REMOTIVE") == "1" else []):  # REMOTIVE EXCLUDED by default (standing policy)
         try:
             d = get(f"https://remotive.com/api/remote-jobs?category={cat}")
@@ -97,6 +102,7 @@ def fetch_all():
             time.sleep(1)
         except Exception as e:
             print("remotive", cat, "ERR", e, file=sys.stderr)
+            ERRORS.append({"source": "remotive", "scope": str(cat), "error": type(e).__name__ + ": " + str(e)[:160]})
     for page in [1, 2, 3]:
         try:
             d = get(f"https://www.arbeitnow.com/api/job-board-api?page={page}")
@@ -108,6 +114,7 @@ def fetch_all():
             time.sleep(1)
         except Exception as e:
             print("arbeitnow", page, "ERR", e, file=sys.stderr)
+            ERRORS.append({"source": "arbeitnow", "scope": str(page), "error": type(e).__name__ + ": " + str(e)[:160]})
 
 def dedup(jobs):
     by_url = {}
@@ -184,7 +191,7 @@ def main():
         try: state = json.load(open(STATE))
         except Exception: state = {}
     state = merge_state(active + archived, state, NOW.isoformat())
-    json.dump(state, open(STATE, "w"), ensure_ascii=False, indent=1)
+    json.dump(state, open(STAGED_STATE, "w"), ensure_ascii=False, indent=1)  # staged, not accepted
 
     out = {"generated_at": NOW.isoformat(),
            "field_semantics": {
@@ -196,6 +203,7 @@ def main():
            "counts": {"raw": raw, "url_dupes_removed": url_dupes,
                       "title_company_dupes_merged": tc_dupes, "location_guard_kept_separate": guarded,
                       "active": len(active), "archived": len(archived)},
+           "errors": ERRORS,
            "jobs": active, "archived": archived}
     json.dump(out, open(os.path.join(OUT, "collected.json"), "w"), ensure_ascii=False, indent=1)
     print("raw", raw, "| url_dupes", url_dupes, "| tc_merged", tc_dupes, "| loc_guard", guarded,
