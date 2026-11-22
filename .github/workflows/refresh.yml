@@ -21,11 +21,11 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run refresh (collect, classify, verify, rebuild)
-        run: python3 pipeline/refresh.py --site "SITEKEY" --repo-root .
+        run: python3 pipeline/refresh.py --site "bapm" --repo-root .
       - name: Commit if changed
         run: |
           git config user.name "career-refresh-bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # stage ONLY the intended outputs of an accepted run (never pipeline-state.json.next or collected.json)
-          git add index.html "pipeline/data-release/SITEKEY.json" pipeline/pipeline-state.json pipeline/refresh-report.json
+          git add index.html "pipeline/data-release/bapm.json" pipeline/pipeline-state.json pipeline/refresh-report.json
           if git diff --cached --quiet; then echo "no changes"; else git commit -m "refresh: $(date -u +%Y-%m-%dT%H:%M:%SZ)" && git push; fi
