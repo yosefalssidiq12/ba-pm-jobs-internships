@@ -9,6 +9,7 @@ import json, re, time, urllib.request, urllib.error, datetime, sys, os
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 STATE = os.path.join(OUT, "pipeline-state.json")
+STAGED_STATE = STATE + ".next"  # chained with collect.py: read staged when present, write staged; refresh.py promotes post-gate
 NOW = datetime.datetime.now(datetime.timezone.utc).isoformat()
 CONTENT_CHECK_CAP = {"arbeitnow": 30, "remotive": 15}
 
@@ -22,6 +23,7 @@ def fetch(url):
         return r.status, r.read().decode("utf-8", "replace")
 
 ACTIVE_STATUSES = {"active", "true", "1"}
+STATUS_ERRORS = []  # status-endpoint batch errors; propagated to collected.json errors
 
 def jobicy_status(ids):
     status = {}
@@ -36,6 +38,7 @@ def jobicy_status(ids):
                 status[str(s.get("id"))] = s.get("status")
         except Exception as e:
             print("jobicy status ERR", e, file=sys.stderr)
+            STATUS_ERRORS.append({"stage": "jobicy_status", "error": type(e).__name__ + ": " + str(e)[:160]})
         time.sleep(1)
     return status
 
@@ -69,9 +72,10 @@ def main():
             # not publish (refresh.py archives it); absent-from-map stays untouched.
             if str(sraw).lower() in ACTIVE_STATUSES:
                 j["last_verified"] = NOW
+                j["verified_this_run"] = True   # explicit current-run success evidence
                 n1 += 1
             else:
-                j["jobicy_inactive"] = str(sraw).lower()
+                j["jobicy_inactive"] = str(sraw).lower() or "(empty status)"  # falsy statuses still block publication
     # 2. bounded content checks for the other sources
     n2 = 0
     for src, cap in CONTENT_CHECK_CAP.items():
@@ -87,15 +91,19 @@ def main():
             j["verification"] = note
             if ok:
                 j["last_verified"] = NOW
+                j["verified_this_run"] = True   # explicit current-run success evidence
                 n2 += 1
             time.sleep(1)
     # persist verification into cross-run state
-    state = json.load(open(STATE)) if os.path.exists(STATE) else {}
+    _sp = STAGED_STATE if os.path.exists(STAGED_STATE) else STATE
+    state = json.load(open(_sp)) if os.path.exists(_sp) else {}
     for j in act:
         if j["id"] in state:
             state[j["id"]]["last_verified"] = j.get("last_verified")
             state[j["id"]]["verification"] = j.get("verification")
-    json.dump(state, open(STATE, "w"), ensure_ascii=False, indent=1)
+    json.dump(state, open(STAGED_STATE, "w"), ensure_ascii=False, indent=1)  # staged, not accepted
+    if STATUS_ERRORS:
+        d.setdefault("errors", []).extend(STATUS_ERRORS)
     json.dump(d, open(os.path.join(OUT, "collected.json"), "w"), ensure_ascii=False, indent=1)
     total = sum(1 for j in act if j.get("last_verified"))
     print(f"verified: jobicy-status {n1}, content-check {n2}, total {total}/{len(act)}")
