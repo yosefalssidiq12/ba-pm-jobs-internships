@@ -1,6 +1,6 @@
 {
  "site": "bapm",
- "run_at": "2026-11-22T00:55:05.048550+00:00",
+ "run_at": "2026-11-22T00:58:40.032018+00:00",
  "dry_run": false,
  "fresh_verified": {
   "jobicy_status_endpoint": 66,
@@ -37,8 +37,16 @@
    "min_absolute": 5,
    "min_ratio_vs_prev": 0.5,
    "require_collection_nonempty": true,
-   "require_fresh_verification": true
+   "require_fresh_verification": true,
+   "expected_sources_nonempty": [
+    "jobicy",
+    "arbeitnow"
+   ]
+  },
+  "source_counts": {
+   "jobicy": 356,
+   "arbeitnow": 866
   }
  },
- "build_sha256_16": "92d0b803e250335d"
+ "build_sha256_16": "209b82dd6578ad65"
 }
