@@ -1,0 +1,279 @@
+{
+  "name": "Career Jobs Refresh Monitor v4 VALIDATION (inactive, temp)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 50 5 * * *"
+            },
+            {
+              "field": "cronExpression",
+              "expression": "0 30 6 * * *"
+            }
+          ]
+        }
+      },
+      "id": "c22a1bd5-c527-451b-a453-73ff70b07f95",
+      "name": "Daily after refreshes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/yosefalssidiq12/ba-pm-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&event=schedule&created={{ $now.toUTC().toFormat('yyyy-MM-dd') }}&per_page=30",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "User-Agent",
+              "value": "career-refresh-monitor"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4d16fa13-f0f6-41a1-8d17-4a5e9a96298e",
+      "name": "Check bapm run",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        224
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/yosefalssidiq12/ai-automation-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&event=schedule&created={{ $now.toUTC().toFormat('yyyy-MM-dd') }}&per_page=30",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "User-Agent",
+              "value": "career-refresh-monitor"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "93eb0425-af3e-4270-baa3-982b48cf8395",
+      "name": "Check ai run",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        224
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/yosefalssidiq12/marketing-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&event=schedule&created={{ $now.toUTC().toFormat('yyyy-MM-dd') }}&per_page=30",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "User-Agent",
+              "value": "career-refresh-monitor"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f3da44bc-cdfc-431b-888f-1fe3f379cb18",
+      "name": "Check marketing run",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        656,
+        224
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const checks = ['Check bapm run','Check ai run','Check marketing run'];\nconst repos = ['ba-pm-jobs-internships','ai-automation-jobs-internships','marketing-jobs-internships'];\n// UTC snapshot date, matching the refresh workflow's UTC dating.\nconst today = new Date().toISOString().slice(0,10);\nconst results = [];\nlet ok = true;\nfor (let i = 0; i < checks.length; i++) {\n  const items = $items(checks[i]);\n  const body = (items[0] && items[0].json) || {};\n  // F7: a failed/limited GitHub API response has no workflow_runs array (e.g. a 403\n  // rate-limit JSON body still arrives as a \"successful\" HTTP node). That is a\n  // MONITOR-SOURCE error, not evidence about the refresh - never report it as a\n  // refresh failure. An empty array is real data: no scheduled runs match today.\n  const sourceError = !Array.isArray(body.workflow_runs);\n  const runs = sourceError ? [] : body.workflow_runs;\n  // The HTTP nodes ask the API for branch=main&event=schedule&created=<UTC day>&per_page=30:\n  // only today's scheduled runs are fetched, so manual dispatch volume can never push the\n  // scheduled run off the page. Evaluator-side date/event/branch checks retained anyway.\n  const sched = runs.filter(r => r.head_branch === 'main' && r.event === 'schedule')\n    .filter(r => String(r.created_at||'').slice(0,10) === today);\n  // F7b (reviewer): remaining possible truncation = total_count beyond the returned page\n  // (GitHub signals further pages via the Link header, which this node does not see, so\n  // total_count vs returned rows is the bounded-completion proof available here).\n  // Absence of a successful scheduled run is PROVEN only when the page is complete.\n  // A truncated page without a proven success is incomplete_coverage, never a proven absence.\n  // This is an existence-only monitor: one matching success is sufficient proof of green.\n  const total = typeof body.total_count === 'number' ? body.total_count : runs.length;\n  const truncated = !sourceError && total > runs.length;\n  const goodRun = sched.find(r => r.status === 'completed' && r.conclusion === 'success');\n  const latest = sched[0] || null;\n  const good = Boolean(goodRun);\n  // Four-valued verdict. ok = proven success today. refresh_not_green = complete page,\n  // proven no successful scheduled run yet (missing/failed/in-progress). source_error =\n  // monitor could not read GitHub at all. source_inconclusive = page truncated and no\n  // proven success - absence not established. ok stays false except for proven success.\n  const verdict = sourceError ? 'source_error'\n    : (good ? 'ok' : (truncated ? 'incomplete_coverage' : 'refresh_not_green'));\n  if (!good) ok = false;\n  results.push({\n    repo: repos[i],\n    verdict,\n    source_error: sourceError,\n    source_error_body: sourceError ? { message: body.message || null, documentation_url: body.documentation_url || null } : undefined,\n    page_truncated: truncated,\n    total_count: total,\n    scheduled_runs_today: sched.length,\n    good,\n    latest_scheduled_today: latest ? { status: latest.status, conclusion: latest.conclusion, event: latest.event, head_branch: latest.head_branch, created_at: latest.created_at, url: latest.html_url } : null,\n    scheduled_today: sched.map(r => ({ status: r.status, conclusion: r.conclusion, created_at: r.created_at, url: r.html_url }))\n  });\n}\nconst summary = { date_utc: today, ok, results, note: 'Career refresh monitor: each site needs a SUCCESSFUL SCHEDULE-EVENT main-branch refresh run today (UTC). The GitHub query is pre-filtered branch=main&event=schedule&created=<UTC day>&per_page=30, so manual dispatch volume cannot hide the scheduled run and manual success never satisfies the check. verdict=source_error: the monitor itself could not read the GitHub API (rate limit/network) - inconclusive about the refresh, NOT a refresh failure. verdict=incomplete_coverage: total_count exceeds the returned page and no success is proven - absence not established, never reported as a refresh failure. Run-success monitoring only; it does not validate published snapshot content.' };\nconsole.log(JSON.stringify(summary));\nreturn [{ json: summary }];\n"
+      },
+      "id": "e06ce87c-3081-450d-8a82-ea5e891f9e7f",
+      "name": "Evaluate all 3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "cond-ok",
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c9dd8f0a-c364-474e-9389-3ccff3238437",
+      "name": "Any failure?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1104,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "PENDING-USER-SCOPE-DECISION",
+        "text": "=Career refresh monitor {{ $json.date }}: FAILURE - {{ JSON.stringify($json.results) }}",
+        "additionalFields": {}
+      },
+      "id": "badf8566-2d9f-4fd9-8d50-65ffaae31b28",
+      "name": "Telegram alert (DISABLED pending audience decision)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1328,
+        448
+      ],
+      "webhookId": "cd8345b3-ef01-4479-bfda-e9e7ff30882d",
+      "credentials": {
+        "telegramApi": {
+          "id": "9o8AgFDhM9A7hOEp",
+          "name": "Telegram account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "32b83d3b-3db7-4b68-9f6d-4527a6bb156b",
+      "name": "All green (log only)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Daily after refreshes": {
+      "main": [
+        [
+          {
+            "node": "Check bapm run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check bapm run": {
+      "main": [
+        [
+          {
+            "node": "Check ai run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check ai run": {
+      "main": [
+        [
+          {
+            "node": "Check marketing run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check marketing run": {
+      "main": [
+        [
+          {
+            "node": "Evaluate all 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluate all 3": {
+      "main": [
+        [
+          {
+            "node": "Any failure?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Any failure?": {
+      "main": [
+        [
+          {
+            "node": "All green (log only)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram alert (DISABLED pending audience decision)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "timezone": "Africa/Cairo",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "pinData": {}
+}
