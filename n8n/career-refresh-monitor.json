@@ -7,7 +7,11 @@
           "interval": [
             {
               "field": "cronExpression",
-              "expression": "0 0,30 5 * * *"
+              "expression": "0 50 5 * * *"
+            },
+            {
+              "field": "cronExpression",
+              "expression": "0 30 6 * * *"
             }
           ]
         }
@@ -23,7 +27,7 @@
     },
     {
       "parameters": {
-        "url": "https://api.github.com/repos/yosefalssidiq12/ba-pm-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&per_page=5",
+        "url": "=https://api.github.com/repos/yosefalssidiq12/ba-pm-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&event=schedule&created={{ $now.toUTC().toFormat('yyyy-MM-dd') }}&per_page=30",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -51,7 +55,7 @@
     },
     {
       "parameters": {
-        "url": "https://api.github.com/repos/yosefalssidiq12/ai-automation-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&per_page=5",
+        "url": "=https://api.github.com/repos/yosefalssidiq12/ai-automation-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&event=schedule&created={{ $now.toUTC().toFormat('yyyy-MM-dd') }}&per_page=30",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -79,7 +83,7 @@
     },
     {
       "parameters": {
-        "url": "https://api.github.com/repos/yosefalssidiq12/marketing-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&per_page=5",
+        "url": "=https://api.github.com/repos/yosefalssidiq12/marketing-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&event=schedule&created={{ $now.toUTC().toFormat('yyyy-MM-dd') }}&per_page=30",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -107,7 +111,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const checks = ['Check bapm run','Check ai run','Check marketing run'];\nconst repos = ['ba-pm-jobs-internships','ai-automation-jobs-internships','marketing-jobs-internships'];\n// UTC snapshot date, matching the refresh workflow's UTC dating.\nconst today = new Date().toISOString().slice(0,10);\nconst results = [];\nlet ok = true;\nfor (let i = 0; i < checks.length; i++) {\n  const items = $items(checks[i]);\n  const runs = (items[0] && items[0].json && items[0].json.workflow_runs) || [];\n  // Only default-branch (main) runs count: branch rehearsal/push runs are not the production refresh.\n  // The HTTP nodes already ask the API for branch=main, so this is a belt-and-suspenders filter.\n  const mainRuns = runs.filter(r => r.head_branch === 'main');\n  const todays = mainRuns.filter(r => String(r.created_at||'').slice(0,10) === today);\n  const sched = todays.filter(r => r.event === 'schedule');\n  // The monitored question is specifically: did TODAY'S SCHEDULED production refresh succeed on main?\n  // A manual dispatch success must NOT satisfy this (scheduled_today would be empty).\n  // queued / in_progress / missing / failed / API error never count as success.\n  const goodRun = sched.find(r => r.status === 'completed' && r.conclusion === 'success');\n  const latest = todays[0] || null;\n  const good = Boolean(goodRun);\n  if (!good) ok = false;\n  results.push({\n    repo: repos[i],\n    ran_today: todays.length > 0,\n    scheduled_runs_today: sched.length,\n    good,\n    latest_today: latest ? { status: latest.status, conclusion: latest.conclusion, event: latest.event, head_branch: latest.head_branch, created_at: latest.created_at, url: latest.html_url } : null,\n    scheduled_today: sched.map(r => ({ status: r.status, conclusion: r.conclusion, created_at: r.created_at, url: r.html_url }))\n  });\n}\nconst summary = { date_utc: today, ok, results, note: 'Career refresh monitor: each site needs a SUCCESSFUL SCHEDULE-EVENT main-branch refresh run today (UTC). Manual dispatch success, queued/in_progress/missing/failed/API error never count as success.' };\nconsole.log(JSON.stringify(summary));\nreturn [{ json: summary }];"
+        "jsCode": "const checks = ['Check bapm run','Check ai run','Check marketing run'];\nconst repos = ['ba-pm-jobs-internships','ai-automation-jobs-internships','marketing-jobs-internships'];\n// UTC snapshot date, matching the refresh workflow's UTC dating.\nconst today = new Date().toISOString().slice(0,10);\nconst results = [];\nlet ok = true;\nfor (let i = 0; i < checks.length; i++) {\n  const items = $items(checks[i]);\n  const body = (items[0] && items[0].json) || {};\n  // F7: a failed/limited GitHub API response has no workflow_runs array (e.g. a 403\n  // rate-limit JSON body still arrives as a \"successful\" HTTP node). That is a\n  // MONITOR-SOURCE error, not evidence about the refresh - never report it as a\n  // refresh failure. An empty array is real data: no scheduled runs match today.\n  const sourceError = !Array.isArray(body.workflow_runs);\n  const runs = sourceError ? [] : body.workflow_runs;\n  // The HTTP nodes ask the API for branch=main&event=schedule&created=<UTC day>&per_page=30:\n  // only today's scheduled runs are fetched, so manual dispatch volume can never push the\n  // scheduled run off the page. Evaluator-side date/event/branch checks retained anyway.\n  const sched = runs.filter(r => r.head_branch === 'main' && r.event === 'schedule')\n    .filter(r => String(r.created_at||'').slice(0,10) === today);\n  // F7b (reviewer): remaining possible truncation = total_count beyond the returned page\n  // (GitHub signals further pages via the Link header, which this node does not see, so\n  // total_count vs returned rows is the bounded-completion proof available here).\n  // Absence of a successful scheduled run is PROVEN only when the page is complete.\n  // A truncated page without a proven success is incomplete_coverage, never a proven absence.\n  // This is an existence-only monitor: one matching success is sufficient proof of green.\n  const total = typeof body.total_count === 'number' ? body.total_count : runs.length;\n  const truncated = !sourceError && total > runs.length;\n  const goodRun = sched.find(r => r.status === 'completed' && r.conclusion === 'success');\n  const latest = sched[0] || null;\n  const good = Boolean(goodRun);\n  // Four-valued verdict. ok = proven success today. refresh_not_green = complete page,\n  // proven no successful scheduled run yet (missing/failed/in-progress). source_error =\n  // monitor could not read GitHub at all. source_inconclusive = page truncated and no\n  // proven success - absence not established. ok stays false except for proven success.\n  const verdict = sourceError ? 'source_error'\n    : (good ? 'ok' : (truncated ? 'incomplete_coverage' : 'refresh_not_green'));\n  if (!good) ok = false;\n  results.push({\n    repo: repos[i],\n    verdict,\n    source_error: sourceError,\n    source_error_body: sourceError ? { message: body.message || null, documentation_url: body.documentation_url || null } : undefined,\n    page_truncated: truncated,\n    total_count: total,\n    scheduled_runs_today: sched.length,\n    good,\n    latest_scheduled_today: latest ? { status: latest.status, conclusion: latest.conclusion, event: latest.event, head_branch: latest.head_branch, created_at: latest.created_at, url: latest.html_url } : null,\n    scheduled_today: sched.map(r => ({ status: r.status, conclusion: r.conclusion, created_at: r.created_at, url: r.html_url }))\n  });\n}\nconst summary = { date_utc: today, ok, results, note: 'Career refresh monitor: each site needs a SUCCESSFUL SCHEDULE-EVENT main-branch refresh run today (UTC). The GitHub query is pre-filtered branch=main&event=schedule&created=<UTC day>&per_page=30, so manual dispatch volume cannot hide the scheduled run and manual success never satisfies the check. verdict=source_error: the monitor itself could not read the GitHub API (rate limit/network) - inconclusive about the refresh, NOT a refresh failure. verdict=incomplete_coverage: total_count exceeds the returned page and no success is proven - absence not established, never reported as a refresh failure. Run-success monitoring only; it does not validate published snapshot content.' };\nconsole.log(JSON.stringify(summary));\nreturn [{ json: summary }];\n"
       },
       "id": "e06ce87c-3081-450d-8a82-ea5e891f9e7f",
       "name": "Evaluate all 3",
