@@ -294,7 +294,7 @@ def main():
         if src_counts.get(s, 0) == 0:
             breaches.append(f"source outage: {s} contributed 0 collected rows")
     jrows = [j for j in d["jobs"] if j.get("source") == "jobicy"]
-    if jrows and not any(j.get("last_verified") for j in jrows):
+    if jrows and not any(j.get("verified_this_run") is True for j in jrows):  # current-run success only; inherited timestamps never satisfy this
         breaches.append(f"jobicy status check yielded 0 active rows out of {len(jrows)} (endpoint outage or mass closure)")
     if fresh_count == 0:
         breaches.append("verification outage: 0 rows freshly verified this run")
