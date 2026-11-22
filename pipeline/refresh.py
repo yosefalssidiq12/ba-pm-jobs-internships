@@ -31,6 +31,12 @@ CARRY_TTL_DAYS = 0  # STRICT (QA 2026-11-22): publish = verified THIS run only.
 # A dated carry-forward with distinct UI labeling is a separate user decision.
 NOW = datetime.datetime.now(datetime.timezone.utc)
 TODAY = NOW.date().isoformat()
+# F3 (QA 2026-11-22): every run date is UTC. Same-day carry compares the UTC
+# label date with the UTC run date, so a row checked late in the Cairo evening
+# stays carriable until UTC midnight (up to ~2h into the next Cairo day) and is
+# archived after that (CARRY_TTL_DAYS = 0). Carried labels always keep their
+# original check date verbatim; nothing is ever presented as fresher than it is.
+ACTIVE_STATUSES = {"active", "true", "1"}
 
 AR_DIGITS = str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩")
 def ar_date(d): return d.translate(AR_DIGITS)
@@ -198,6 +204,11 @@ def main():
         adjudicated_ok = jid_guess in resolved or ck in resolved
         prev_row = prev_by_ck.get(ck)
         lv_date = (j.get("last_verified") or "")[:10]
+        if j.get("jobicy_inactive"):
+            # F2: explicit non-active status from the Jobicy endpoint - never publish.
+            if prev_row:
+                report["archived"].append({"id": prev_row["id"], "reason": "jobicy status endpoint: " + j["jobicy_inactive"]})
+            continue
         if lv_date and lv_date >= TODAY:  # only THIS run's successful checks count as fresh
             ver = j["verification"] or ""
             method = "jobicy_status_endpoint" if ver.startswith("jobicy official status") else "bounded_content_check"
@@ -219,7 +230,9 @@ def main():
         if any(o["canonical_key"] == ck for o in jobs_out): continue
         if any(a.get("id") == r["id"] for a in report["archived"]): continue
         src, _, sid = ck.partition(":")
-        if src == "jobicy" and str(prev_jobicy_status.get(sid)).lower() in ("active", "true", "1"):
+        if src == "jobicy" and sid in prev_jobicy_status and str(prev_jobicy_status.get(sid)).lower() not in ACTIVE_STATUSES:
+            report["archived"].append({"id": r["id"], "reason": "jobicy status endpoint: " + str(prev_jobicy_status.get(sid)).lower()})
+        elif src == "jobicy" and str(prev_jobicy_status.get(sid)).lower() in ACTIVE_STATUSES:
             rr = dict(r)
             en, ar = VLABELS["jobicy_status_endpoint"]
             rr["vlabel"] = en.format(d=TODAY)
@@ -249,6 +262,35 @@ def main():
                         "fresh": sum(report["fresh_verified"].values()),
                         "carried": len(report["carried"]), "archived": len(report["archived"]),
                         "excluded": len(report["excluded"])}
+
+    # --- F1 (QA 2026-11-22): fail-closed publication gate ---
+    # Never auto-publish a degraded snapshot: on any breach, write the run report,
+    # leave data-release/<site>.json and index.html untouched, and exit non-zero so
+    # the workflow's commit step never runs and the last accepted snapshot stands.
+    GATE_MIN_ABSOLUTE = 5     # never auto-publish fewer than 5 rows
+    GATE_MIN_RATIO = 0.5      # never below 50% of the previous snapshot (prev >= 10)
+    total_collected = sum(len(d[c]) for c in ("jobs", "archived"))
+    fresh_count = sum(report["fresh_verified"].values())
+    breaches = []
+    if total_collected == 0:
+        breaches.append("collection outage: 0 rows collected from every source")
+    jrows = [j for j in d["jobs"] if j.get("source") == "jobicy"]
+    if jrows and not any(j.get("last_verified") for j in jrows):
+        breaches.append(f"jobicy status check yielded 0 active rows out of {len(jrows)} (endpoint outage or mass closure)")
+    if fresh_count == 0:
+        breaches.append("verification outage: 0 rows freshly verified this run")
+    if len(prev["jobs"]) >= 10 and len(jobs_out) < GATE_MIN_RATIO * len(prev["jobs"]):
+        breaches.append(f"catastrophic drop: publishable {len(jobs_out)} < 50% of prev {len(prev['jobs'])}")
+    if len(jobs_out) < GATE_MIN_ABSOLUTE:
+        breaches.append(f"absolute floor: publishable {len(jobs_out)} < {GATE_MIN_ABSOLUTE}")
+    report["publication_gate"] = {"passed": not breaches, "breaches": breaches,
+        "rules": {"min_absolute": GATE_MIN_ABSOLUTE, "min_ratio_vs_prev": GATE_MIN_RATIO,
+                  "require_collection_nonempty": True, "require_fresh_verification": True}}
+    json.dump(report, open(os.path.join(OUT, "refresh-report.json"), "w"), ensure_ascii=False, indent=1)
+    if breaches:
+        print("PUBLICATION GATE FAILED - last accepted snapshot preserved, nothing written:")
+        for b in breaches: print(" -", b)
+        sys.exit(3)
 
     if not dry_run:
         json.dump(payload, open(prev_path, "w"), ensure_ascii=False, indent=1)
