@@ -1,82 +1,268 @@
 {
-  "name": "Career Jobs Refresh Monitor",
-  "nodes": [
-    {
-      "parameters": {"rule": {"interval": [{"field": "cronExpression", "cronExpression": "0 3 * * *"}]}},
-      "id": "11111111-1111-4111-8111-111111111111",
-      "name": "Daily after refreshes",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [0, 300]
-    },
-    {
-      "parameters": {"url": "https://api.github.com/repos/yosefalssidiq12/ba-pm-jobs-internships/actions/workflows/refresh.yml/runs?per_page=1", "sendHeaders": true, "headerParameters": {"parameters": [{"name": "Accept", "value": "application/vnd.github+json"}, {"name": "User-Agent", "value": "career-refresh-monitor"}]}, "options": {}},
-      "id": "22222222-2222-4222-8222-222222222222",
-      "name": "Check bapm run",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [220, 180]
-    },
-    {
-      "parameters": {"url": "https://api.github.com/repos/yosefalssidiq12/ai-automation-jobs-internships/actions/workflows/refresh.yml/runs?per_page=1", "sendHeaders": true, "headerParameters": {"parameters": [{"name": "Accept", "value": "application/vnd.github+json"}, {"name": "User-Agent", "value": "career-refresh-monitor"}]}, "options": {}},
-      "id": "33333333-3333-4333-8333-333333333333",
-      "name": "Check ai run",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [220, 300]
-    },
-    {
-      "parameters": {"url": "https://api.github.com/repos/yosefalssidiq12/marketing-jobs-internships/actions/workflows/refresh.yml/runs?per_page=1", "sendHeaders": true, "headerParameters": {"parameters": [{"name": "Accept", "value": "application/vnd.github+json"}, {"name": "User-Agent", "value": "career-refresh-monitor"}]}, "options": {}},
-      "id": "44444444-4444-4444-8444-444444444444",
-      "name": "Check marketing run",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [220, 420]
-    },
-    {
-      "parameters": {"mode": "runOnceForAllItems", "jsCode": "const checks = ['Check bapm run','Check ai run','Check marketing run'];\nconst repos = ['ba-pm-jobs-internships','ai-automation-jobs-internships','marketing-jobs-internships'];\nconst today = new Date().toISOString().slice(0,10);\nconst results = [];\nlet ok = true;\nfor (let i = 0; i < checks.length; i++) {\n  const items = $items(checks[i]);\n  const run = items[0] && items[0].json && items[0].json.workflow_runs && items[0].json.workflow_runs[0];\n  const ran_today = run && String(run.created_at||'').slice(0,10) === today;\n  const success = run && run.status === 'completed' && run.conclusion === 'success';\n  const good = Boolean(ran_today && success);\n  if (!good) ok = false;\n  results.push({ repo: repos[i], ran_today: Boolean(ran_today), conclusion: run ? run.conclusion : 'no-run', run_url: run ? run.html_url : null });\n}\nconst summary = { date: today, ok, results, note: 'Career refresh monitor: all 3 sites must have a successful refresh run today.' };\nconsole.log(JSON.stringify(summary));\nreturn [{ json: summary }];"},
-      "id": "55555555-5555-4555-8555-555555555555",
-      "name": "Evaluate all 3",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [480, 300]
-    },
-    {
-      "parameters": {"conditions": {"options": {"caseSensitive": true, "leftValue": "", "typeValidation": "loose"}, "conditions": [{"id": "cond-ok", "leftValue": "={{ $json.ok }}", "rightValue": true, "operator": {"type": "boolean", "operation": "true", "singleValue": true}}], "combinator": "and"}, "options": {}},
-      "id": "66666666-6666-4666-8666-666666666666",
-      "name": "Any failure?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [700, 300]
-    },
-    {
-      "parameters": {"resource": "message", "operation": "sendMessage", "chatId": "PENDING-USER-SCOPE-DECISION", "text": "=Career refresh monitor {{ $json.date }}: FAILURE - {{ JSON.stringify($json.results) }}", "additionalFields": {}},
-      "id": "77777777-7777-4777-8777-777777777777",
-      "name": "Telegram alert (DISABLED pending audience decision)",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [920, 220],
-      "disabled": true
-    },
-    {
-      "parameters": {},
-      "id": "88888888-8888-4888-8888-888888888888",
-      "name": "All green (log only)",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [920, 380]
+ "name": "Career Jobs Refresh Monitor",
+ "nodes": [
+  {
+   "parameters": {
+    "rule": {
+     "interval": [
+      {
+       "field": "cronExpression",
+       "expression": "0 0 3 * * *"
+      }
+     ]
     }
-  ],
-  "connections": {
-    "Daily after refreshes": {"main": [[{"node": "Check bapm run", "type": "main", "index": 0}, {"node": "Check ai run", "type": "main", "index": 0}, {"node": "Check marketing run", "type": "main", "index": 0}]]},
-    "Check bapm run": {"main": [[{"node": "Evaluate all 3", "type": "main", "index": 0}]]},
-    "Check ai run": {"main": [[{"node": "Evaluate all 3", "type": "main", "index": 0}]]},
-    "Check marketing run": {"main": [[{"node": "Evaluate all 3", "type": "main", "index": 0}]]},
-    "Evaluate all 3": {"main": [[{"node": "Any failure?", "type": "main", "index": 0}]]},
-    "Any failure?": {"main": [[{"node": "All green (log only)", "type": "main", "index": 0}], [{"node": "Telegram alert (DISABLED pending audience decision)", "type": "main", "index": 0}]]}
+   },
+   "id": "caf3c954-6d2b-44be-8a25-dd08e3d633cc",
+   "name": "Daily after refreshes",
+   "type": "n8n-nodes-base.scheduleTrigger",
+   "typeVersion": 1.2,
+   "position": [
+    -1100,
+    300
+   ]
   },
-  "settings": {"executionOrder": "v1", "timezone": "Africa/Cairo"},
-  "staticData": null,
-  "pinData": {},
-  "tags": []
+  {
+   "parameters": {
+    "url": "https://api.github.com/repos/yosefalssidiq12/ba-pm-jobs-internships/actions/workflows/refresh.yml/runs?per_page=1",
+    "sendHeaders": true,
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Accept",
+       "value": "application/vnd.github+json"
+      },
+      {
+       "name": "User-Agent",
+       "value": "career-refresh-monitor"
+      }
+     ]
+    },
+    "options": {}
+   },
+   "id": "b16091bb-2169-4806-a9ba-a5ff93e03f3c",
+   "name": "Check bapm run",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    -880,
+    300
+   ]
+  },
+  {
+   "parameters": {
+    "url": "https://api.github.com/repos/yosefalssidiq12/ai-automation-jobs-internships/actions/workflows/refresh.yml/runs?per_page=1",
+    "sendHeaders": true,
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Accept",
+       "value": "application/vnd.github+json"
+      },
+      {
+       "name": "User-Agent",
+       "value": "career-refresh-monitor"
+      }
+     ]
+    },
+    "options": {}
+   },
+   "id": "07a3b9a2-adbe-4d94-9dbd-d5e7d4d6a195",
+   "name": "Check ai run",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    -660,
+    300
+   ]
+  },
+  {
+   "parameters": {
+    "url": "https://api.github.com/repos/yosefalssidiq12/marketing-jobs-internships/actions/workflows/refresh.yml/runs?per_page=1",
+    "sendHeaders": true,
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "Accept",
+       "value": "application/vnd.github+json"
+      },
+      {
+       "name": "User-Agent",
+       "value": "career-refresh-monitor"
+      }
+     ]
+    },
+    "options": {}
+   },
+   "id": "3a0f9ff2-7390-4444-9423-f2c43e221eb3",
+   "name": "Check marketing run",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    -440,
+    300
+   ]
+  },
+  {
+   "parameters": {
+    "jsCode": "const checks = ['Check bapm run','Check ai run','Check marketing run'];\nconst repos = ['ba-pm-jobs-internships','ai-automation-jobs-internships','marketing-jobs-internships'];\nconst today = new Date().toISOString().slice(0,10);\nconst results = [];\nlet ok = true;\nfor (let i = 0; i < checks.length; i++) {\n  const items = $items(checks[i]);\n  const run = items[0] && items[0].json && items[0].json.workflow_runs && items[0].json.workflow_runs[0];\n  const ran_today = run && String(run.created_at||'').slice(0,10) === today;\n  const success = run && run.status === 'completed' && run.conclusion === 'success';\n  const good = Boolean(ran_today && success);\n  if (!good) ok = false;\n  results.push({ repo: repos[i], ran_today: Boolean(ran_today), conclusion: run ? run.conclusion : 'no-run', run_url: run ? run.html_url : null });\n}\nconst summary = { date: today, ok, results, note: 'Career refresh monitor: all 3 sites must have a successful refresh run today.' };\nconsole.log(JSON.stringify(summary));\nreturn [{ json: summary }];"
+   },
+   "id": "15a92ca2-b79f-49f1-ac2c-abb7ee7c8f0c",
+   "name": "Evaluate all 3",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    -220,
+    300
+   ]
+  },
+  {
+   "parameters": {
+    "conditions": {
+     "options": {
+      "caseSensitive": true,
+      "leftValue": "",
+      "typeValidation": "loose",
+      "version": 1
+     },
+     "conditions": [
+      {
+       "id": "cond-ok",
+       "leftValue": "={{ $json.ok }}",
+       "rightValue": true,
+       "operator": {
+        "type": "boolean",
+        "operation": "true",
+        "singleValue": true
+       }
+      }
+     ],
+     "combinator": "and"
+    },
+    "options": {}
+   },
+   "id": "ccec111f-3464-4e3b-a707-390fd3ce3c30",
+   "name": "Any failure?",
+   "type": "n8n-nodes-base.if",
+   "typeVersion": 2.2,
+   "position": [
+    0,
+    300
+   ]
+  },
+  {
+   "parameters": {
+    "chatId": "PENDING-USER-SCOPE-DECISION",
+    "text": "=Career refresh monitor {{ $json.date }}: FAILURE - {{ JSON.stringify($json.results) }}",
+    "additionalFields": {}
+   },
+   "id": "0370e641-9fcf-4cb1-ac19-8f6391570494",
+   "name": "Telegram alert (DISABLED pending audience decision)",
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "position": [
+    220,
+    520
+   ],
+   "webhookId": "cd8345b3-ef01-4479-bfda-e9e7ff30882d",
+   "credentials": {
+    "telegramApi": {
+     "id": "9o8AgFDhM9A7hOEp",
+     "name": "Telegram account"
+    }
+   },
+   "disabled": true
+  },
+  {
+   "parameters": {},
+   "id": "e9856bfd-2938-49d8-be80-0f1fe45fb4b2",
+   "name": "All green (log only)",
+   "type": "n8n-nodes-base.noOp",
+   "typeVersion": 1,
+   "position": [
+    220,
+    80
+   ]
+  }
+ ],
+ "connections": {
+  "Daily after refreshes": {
+   "main": [
+    [
+     {
+      "node": "Check bapm run",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Check bapm run": {
+   "main": [
+    [
+     {
+      "node": "Check ai run",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Check ai run": {
+   "main": [
+    [
+     {
+      "node": "Check marketing run",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Check marketing run": {
+   "main": [
+    [
+     {
+      "node": "Evaluate all 3",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Evaluate all 3": {
+   "main": [
+    [
+     {
+      "node": "Any failure?",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Any failure?": {
+   "main": [
+    [
+     {
+      "node": "All green (log only)",
+      "type": "main",
+      "index": 0
+     }
+    ],
+    [
+     {
+      "node": "Telegram alert (DISABLED pending audience decision)",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  }
+ },
+ "settings": {
+  "executionOrder": "v1",
+  "binaryMode": "separate"
+ },
+ "staticData": null,
+ "pinData": {}
 }
