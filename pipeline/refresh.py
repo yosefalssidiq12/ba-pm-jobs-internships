@@ -112,6 +112,7 @@ def main():
     prev_by_ck = {r["canonical_key"]: r for r in prev["jobs"]}
     fetched_urls = {j["url"] for coll in ("jobs", "archived") for j in d[coll]}
     fetched_ck = {j["source"] + ":" + (j.get("source_id") or j["id"]) for coll in ("jobs", "archived") for j in d[coll]}
+    run_errors = list(d.get("errors") or [])
     missing_jobicy_ids = []
     for ck, r in prev_by_ck.items():
         src, _, sid = ck.partition(":")
@@ -119,7 +120,9 @@ def main():
             missing_jobicy_ids.append(sid)
     prev_jobicy_status = {}
     if missing_jobicy_ids:
+        _nerr = len(verify.STATUS_ERRORS)
         prev_jobicy_status = verify.jobicy_status(missing_jobicy_ids)
+        run_errors += verify.STATUS_ERRORS[_nerr:]
         report["prev_jobicy_status_checked"] = len(prev_jobicy_status)
 
     # 4. build publishable inventory
@@ -204,12 +207,14 @@ def main():
         adjudicated_ok = jid_guess in resolved or ck in resolved
         prev_row = prev_by_ck.get(ck)
         lv_date = (j.get("last_verified") or "")[:10]
-        if j.get("jobicy_inactive"):
+        if j.get("jobicy_inactive") is not None:  # set for ANY non-active status, incl. empty
             # F2: explicit non-active status from the Jobicy endpoint - never publish.
             if prev_row:
                 report["archived"].append({"id": prev_row["id"], "reason": "jobicy status endpoint: " + j["jobicy_inactive"]})
             continue
-        if lv_date and lv_date >= TODAY:  # only THIS run's successful checks count as fresh
+        # fresh requires EXPLICIT current-run success (verified_this_run set by verify.py),
+        # not merely an inherited same-day last_verified from pipeline-state (reviewer F4)
+        if j.get("verified_this_run") is True and lv_date and lv_date >= TODAY:
             ver = j["verification"] or ""
             method = "jobicy_status_endpoint" if ver.startswith("jobicy official status") else "bounded_content_check"
             if not (duties_ok or adjudicated_ok or prev_row is not None):
@@ -274,6 +279,10 @@ def main():
     breaches = []
     if total_collected == 0:
         breaches.append("collection outage: 0 rows collected from every source")
+    if run_errors:
+        report["errors"] = run_errors
+        summ = "; ".join(f"{e.get('source') or e.get('stage')}:{e.get('scope') or '-'} {e.get('error','')[:80]}" for e in run_errors[:3])
+        breaches.append(f"{len(run_errors)} source error(s) recorded this run ({summ})")
     # Partial-source failure: an enabled source contributing zero collected rows is an
     # outage for that source even when totals stay above the other thresholds.
     EXPECTED_SOURCES = ("jobicy", "arbeitnow")  # remotive excluded by standing source policy
@@ -300,11 +309,18 @@ def main():
         "source_counts": src_counts}
     json.dump(report, open(os.path.join(OUT, "refresh-report.json"), "w"), ensure_ascii=False, indent=1)
     if breaches:
+        # pipeline-state.json was staged to .next by collect/verify and is NOT promoted:
+        # the accepted state remains byte-identical for the next run.
+        report["state_staged_not_promoted"] = True
+        json.dump(report, open(os.path.join(OUT, "refresh-report.json"), "w"), ensure_ascii=False, indent=1)
         print("PUBLICATION GATE FAILED - last accepted snapshot preserved, nothing written:")
         for b in breaches: print(" -", b)
         sys.exit(3)
 
     if not dry_run:
+        _st = os.path.join(OUT, "pipeline-state.json")
+        if os.path.exists(_st + ".next"):
+            os.replace(_st + ".next", _st)  # promote staged state only after gate acceptance
         json.dump(payload, open(prev_path, "w"), ensure_ascii=False, indent=1)
         import repro_build
         h = repro_build.build_rel(site, repo_root)
