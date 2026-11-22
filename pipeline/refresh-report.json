@@ -1,6 +1,6 @@
 {
  "site": "bapm",
- "run_at": "2026-11-22T04:36:42.892367+00:00",
+ "run_at": "2026-11-22T05:28:29.997227+00:00",
  "dry_run": false,
  "fresh_verified": {
   "jobicy_status_endpoint": 66,
@@ -27,7 +27,7 @@
  "prev_jobicy_status_checked": 6,
  "counts": {
   "publishable": 79,
-  "prev": 77,
+  "prev": 79,
   "fresh": 71,
   "carried": 8,
   "archived": 0,
@@ -57,5 +57,5 @@
    "arbeitnow": 859
   }
  },
- "build_sha256_16": "234b13c0b0f3f92e"
+ "build_sha256_16": "b658b942aa748209"
 }
