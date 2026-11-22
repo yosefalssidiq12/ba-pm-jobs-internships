@@ -317,7 +317,7 @@ const ARCHIVED = ALL.filter(j => isDead(j));
 const I18N = {
 en:{
   skip:"Skip to jobs", theme:"Theme", lang:"Language", sub:REL?(SITE.sub_en_rel||SITE.sub_en):PVM?(SITE.sub_en_pvm||SITE.sub_en):SITE.sub_en,
-  snapshot:d=>REL?`Snapshot dated ${d} · Cairo time. Every listing was individually checked against its live source at snapshot time — official status endpoint or listing-page check, labeled per card; listings may still have changed or closed since. Apply links open the original posting.`:PVM?`Snapshot dated ${d} · Cairo time. Collected from established public job APIs; listings may have changed or closed since. Each card shows its own verification state.`:`Snapshot dated ${d} · Cairo time. This is a dated, work-in-progress snapshot: listings may have changed or closed since. Availability has not been re-verified against live sources.`,
+  snapshot:d=>REL?`Snapshot dated ${d} (UTC). Every listing was individually checked against its live source at snapshot time — official status endpoint or listing-page check, labeled per card; listings may still have changed or closed since. Apply links open the original posting.`:PVM?`Snapshot dated ${d} (UTC). Collected from established public job APIs; listings may have changed or closed since. Each card shows its own verification state.`:`Snapshot dated ${d} (UTC). This is a dated, work-in-progress snapshot: listings may have changed or closed since. Availability has not been re-verified against live sources.`,
   searchPh:"Search title, company, city…", where:"Where", type:"Job type", place:"Workplace", sort:"Sort by",
   all:"All", clear:"Clear filters", csv:"Export CSV",
   sorts:{recent:"Recently posted",oldest:"Oldest posted",intern:"Internships first",comp:"Least competition"},
@@ -638,9 +638,9 @@ function renderBreaks(){
   });
   const tot = document.createElement("span");
   tot.className = "bchip";
-  if(REL){const ep=JOBS.filter(j=>j.verification_method==="jobicy_status_endpoint").length, bc=JOBS.filter(j=>j.verification_method==="bounded_content_check").length, other=JOBS.length-ep-bc;
+  if(REL){const ep=JOBS.filter(j=>j.verification_method==="jobicy_status_endpoint").length, bc=JOBS.filter(j=>j.verification_method==="bounded_content_check").length, br=JOBS.filter(j=>j.verification_method==="browser_page_check").length, unk=JOBS.length-ep-bc-br;
   const mTxt=(n,ar,en)=>n>0?` · ${n} ${lang==="ar"?ar:en}`:"";
-  tot.innerHTML = `<b data-n="${JOBS.length}">0</b><span>${esc((lang==="ar"?"إجمالي":"total")+mTxt(ep,"عبر نقطة الحالة الرسمية","status-endpoint")+mTxt(bc,"بفحص نص الإعلان آليًا","listing-checked")+mTxt(other,"بمراجعة متصفح يدوية","browser-reviewed"))}</span>`;
+  tot.innerHTML = `<b data-n="${JOBS.length}">0</b><span>${esc((lang==="ar"?"إجمالي":"total")+mTxt(ep,"عبر نقطة الحالة الرسمية","status-endpoint")+mTxt(bc,"بفحص نص الإعلان آليًا","listing-checked")+mTxt(br,"بمراجعة متصفح يدوية","browser-reviewed")+mTxt(unk,"بمنهج تحقق غير معروف","unknown-method"))}</span>`;
  } else tot.innerHTML = PVM ? `<b data-n="${VERN}">0</b><span>${esc(lang==="ar"?"موثق فعليًا":"listing-verified")}</span>` : `<b data-n="${JOBS.length}">0</b><span>${esc(lang==="ar"?"إجمالي موثق":"total verified")}</span>`;
   b.appendChild(tot);
   if (PVM && JOBS.length - VERN > 0){
