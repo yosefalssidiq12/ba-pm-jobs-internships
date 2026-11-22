@@ -638,8 +638,9 @@ function renderBreaks(){
   });
   const tot = document.createElement("span");
   tot.className = "bchip";
-  if(REL){const ep=JOBS.filter(j=>j.verification_method==="jobicy_status_endpoint").length, bc=JOBS.length-ep;
-  tot.innerHTML = `<b data-n="${JOBS.length}">0</b><span>${esc(lang==="ar"?`إجمالي · ${ep} عبر نقطة الحالة الرسمية · ${bc} بفحص الصفحة`:`total · ${ep} status-endpoint · ${bc} page-checked`)}</span>`;
+  if(REL){const ep=JOBS.filter(j=>j.verification_method==="jobicy_status_endpoint").length, bc=JOBS.filter(j=>j.verification_method==="bounded_content_check").length, other=JOBS.length-ep-bc;
+  const mTxt=(n,ar,en)=>n>0?` · ${n} ${lang==="ar"?ar:en}`:"";
+  tot.innerHTML = `<b data-n="${JOBS.length}">0</b><span>${esc((lang==="ar"?"إجمالي":"total")+mTxt(ep,"عبر نقطة الحالة الرسمية","status-endpoint")+mTxt(bc,"بفحص نص الإعلان آليًا","listing-checked")+mTxt(other,"بمراجعة متصفح يدوية","browser-reviewed"))}</span>`;
  } else tot.innerHTML = PVM ? `<b data-n="${VERN}">0</b><span>${esc(lang==="ar"?"موثق فعليًا":"listing-verified")}</span>` : `<b data-n="${JOBS.length}">0</b><span>${esc(lang==="ar"?"إجمالي موثق":"total verified")}</span>`;
   b.appendChild(tot);
   if (PVM && JOBS.length - VERN > 0){
