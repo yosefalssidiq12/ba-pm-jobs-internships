@@ -40,6 +40,12 @@ def jobicy_status(ids):
             print("jobicy status ERR", e, file=sys.stderr)
             STATUS_ERRORS.append({"stage": "jobicy_status", "error": type(e).__name__ + ": " + str(e)[:160]})
         time.sleep(1)
+    missing = [str(i) for i in ids if str(i) not in status]
+    if missing:
+        # requested IDs absent from the status map (partial or whole) are a structured
+        # incomplete-status error: the run must not silently treat them as verified-or-not
+        STATUS_ERRORS.append({"stage": "jobicy_status",
+                              "error": f"incomplete status map: {len(missing)}/{len(ids)} requested IDs missing"})
     return status
 
 def content_check(j):
