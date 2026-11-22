@@ -274,6 +274,16 @@ def main():
     breaches = []
     if total_collected == 0:
         breaches.append("collection outage: 0 rows collected from every source")
+    # Partial-source failure: an enabled source contributing zero collected rows is an
+    # outage for that source even when totals stay above the other thresholds.
+    EXPECTED_SOURCES = ("jobicy", "arbeitnow")  # remotive excluded by standing source policy
+    src_counts = {}
+    for c in ("jobs", "archived"):
+        for j in d[c]:
+            src_counts[j.get("source")] = src_counts.get(j.get("source"), 0) + 1
+    for s in EXPECTED_SOURCES:
+        if src_counts.get(s, 0) == 0:
+            breaches.append(f"source outage: {s} contributed 0 collected rows")
     jrows = [j for j in d["jobs"] if j.get("source") == "jobicy"]
     if jrows and not any(j.get("last_verified") for j in jrows):
         breaches.append(f"jobicy status check yielded 0 active rows out of {len(jrows)} (endpoint outage or mass closure)")
@@ -285,7 +295,9 @@ def main():
         breaches.append(f"absolute floor: publishable {len(jobs_out)} < {GATE_MIN_ABSOLUTE}")
     report["publication_gate"] = {"passed": not breaches, "breaches": breaches,
         "rules": {"min_absolute": GATE_MIN_ABSOLUTE, "min_ratio_vs_prev": GATE_MIN_RATIO,
-                  "require_collection_nonempty": True, "require_fresh_verification": True}}
+                  "require_collection_nonempty": True, "require_fresh_verification": True,
+                  "expected_sources_nonempty": list(EXPECTED_SOURCES)},
+        "source_counts": src_counts}
     json.dump(report, open(os.path.join(OUT, "refresh-report.json"), "w"), ensure_ascii=False, indent=1)
     if breaches:
         print("PUBLICATION GATE FAILED - last accepted snapshot preserved, nothing written:")
