@@ -25,7 +25,10 @@ import json, os, re, sys, datetime, importlib.util, collections
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, OUT)
-CARRY_TTL_DAYS = 7  # tunable decision; conservative while cadence is daily
+CARRY_TTL_DAYS = 0  # STRICT (QA 2026-11-22): publish = verified THIS run only.
+# Carried rows are same-day-only by construction; older unverified rows drop out
+# (archived with reason) rather than being presented under a stale check date.
+# A dated carry-forward with distinct UI labeling is a separate user decision.
 NOW = datetime.datetime.now(datetime.timezone.utc)
 TODAY = NOW.date().isoformat()
 
