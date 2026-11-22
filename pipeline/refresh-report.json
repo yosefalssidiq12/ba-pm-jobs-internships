@@ -1,10 +1,10 @@
 {
  "site": "bapm",
- "run_at": "2026-11-22T05:45:59.715530+00:00",
+ "run_at": "2026-11-22T06:59:37.959380+00:00",
  "dry_run": false,
  "fresh_verified": {
-  "jobicy_status_endpoint": 66,
-  "bounded_content_check": 5
+  "jobicy_status_endpoint": 73,
+  "bounded_content_check": 6
  },
  "carried": [
   "senior-project-manager-m-w-d-print-digital-bewegtbild-wpppro-senior-project-manager-print-",
@@ -21,21 +21,25 @@
   {
    "id": "director-technical-project-management-delivery-lead-wongdood-director-technical-project-ma",
    "reason": "relevance_duties_unconfirmed"
+  },
+  {
+   "id": "project-manager-trading-change-the-bank-coni-partner-ag-project-manager-trading-change-the",
+   "reason": "relevance_duties_unconfirmed"
   }
  ],
  "errors": [],
- "prev_jobicy_status_checked": 6,
+ "prev_jobicy_status_checked": 11,
  "counts": {
-  "publishable": 79,
-  "prev": 77,
-  "fresh": 71,
+  "publishable": 87,
+  "prev": 79,
+  "fresh": 79,
   "carried": 8,
   "archived": 0,
-  "excluded": 1
+  "excluded": 2
  },
  "fresh_verified_by_source": {
   "arbeitnow": {
-   "eligible": 162,
+   "eligible": 160,
    "fresh_success": 24
   }
  },
@@ -53,9 +57,9 @@
    ]
   },
   "source_counts": {
-   "jobicy": 351,
-   "arbeitnow": 859
+   "jobicy": 360,
+   "arbeitnow": 858
   }
  },
- "build_sha256_16": "fdbc2344f03952b8"
+ "build_sha256_16": "0bcd5d66a4727498"
 }
