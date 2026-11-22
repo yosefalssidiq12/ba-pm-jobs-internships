@@ -1,0 +1,54 @@
+{
+ "site": "bapm",
+ "run_at": "2026-11-22T01:16:45.507102+00:00",
+ "dry_run": false,
+ "fresh_verified": {
+  "jobicy_status_endpoint": 66,
+  "bounded_content_check": 4
+ },
+ "carried": [
+  "technical-project-manager-france-tandem-health-technical-project-manager-france-paris-5380",
+  "tech-product-manager-agentic-platform-mirakllabs-tech-product-manager-agentic-platform-bor",
+  "langfuse-product-designer-clickhouse-langfuse-product-designer-berlin-465839",
+  "product-owner-dashboards-f-m-d-adjoe-product-owner-dashboards-hamburg-422972",
+  "senior-product-manager-core-experience-n8n-senior-product-manager-core-experience-berlin-3",
+  "product-design-manager-n8n-product-design-manager-germany-410873",
+  "head-of-product-design-n8n-head-of-product-design-berlin-398688"
+ ],
+ "archived": [],
+ "excluded": [
+  {
+   "id": "director-technical-project-management-delivery-lead-wongdood-director-technical-project-ma",
+   "reason": "relevance_duties_unconfirmed"
+  }
+ ],
+ "errors": [],
+ "prev_jobicy_status_checked": 6,
+ "counts": {
+  "publishable": 77,
+  "prev": 77,
+  "fresh": 70,
+  "carried": 7,
+  "archived": 0,
+  "excluded": 1
+ },
+ "publication_gate": {
+  "passed": true,
+  "breaches": [],
+  "rules": {
+   "min_absolute": 5,
+   "min_ratio_vs_prev": 0.5,
+   "require_collection_nonempty": true,
+   "require_fresh_verification": true,
+   "expected_sources_nonempty": [
+    "jobicy",
+    "arbeitnow"
+   ]
+  },
+  "source_counts": {
+   "jobicy": 356,
+   "arbeitnow": 872
+  }
+ },
+ "build_sha256_16": "02a61386c5ff1d64"
+}
