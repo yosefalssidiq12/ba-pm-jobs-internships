@@ -21,6 +21,8 @@ def fetch(url):
     with urllib.request.urlopen(req, timeout=25) as r:
         return r.status, r.read().decode("utf-8", "replace")
 
+ACTIVE_STATUSES = {"active", "true", "1"}
+
 def jobicy_status(ids):
     status = {}
     for i in range(0, len(ids), 100):
@@ -60,9 +62,16 @@ def main():
     n1 = 0
     for j in act:
         if j["source"] == "jobicy" and j["source_id"] in st:
-            j["last_verified"] = NOW
-            j["verification"] = "jobicy official status endpoint: " + str(st[j["source_id"]])
-            n1 += 1
+            sraw = st[j["source_id"]]
+            j["verification"] = "jobicy official status endpoint: " + str(sraw)
+            # F2 (QA 2026-11-22): only an EXPLICIT active status marks a row fresh.
+            # closed/expired/unknown/other statuses are recorded and the row must
+            # not publish (refresh.py archives it); absent-from-map stays untouched.
+            if str(sraw).lower() in ACTIVE_STATUSES:
+                j["last_verified"] = NOW
+                n1 += 1
+            else:
+                j["jobicy_inactive"] = str(sraw).lower()
     # 2. bounded content checks for the other sources
     n2 = 0
     for src, cap in CONTENT_CHECK_CAP.items():
