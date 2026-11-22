@@ -7,23 +7,23 @@
      "interval": [
       {
        "field": "cronExpression",
-       "expression": "0 0 3 * * *"
+       "expression": "0 0 5 * * *"
       }
      ]
     }
    },
-   "id": "caf3c954-6d2b-44be-8a25-dd08e3d633cc",
+   "id": "c22a1bd5-c527-451b-a453-73ff70b07f95",
    "name": "Daily after refreshes",
    "type": "n8n-nodes-base.scheduleTrigger",
    "typeVersion": 1.2,
    "position": [
-    -1100,
-    300
+    0,
+    224
    ]
   },
   {
    "parameters": {
-    "url": "https://api.github.com/repos/yosefalssidiq12/ba-pm-jobs-internships/actions/workflows/refresh.yml/runs?per_page=1",
+    "url": "https://api.github.com/repos/yosefalssidiq12/ba-pm-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&per_page=5",
     "sendHeaders": true,
     "headerParameters": {
      "parameters": [
@@ -39,18 +39,18 @@
     },
     "options": {}
    },
-   "id": "b16091bb-2169-4806-a9ba-a5ff93e03f3c",
+   "id": "4d16fa13-f0f6-41a1-8d17-4a5e9a96298e",
    "name": "Check bapm run",
    "type": "n8n-nodes-base.httpRequest",
    "typeVersion": 4.2,
    "position": [
-    -880,
-    300
+    224,
+    224
    ]
   },
   {
    "parameters": {
-    "url": "https://api.github.com/repos/yosefalssidiq12/ai-automation-jobs-internships/actions/workflows/refresh.yml/runs?per_page=1",
+    "url": "https://api.github.com/repos/yosefalssidiq12/ai-automation-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&per_page=5",
     "sendHeaders": true,
     "headerParameters": {
      "parameters": [
@@ -66,18 +66,18 @@
     },
     "options": {}
    },
-   "id": "07a3b9a2-adbe-4d94-9dbd-d5e7d4d6a195",
+   "id": "93eb0425-af3e-4270-baa3-982b48cf8395",
    "name": "Check ai run",
    "type": "n8n-nodes-base.httpRequest",
    "typeVersion": 4.2,
    "position": [
-    -660,
-    300
+    448,
+    224
    ]
   },
   {
    "parameters": {
-    "url": "https://api.github.com/repos/yosefalssidiq12/marketing-jobs-internships/actions/workflows/refresh.yml/runs?per_page=1",
+    "url": "https://api.github.com/repos/yosefalssidiq12/marketing-jobs-internships/actions/workflows/refresh.yml/runs?branch=main&per_page=5",
     "sendHeaders": true,
     "headerParameters": {
      "parameters": [
@@ -93,26 +93,26 @@
     },
     "options": {}
    },
-   "id": "3a0f9ff2-7390-4444-9423-f2c43e221eb3",
+   "id": "f3da44bc-cdfc-431b-888f-1fe3f379cb18",
    "name": "Check marketing run",
    "type": "n8n-nodes-base.httpRequest",
    "typeVersion": 4.2,
    "position": [
-    -440,
-    300
+    656,
+    224
    ]
   },
   {
    "parameters": {
-    "jsCode": "const checks = ['Check bapm run','Check ai run','Check marketing run'];\nconst repos = ['ba-pm-jobs-internships','ai-automation-jobs-internships','marketing-jobs-internships'];\nconst today = new Date().toISOString().slice(0,10);\nconst results = [];\nlet ok = true;\nfor (let i = 0; i < checks.length; i++) {\n  const items = $items(checks[i]);\n  const run = items[0] && items[0].json && items[0].json.workflow_runs && items[0].json.workflow_runs[0];\n  const ran_today = run && String(run.created_at||'').slice(0,10) === today;\n  const success = run && run.status === 'completed' && run.conclusion === 'success';\n  const good = Boolean(ran_today && success);\n  if (!good) ok = false;\n  results.push({ repo: repos[i], ran_today: Boolean(ran_today), conclusion: run ? run.conclusion : 'no-run', run_url: run ? run.html_url : null });\n}\nconst summary = { date: today, ok, results, note: 'Career refresh monitor: all 3 sites must have a successful refresh run today.' };\nconsole.log(JSON.stringify(summary));\nreturn [{ json: summary }];"
+    "jsCode": "const checks = ['Check bapm run','Check ai run','Check marketing run'];\nconst repos = ['ba-pm-jobs-internships','ai-automation-jobs-internships','marketing-jobs-internships'];\n// UTC snapshot date, matching the refresh workflow's UTC dating.\nconst today = new Date().toISOString().slice(0,10);\nconst results = [];\nlet ok = true;\nfor (let i = 0; i < checks.length; i++) {\n  const items = $items(checks[i]);\n  const runs = (items[0] && items[0].json && items[0].json.workflow_runs) || [];\n  // Only default-branch (main) runs count: branch rehearsal/push runs are not the production refresh.\n  // The HTTP nodes already ask the API for branch=main, so this is a belt-and-suspenders filter.\n  const mainRuns = runs.filter(r => r.head_branch === 'main');\n  const todays = mainRuns.filter(r => String(r.created_at||'').slice(0,10) === today);\n  // queued / in_progress / missing / failed / API error never count as success:\n  // only a completed run with conclusion 'success' satisfies the check.\n  const goodRun = todays.find(r => r.status === 'completed' && r.conclusion === 'success');\n  const latest = todays[0] || null;\n  const good = Boolean(goodRun);\n  if (!good) ok = false;\n  results.push({\n    repo: repos[i],\n    ran_today: todays.length > 0,\n    good,\n    latest_today: latest ? { status: latest.status, conclusion: latest.conclusion, event: latest.event, head_branch: latest.head_branch, created_at: latest.created_at, url: latest.html_url } : null,\n    scheduled_today: todays.filter(r => r.event === 'schedule').map(r => ({ status: r.status, conclusion: r.conclusion, created_at: r.created_at, url: r.html_url }))\n  });\n}\nconst summary = { date_utc: today, ok, results, note: 'Career refresh monitor: each site needs a successful main-branch refresh run today (UTC). queued/in_progress/missing/failed/API error never count as success.' };\nconsole.log(JSON.stringify(summary));\nreturn [{ json: summary }];"
    },
-   "id": "15a92ca2-b79f-49f1-ac2c-abb7ee7c8f0c",
+   "id": "e06ce87c-3081-450d-8a82-ea5e891f9e7f",
    "name": "Evaluate all 3",
    "type": "n8n-nodes-base.code",
    "typeVersion": 2,
    "position": [
-    -220,
-    300
+    880,
+    224
    ]
   },
   {
@@ -140,13 +140,13 @@
     },
     "options": {}
    },
-   "id": "ccec111f-3464-4e3b-a707-390fd3ce3c30",
+   "id": "c9dd8f0a-c364-474e-9389-3ccff3238437",
    "name": "Any failure?",
    "type": "n8n-nodes-base.if",
    "typeVersion": 2.2,
    "position": [
-    0,
-    300
+    1104,
+    224
    ]
   },
   {
@@ -155,13 +155,13 @@
     "text": "=Career refresh monitor {{ $json.date }}: FAILURE - {{ JSON.stringify($json.results) }}",
     "additionalFields": {}
    },
-   "id": "0370e641-9fcf-4cb1-ac19-8f6391570494",
+   "id": "badf8566-2d9f-4fd9-8d50-65ffaae31b28",
    "name": "Telegram alert (DISABLED pending audience decision)",
    "type": "n8n-nodes-base.telegram",
    "typeVersion": 1.2,
    "position": [
-    220,
-    520
+    1328,
+    448
    ],
    "webhookId": "cd8345b3-ef01-4479-bfda-e9e7ff30882d",
    "credentials": {
@@ -174,13 +174,13 @@
   },
   {
    "parameters": {},
-   "id": "e9856bfd-2938-49d8-be80-0f1fe45fb4b2",
+   "id": "32b83d3b-3db7-4b68-9f6d-4527a6bb156b",
    "name": "All green (log only)",
    "type": "n8n-nodes-base.noOp",
    "typeVersion": 1,
    "position": [
-    220,
-    80
+    1328,
+    0
    ]
   }
  ],
@@ -261,7 +261,11 @@
  },
  "settings": {
   "executionOrder": "v1",
-  "binaryMode": "separate"
+  "binaryMode": "separate",
+  "timeSavedMode": "fixed",
+  "timezone": "Africa/Cairo",
+  "callerPolicy": "workflowsFromSameOwner",
+  "availableInMCP": false
  },
  "staticData": null,
  "pinData": {}
