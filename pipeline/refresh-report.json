@@ -1,19 +1,20 @@
 {
  "site": "bapm",
- "run_at": "2026-11-22T03:17:33.122882+00:00",
+ "run_at": "2026-11-22T04:36:42.892367+00:00",
  "dry_run": false,
  "fresh_verified": {
   "jobicy_status_endpoint": 66,
-  "bounded_content_check": 4
+  "bounded_content_check": 5
  },
  "carried": [
-  "technical-project-manager-france-tandem-health-technical-project-manager-france-paris-5380",
-  "tech-product-manager-agentic-platform-mirakllabs-tech-product-manager-agentic-platform-bor",
+  "senior-project-manager-m-w-d-print-digital-bewegtbild-wpppro-senior-project-manager-print-",
   "langfuse-product-designer-clickhouse-langfuse-product-designer-berlin-465839",
   "product-owner-dashboards-f-m-d-adjoe-product-owner-dashboards-hamburg-422972",
   "senior-product-manager-core-experience-n8n-senior-product-manager-core-experience-berlin-3",
   "product-design-manager-n8n-product-design-manager-germany-410873",
-  "head-of-product-design-n8n-head-of-product-design-berlin-398688"
+  "head-of-product-design-n8n-head-of-product-design-berlin-398688",
+  "technical-project-manager-france-tandem-health-technical-project-manager-france-paris-5380",
+  "tech-product-manager-agentic-platform-mirakllabs-tech-product-manager-agentic-platform-bor"
  ],
  "archived": [],
  "excluded": [
@@ -25,17 +26,17 @@
  "errors": [],
  "prev_jobicy_status_checked": 6,
  "counts": {
-  "publishable": 77,
+  "publishable": 79,
   "prev": 77,
-  "fresh": 70,
-  "carried": 7,
+  "fresh": 71,
+  "carried": 8,
   "archived": 0,
   "excluded": 1
  },
  "fresh_verified_by_source": {
   "arbeitnow": {
-   "eligible": 156,
-   "fresh_success": 21
+   "eligible": 162,
+   "fresh_success": 24
   }
  },
  "publication_gate": {
@@ -52,9 +53,9 @@
    ]
   },
   "source_counts": {
-   "jobicy": 356,
-   "arbeitnow": 840
+   "jobicy": 351,
+   "arbeitnow": 859
   }
  },
- "build_sha256_16": "e8c328bd9ccf897f"
+ "build_sha256_16": "234b13c0b0f3f92e"
 }
