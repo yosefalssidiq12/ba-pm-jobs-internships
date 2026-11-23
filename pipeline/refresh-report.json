@@ -1,18 +1,18 @@
 {
  "site": "bapm",
- "run_at": "2026-11-23T19:39:07.856595+00:00",
+ "run_at": "2026-11-23T21:02:50.948452+00:00",
  "dry_run": false,
  "fresh_verified": {
-  "jobicy_status_endpoint": 87
+  "jobicy_status_endpoint": 88
  },
  "carried": [
   "business-analyst-processes-and-data-swisspeak-partners-gmbh-business-analyst-processes-and",
   "product-manager-ionq-product-manager-geneva-470684",
+  "technical-project-manager-dach-m-f-d-tandem-health-technical-project-manager-dach-munich-1",
   "product-manager-platform-all-genders-distribusion-technologi-product-manager-platform-all-",
   "lead-project-manager-dual-use-in-orbit-services-the-explorat-lead-project-manager-dual-use",
   "senior-product-manager-enterprise-n8n-senior-product-manager-enterprise-berlin-421306",
-  "senior-project-manager-m-w-d-epilot-gmbh-remote-senior-project-manager-koln-48801",
-  "technical-project-manager-dach-m-f-d-tandem-health-technical-project-manager-dach-munich-1"
+  "senior-project-manager-m-w-d-epilot-gmbh-remote-senior-project-manager-koln-48801"
  ],
  "archived": [],
  "excluded": [
@@ -22,18 +22,18 @@
   }
  ],
  "errors": [],
- "prev_jobicy_status_checked": 24,
+ "prev_jobicy_status_checked": 25,
  "counts": {
-  "publishable": 94,
-  "prev": 78,
-  "fresh": 87,
+  "publishable": 95,
+  "prev": 94,
+  "fresh": 88,
   "carried": 7,
   "archived": 0,
   "excluded": 1
  },
  "fresh_verified_by_source": {
   "arbeitnow": {
-   "eligible": 160,
+   "eligible": 155,
    "fresh_success": 17
   }
  },
@@ -51,9 +51,9 @@
    ]
   },
   "source_counts": {
-   "jobicy": 356,
-   "arbeitnow": 884
+   "jobicy": 359,
+   "arbeitnow": 881
   }
  },
- "build_sha256_16": "87e8cf95bf2c05c9"
+ "build_sha256_16": "eca9d738b404b78c"
 }
