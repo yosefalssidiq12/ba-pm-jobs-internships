@@ -35,3 +35,7 @@ jobs:
         env:
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
         run: python3 pipeline/jooble_collect.py --site "bapm"
+      - name: Jooble promotion (bounded verified-original promotion; internal unless all gates pass)
+        if: always()
+        continue-on-error: true
+        run: python3 pipeline/jooble_promote.py
