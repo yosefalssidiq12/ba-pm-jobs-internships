@@ -21,6 +21,22 @@ Anything failing any gate stays internal with its reason recorded. Honest zero
 is a valid outcome. Request budget: at most 2 fetches per candidate, 1s pacing,
 and an immediate stop on HTTP 403/429 or a challenge marker.
 
+v6 additions (integrated v3 pipeline):
+  - --prev-data PATH: previous published release JSON. Rows with source "Jooble"
+    are RE-CHECKED FIRST each run (site integrity): their original URL is
+    fetched and re-verified against the same gates. Pass -> promotion record
+    with first_seen preserved from the card. Fail (expired/404/mismatch/geo
+    gone) OR transient error -> NOT re-emitted; recorded in dropped_published
+    with the reason. Because the base refresh carries zero-day-stale rows, a
+    dropped card leaves the site the same run: removal is evidence-based and
+    fail-closed.
+  - Fetch budget: at most --max-fetches outbound fetches total (re-checks
+    first, then new candidates). Unchecked published rows are dropped with
+    reason "recheck_budget" (fail-closed; the v6 publication model requires
+    same-day verification).
+  - Promotion records carry display evidence (geo/work/schedule/duties
+    snippet) extracted from the verified original page, for the fold step.
+
 Output: pipeline/jooble-promotions.json (runner-local, never committed).
 """
 import json, os, re, sys, time, datetime, urllib.request, urllib.error, html
@@ -32,6 +48,7 @@ NOW = datetime.datetime.now(datetime.timezone.utc)
 TODAY = NOW.date().isoformat()
 UA = {"User-Agent": "career-pipeline-verification/0.1"}
 STOP = {"hit": None}  # challenge/throttle circuit breaker
+FETCHES = {"n": 0, "max": 12}  # outbound fetch budget (re-checks first)
 CHALLENGE = re.compile(r"just a moment|cf-chl-|challenge-platform|attention required! \| cloudflare", re.I)
 
 EXPIRY = re.compile(r"no longer accepting|job has expired|position has been filled|"
@@ -50,6 +67,9 @@ REMOTE_RESTRICT = re.compile(r"remote.{0,40}\b(US|USA|United States|EU|Europe|EM
 def fetch(url, timeout=20):
     if STOP["hit"]:
         return None, "stopped_after_" + STOP["hit"]
+    if FETCHES["n"] >= FETCHES["max"]:
+        return None, "budget_exhausted"
+    FETCHES["n"] += 1
     req = urllib.request.Request(url, headers=UA)
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
@@ -151,35 +171,108 @@ def job_geo_verdict(page, text):
         return "pass"
     return "reject"
 
-def check_original(cand, url):
-    """Fetch the original page once; apply live/match/active/geography/duties."""
+def extract_evidence(page, text):
+    """Display evidence from the verified original page (for the fold step)."""
+    geo, schedule, work = "", "", ""
+    m = re.search(r'"employmentType"\s*:\s*"([^"]+)"', page)
+    if m:
+        schedule = m.group(1).replace("_", " ").title()
+    city = re.search(r'"addressLocality"\s*:\s*"([^"]+)"', page)
+    country = re.search(r'"addressCountry"\s*:\s*"([A-Z]{2})"', page)
+    if city and country:
+        geo = city.group(1) + ", " + country.group(1)
+    elif EGYPT.search(text[:2000]):
+        geo = "Egypt"
+    elif REMOTE_GLOBAL.search(text[:2000]):
+        geo = "Remote (worldwide)"
+    head = text[:3000].lower()
+    if "hybrid" in head:
+        work = "Hybrid"
+    elif "remote" in head:
+        work = "Remote"
+    elif "on-site" in head or "onsite" in head or "on site" in head:
+        work = "On-site"
+    dm = DUTIES.search(text)
+    duties = text[max(0, dm.start() - 40): dm.start() + 160].strip() if dm else ""
+    return {"geo": geo, "work": work, "schedule": schedule, "duties": duties}
+
+
+def check_original(title, company, url):
+    """Fetch the original page once; apply live/match/active/geography/duties.
+    Returns (ok, why, evidence)."""
     page, err = fetch(url)
     if err:
-        return False, "original_" + err
+        return False, "original_" + err, None
     text = re.sub(r"<[^>]+>", " ", page)
     text = html.unescape(re.sub(r"\s+", " ", text))
     if EXPIRY.search(text):
-        return False, "expiry_notice"
-    if norm(cand["title"]) not in norm(text):
-        return False, "title_mismatch_on_original"
-    if cand["company"] and norm(cand["company"]) not in norm(text):
-        return False, "company_mismatch_on_original"
+        return False, "expiry_notice", None
+    if norm(title) not in norm(text):
+        return False, "title_mismatch_on_original", None
+    if company and norm(company) not in norm(text):
+        return False, "company_mismatch_on_original", None
     geo = job_geo_verdict(page, text)
     if geo == "reject":
-        return False, "geography_unknown_or_not_egypt_eligible"
+        return False, "geography_unknown_or_not_egypt_eligible", None
     if not (DUTIES.search(text) and len(text) > 800):
-        return False, "no_duties_evidence"
-    return True, "ok"
+        return False, "no_duties_evidence", None
+    return True, "ok", extract_evidence(page, text)
 
 
 def main():
-    if not os.path.exists(STORE):
-        print("jooble_promote: no internal store; nothing to do")
-        return 0
-    store = json.load(open(STORE, encoding="utf-8"))
+    prev_data = None
+    args = sys.argv[1:]
+    if "--prev-data" in args:
+        prev_data = args[args.index("--prev-data") + 1]
+    if "--max-fetches" in args:
+        FETCHES["max"] = int(args[args.index("--max-fetches") + 1])
+
+    store = {"candidates": []}
+    if os.path.exists(STORE):
+        store = json.load(open(STORE, encoding="utf-8"))
+
+    promotions, kept_internal, dropped_published, unchecked_published = [], [], [], []
+
+    # Pass 1: re-check previously published Jooble rows (site integrity first;
+    # re-checks are never preempted by new candidates, so previously published
+    # cards cannot be starved by candidate growth).
+    published = []
+    if prev_data and os.path.exists(prev_data):
+        try:
+            prev = json.load(open(prev_data, encoding="utf-8"))
+            published = [j for j in prev.get("jobs", []) if j.get("source") == "Jooble"]
+        except Exception as e:
+            print("jooble_promote: prev-data unreadable:", type(e).__name__)
+    rechecked_ids = set()
+    for row in published:
+        jid = (row.get("canonical_key") or "").split(":", 1)[-1]
+        rechecked_ids.add(jid)
+        if STOP["hit"]:
+            unchecked_published.append({"jooble_id": jid, "reason": "stopped_" + STOP["hit"]})
+            continue
+        if FETCHES["n"] >= FETCHES["max"]:
+            # NOT proven expired: capacity-unchecked only.
+            unchecked_published.append({"jooble_id": jid, "reason": "recheck_capacity_exceeded"})
+            continue
+        url = row.get("url") or ""
+        ok, why, ev = check_original(row.get("title") or "", row.get("company") or "", url)
+        time.sleep(1)
+        if ok:
+            promotions.append({
+                "id": jid, "title": row["title"], "employer": row.get("company") or "",
+                "original_url": url, "first_seen": row.get("first_seen") or None,
+                "geo": ev["geo"], "work": ev["work"], "schedule": ev["schedule"],
+                "duties": ev["duties"], "recheck": True,
+            })
+        elif "budget_exhausted" in why or "stopped_after" in why:
+            unchecked_published.append({"jooble_id": jid, "reason": why})
+        else:
+            dropped_published.append({"jooble_id": jid, "reason": why})
+
+    # Pass 2: new eligible candidates from today's store.
     eligible = [c for c in store.get("candidates", [])
-                if c.get("title_relevant") and not c.get("intermediary_source")]
-    promotions, kept_internal = [], []
+                if c.get("title_relevant") and not c.get("intermediary_source")
+                and c.get("jooble_id") not in rechecked_ids]
     for c in eligible:
         if STOP["hit"]:
             kept_internal.append({"jooble_id": c["jooble_id"], "reason": "stopped_" + STOP["hit"]})
@@ -194,30 +287,35 @@ def main():
         if not url:
             kept_internal.append({"jooble_id": c["jooble_id"], "reason": err})
             continue
-        ok, why = check_original(c, url)
+        ok, why, ev = check_original(c["title"], c["company"], url)
         time.sleep(1)
         if not ok:
             kept_internal.append({"jooble_id": c["jooble_id"], "reason": why})
             continue
         promotions.append({
-            "jooble_id": c["jooble_id"], "title": c["title"], "company": c["company"],
-            "original_url": url, "source_domain": c["source_domain"],
-            "verification": "original page live; company+title match; active on live "
-                            "board/API; Egypt/remote location; duties evidence",
-            "verified_at": NOW.isoformat(),
+            "id": c["jooble_id"], "title": c["title"], "employer": c["company"],
+            "original_url": url, "first_seen": None,
+            "geo": ev["geo"], "work": ev["work"], "schedule": ev["schedule"],
+            "duties": ev["duties"], "recheck": False,
         })
     out = {"run_at": NOW.isoformat(), "vertical": store.get("vertical"),
            "eligible": len(eligible), "promoted": len(promotions),
            "kept_internal": len(kept_internal),
+           "published_rechecked": len(rechecked_ids),
+           "dropped_published": dropped_published,
+           "unchecked_published": unchecked_published,
+           "fetches_used": FETCHES["n"], "fetches_max": FETCHES["max"],
            "promotions": promotions, "internal_reasons": kept_internal,
            "stopped_by": STOP["hit"]}
     with open(PROMO, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
     print(f"jooble_promote[{store.get('vertical')}]: eligible={len(eligible)} "
           f"promoted={len(promotions)} kept_internal={len(kept_internal)} "
-          f"stopped_by={STOP['hit']}")
+          f"rechecked={len(rechecked_ids)} dropped={len(dropped_published)} "
+          f"unchecked={len(unchecked_published)} "
+          f"fetches={FETCHES['n']}/{FETCHES['max']} stopped_by={STOP['hit']}")
     for p in promotions:
-        print(f"  PROMOTED: {p['title']} @ {p['company']} -> {p['original_url'][:90]}")
+        print(f"  PROMOTED: {p['title']} @ {p['employer']} -> {p['original_url'][:90]}")
     return 0
 
 
