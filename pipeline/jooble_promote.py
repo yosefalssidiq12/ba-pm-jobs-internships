@@ -32,6 +32,7 @@ NOW = datetime.datetime.now(datetime.timezone.utc)
 TODAY = NOW.date().isoformat()
 UA = {"User-Agent": "career-pipeline-verification/0.1"}
 STOP = {"hit": None}  # challenge/throttle circuit breaker
+CHALLENGE = re.compile(r"just a moment|cf-chl-|challenge-platform|attention required! \| cloudflare", re.I)
 
 EXPIRY = re.compile(r"no longer accepting|job has expired|position has been filled|"
                     r"this job is no longer available|job not found|404", re.I)
@@ -42,7 +43,8 @@ EGYPT = re.compile(r"\begypt\b|\bcairo\b|\balexandria\b|\bgiza\b|مصر|القا
 REMOTE_GLOBAL = re.compile(r"remote.{0,40}(worldwide|anywhere|global|work from anywhere)|"
                            r"(worldwide|anywhere|global).{0,40}remote", re.I)
 REMOTE_RESTRICT = re.compile(r"remote.{0,40}\b(US|USA|United States|EU|Europe|EMEA-only|UK|Canada)\b.{0,20}(only|based|required)|"
-                             r"\b(US|USA|United States|EU|Europe|UK|Canada)\b.{0,10}(only|residents?|based)", re.I)
+                             r"\b(US|USA|United States|EU|Europe|UK|Canada)\b.{0,10}(only|residents?|based)|"
+                             r"(based|located|residing|eligible).{0,20}\bin\b.{0,10}\b(the )?(US|USA|United States|EU|Europe|UK|Canada)\b", re.I)
 
 
 def fetch(url, timeout=20):
@@ -51,7 +53,11 @@ def fetch(url, timeout=20):
     req = urllib.request.Request(url, headers=UA)
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.read().decode("utf-8", "replace"), None
+            body = r.read().decode("utf-8", "replace")
+            if CHALLENGE.search(body):
+                STOP["hit"] = "challenge"
+                return None, "challenge"
+            return body, None
     except urllib.error.HTTPError as e:
         if e.code in (403, 429):
             STOP["hit"] = str(e.code)
@@ -123,6 +129,28 @@ RESOLVERS = {
 }
 
 
+
+def job_geo_verdict(page, text):
+    """Egypt eligibility from the job's own location data, not boilerplate.
+
+    Order: JSON-LD jobLocation (decisive) -> header region near the title
+    -> explicitly global remote without restrictions. A country list,
+    office footer or 'our locations' section never counts.
+    """
+    for block in re.findall(r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>', page, re.S | re.I):
+        if '"EG"' in block or EGYPT.search(block):
+            if "jobLocation" in block or "PostalAddress" in block:
+                return "pass"
+        m = re.search(r'"addressCountry"\s*:\s*"([A-Z]{2})"', block)
+        if m and m.group(1) != "EG" and "jobLocation" in block:
+            return "reject"
+    head = text[:2000]
+    if EGYPT.search(head):
+        return "pass"
+    if REMOTE_GLOBAL.search(head) and not REMOTE_RESTRICT.search(text):
+        return "pass"
+    return "reject"
+
 def check_original(cand, url):
     """Fetch the original page once; apply live/match/active/geography/duties."""
     page, err = fetch(url)
@@ -136,11 +164,8 @@ def check_original(cand, url):
         return False, "title_mismatch_on_original"
     if cand["company"] and norm(cand["company"]) not in norm(text):
         return False, "company_mismatch_on_original"
-    if EGYPT.search(text):
-        pass
-    elif REMOTE_GLOBAL.search(text) and not REMOTE_RESTRICT.search(text):
-        pass
-    else:
+    geo = job_geo_verdict(page, text)
+    if geo == "reject":
         return False, "geography_unknown_or_not_egypt_eligible"
     if not (DUTIES.search(text) and len(text) > 800):
         return False, "no_duties_evidence"
