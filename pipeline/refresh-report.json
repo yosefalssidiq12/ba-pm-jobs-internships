@@ -1,40 +1,78 @@
 {
  "site": "bapm",
- "run_at": "2026-11-23T21:02:50.948452+00:00",
+ "run_at": "2026-11-24T06:36:18.144374+00:00",
  "dry_run": false,
  "fresh_verified": {
-  "jobicy_status_endpoint": 88
+  "jobicy_status_endpoint": 87,
+  "bounded_content_check": 8
  },
- "carried": [
-  "business-analyst-processes-and-data-swisspeak-partners-gmbh-business-analyst-processes-and",
-  "product-manager-ionq-product-manager-geneva-470684",
-  "technical-project-manager-dach-m-f-d-tandem-health-technical-project-manager-dach-munich-1",
-  "product-manager-platform-all-genders-distribusion-technologi-product-manager-platform-all-",
-  "lead-project-manager-dual-use-in-orbit-services-the-explorat-lead-project-manager-dual-use",
-  "senior-product-manager-enterprise-n8n-senior-product-manager-enterprise-berlin-421306",
-  "senior-project-manager-m-w-d-epilot-gmbh-remote-senior-project-manager-koln-48801"
+ "carried": [],
+ "archived": [
+  {
+   "id": "business-analyst-processes-and-data-swisspeak-partners-gmbh-business-analyst-processes-and",
+   "reason": "carried verification older than 0d"
+  },
+  {
+   "id": "product-manager-ionq-product-manager-geneva-470684",
+   "reason": "carried verification older than 0d"
+  },
+  {
+   "id": "technical-project-manager-dach-m-f-d-tandem-health-technical-project-manager-dach-munich-1",
+   "reason": "carried verification older than 0d"
+  },
+  {
+   "id": "principal-product-manager-omnichannel-cx-nextiva-156496",
+   "reason": "jobicy status endpoint: closed"
+  },
+  {
+   "id": "senior-project-manager-m-w-d-epilot-gmbh-remote-senior-project-manager-koln-48801",
+   "reason": "absent from fresh fetch and verification stale"
+  },
+  {
+   "id": "senior-product-manager-enterprise-n8n-senior-product-manager-enterprise-berlin-421306",
+   "reason": "absent from fresh fetch and verification stale"
+  },
+  {
+   "id": "product-manager-platform-all-genders-distribusion-technologi-product-manager-platform-all-",
+   "reason": "absent from fresh fetch and verification stale"
+  },
+  {
+   "id": "lead-project-manager-dual-use-in-orbit-services-the-explorat-lead-project-manager-dual-use",
+   "reason": "absent from fresh fetch and verification stale"
+  },
+  {
+   "id": "principal-product-strategist-ai-engagement-leader-able-155832",
+   "reason": "jobicy status endpoint: closed"
+  }
  ],
- "archived": [],
  "excluded": [
   {
    "id": "ai-project-manager-growth-marketing-docplanner-156552",
    "reason": "relevance_duties_unconfirmed"
+  },
+  {
+   "id": "working-student-operations-project-management-twentyfour-ind-working-student-operations-pr",
+   "reason": "relevance_duties_unconfirmed"
+  },
+  {
+   "id": "senior-product-manager-bookkeeping-pennylane-sas-senior-product-manager-bookkeeping-paris-",
+   "reason": "relevance_duties_unconfirmed"
   }
  ],
  "errors": [],
- "prev_jobicy_status_checked": 25,
+ "prev_jobicy_status_checked": 27,
  "counts": {
   "publishable": 95,
-  "prev": 94,
-  "fresh": 88,
-  "carried": 7,
-  "archived": 0,
-  "excluded": 1
+  "prev": 95,
+  "fresh": 95,
+  "carried": 0,
+  "archived": 9,
+  "excluded": 3
  },
  "fresh_verified_by_source": {
   "arbeitnow": {
-   "eligible": 155,
-   "fresh_success": 17
+   "eligible": 157,
+   "fresh_success": 25
   }
  },
  "publication_gate": {
@@ -51,9 +89,9 @@
    ]
   },
   "source_counts": {
-   "jobicy": 359,
-   "arbeitnow": 881
+   "jobicy": 353,
+   "arbeitnow": 877
   }
  },
- "build_sha256_16": "eca9d738b404b78c"
+ "build_sha256_16": "ee899b8844314ca2"
 }
