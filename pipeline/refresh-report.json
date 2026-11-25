@@ -1,85 +1,80 @@
 {
- "site": "bapm",
- "run_at": "2026-11-24T03:04:08.044865+00:00",
- "dry_run": false,
- "fresh_verified": {
-  "jobicy_status_endpoint": 88,
-  "bounded_content_check": 2
- },
- "carried": [],
- "archived": [
-  {
-   "id": "business-analyst-processes-and-data-swisspeak-partners-gmbh-business-analyst-processes-and",
-   "reason": "carried verification older than 0d"
+  "site": "bapm",
+  "run_at": "2026-11-25T03:12:08.321495+00:00",
+  "dry_run": false,
+  "fresh_verified": {
+    "jobicy_status_endpoint": 96,
+    "bounded_content_check": 3
   },
-  {
-   "id": "product-manager-ionq-product-manager-geneva-470684",
-   "reason": "carried verification older than 0d"
+  "carried": [],
+  "archived": [
+    {
+      "id": "product-manager-h-f-hubvisory-product-manager-h-f-paris-4137",
+      "reason": "carried verification older than 0d"
+    },
+    {
+      "id": "product-manager-f-h-hubvisory-product-manager-f-h-paris-315479",
+      "reason": "carried verification older than 0d"
+    },
+    {
+      "id": "principal-product-manager-omnichannel-cx-nextiva-156496",
+      "reason": "jobicy status endpoint: closed"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "ai-project-manager-growth-marketing-docplanner-156552",
+      "reason": "relevance_duties_unconfirmed"
+    },
+    {
+      "id": "ux-ui-designer-in-m-w-d-jonasundderwolf-ux-ui-designerin-berlin-308229",
+      "reason": "relevance_duties_unconfirmed"
+    }
+  ],
+  "errors": [],
+  "prev_jobicy_status_checked": 35,
+  "counts": {
+    "publishable": 99,
+    "prev": 90,
+    "fresh": 99,
+    "carried": 0,
+    "archived": 3,
+    "excluded": 2
   },
-  {
-   "id": "technical-project-manager-dach-m-f-d-tandem-health-technical-project-manager-dach-munich-1",
-   "reason": "carried verification older than 0d"
+  "fresh_verified_by_source": {
+    "arbeitnow": {
+      "eligible": 158,
+      "fresh_success": 19
+    }
   },
-  {
-   "id": "product-manager-platform-all-genders-distribusion-technologi-product-manager-platform-all-",
-   "reason": "carried verification older than 0d"
+  "publication_gate": {
+    "passed": true,
+    "breaches": [],
+    "rules": {
+      "min_absolute": 5,
+      "min_ratio_vs_prev": 0.5,
+      "require_collection_nonempty": true,
+      "require_fresh_verification": true,
+      "expected_sources_nonempty": [
+        "jobicy",
+        "arbeitnow"
+      ]
+    },
+    "source_counts": {
+      "jobicy": 354,
+      "arbeitnow": 880
+    }
   },
-  {
-   "id": "lead-project-manager-dual-use-in-orbit-services-the-explorat-lead-project-manager-dual-use",
-   "reason": "carried verification older than 0d"
-  },
-  {
-   "id": "senior-product-manager-enterprise-n8n-senior-product-manager-enterprise-berlin-421306",
-   "reason": "carried verification older than 0d"
-  },
-  {
-   "id": "senior-project-manager-m-w-d-epilot-gmbh-remote-senior-project-manager-koln-48801",
-   "reason": "carried verification older than 0d"
-  },
-  {
-   "id": "principal-product-strategist-ai-engagement-leader-able-155832",
-   "reason": "jobicy status endpoint: closed"
+  "build_sha256_16": null,
+  "jooble": {
+    "status": "zero",
+    "reason": null,
+    "requests": null,
+    "unique": null,
+    "eligible": 23,
+    "promoted": 0,
+    "folded": 0,
+    "dropped": 0,
+    "unchecked": 0
   }
- ],
- "excluded": [
-  {
-   "id": "ai-project-manager-growth-marketing-docplanner-156552",
-   "reason": "relevance_duties_unconfirmed"
-  }
- ],
- "errors": [],
- "prev_jobicy_status_checked": 26,
- "counts": {
-  "publishable": 90,
-  "prev": 78,
-  "fresh": 90,
-  "carried": 0,
-  "archived": 8,
-  "excluded": 1
- },
- "fresh_verified_by_source": {
-  "arbeitnow": {
-   "eligible": 153,
-   "fresh_success": 17
-  }
- },
- "publication_gate": {
-  "passed": true,
-  "breaches": [],
-  "rules": {
-   "min_absolute": 5,
-   "min_ratio_vs_prev": 0.5,
-   "require_collection_nonempty": true,
-   "require_fresh_verification": true,
-   "expected_sources_nonempty": [
-    "jobicy",
-    "arbeitnow"
-   ]
-  },
-  "source_counts": {
-   "jobicy": 356,
-   "arbeitnow": 874
-  }
- },
- "build_sha256_16": null
 }
