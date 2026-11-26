@@ -1,24 +1,24 @@
 {
   "site": "bapm",
-  "run_at": "2026-11-25T03:12:08.321495+00:00",
+  "run_at": "2026-11-26T03:10:03.925696+00:00",
   "dry_run": false,
   "fresh_verified": {
-    "jobicy_status_endpoint": 96,
+    "jobicy_status_endpoint": 106,
     "bounded_content_check": 3
   },
   "carried": [],
   "archived": [
     {
-      "id": "product-manager-h-f-hubvisory-product-manager-h-f-paris-4137",
-      "reason": "carried verification older than 0d"
+      "id": "technical-product-manager-sanovio-technical-product-manager-munich-85258",
+      "reason": "absent from fresh fetch and verification stale"
     },
     {
-      "id": "product-manager-f-h-hubvisory-product-manager-f-h-paris-315479",
-      "reason": "carried verification older than 0d"
+      "id": "product-operations-specialist-w-m-d-flinn-product-operations-specialist-berlin-478416",
+      "reason": "absent from fresh fetch and verification stale"
     },
     {
-      "id": "principal-product-manager-omnichannel-cx-nextiva-156496",
-      "reason": "jobicy status endpoint: closed"
+      "id": "mid-senior-project-manager-workday-optimization-hr-transform-mid-senior-project-manager-wo",
+      "reason": "absent from fresh fetch and verification stale"
     }
   ],
   "excluded": [
@@ -27,24 +27,24 @@
       "reason": "relevance_duties_unconfirmed"
     },
     {
-      "id": "ux-ui-designer-in-m-w-d-jonasundderwolf-ux-ui-designerin-berlin-308229",
+      "id": "senior-product-manager-thinkific-157007",
       "reason": "relevance_duties_unconfirmed"
     }
   ],
   "errors": [],
-  "prev_jobicy_status_checked": 35,
+  "prev_jobicy_status_checked": 47,
   "counts": {
-    "publishable": 99,
-    "prev": 90,
-    "fresh": 99,
+    "publishable": 109,
+    "prev": 99,
+    "fresh": 109,
     "carried": 0,
     "archived": 3,
     "excluded": 2
   },
   "fresh_verified_by_source": {
     "arbeitnow": {
-      "eligible": 158,
-      "fresh_success": 19
+      "eligible": 176,
+      "fresh_success": 25
     }
   },
   "publication_gate": {
@@ -62,7 +62,7 @@
     },
     "source_counts": {
       "jobicy": 354,
-      "arbeitnow": 880
+      "arbeitnow": 859
     }
   },
   "build_sha256_16": null,
@@ -71,7 +71,7 @@
     "reason": null,
     "requests": null,
     "unique": null,
-    "eligible": 23,
+    "eligible": 22,
     "promoted": 0,
     "folded": 0,
     "dropped": 0,
