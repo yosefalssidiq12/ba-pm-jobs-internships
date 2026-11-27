@@ -1,23 +1,23 @@
 {
   "site": "bapm",
-  "run_at": "2026-11-26T03:10:03.925696+00:00",
+  "run_at": "2026-11-27T03:12:40.834741+00:00",
   "dry_run": false,
   "fresh_verified": {
-    "jobicy_status_endpoint": 106,
-    "bounded_content_check": 3
+    "jobicy_status_endpoint": 122,
+    "bounded_content_check": 8
   },
   "carried": [],
   "archived": [
     {
-      "id": "technical-product-manager-sanovio-technical-product-manager-munich-85258",
+      "id": "product-manager-isr-strike-signal-processing-engineer-rf-pro-product-manager-isr-strike-pa",
+      "reason": "carried verification older than 0d"
+    },
+    {
+      "id": "infrastructure-cybersecurity-manager-and-project-manager-f-m-infrastructure-cybersecurity-",
       "reason": "absent from fresh fetch and verification stale"
     },
     {
-      "id": "product-operations-specialist-w-m-d-flinn-product-operations-specialist-berlin-478416",
-      "reason": "absent from fresh fetch and verification stale"
-    },
-    {
-      "id": "mid-senior-project-manager-workday-optimization-hr-transform-mid-senior-project-manager-wo",
+      "id": "senior-product-manager-platform-experience-all-genders-justp-senior-product-manager-platfo",
       "reason": "absent from fresh fetch and verification stale"
     }
   ],
@@ -29,22 +29,30 @@
     {
       "id": "senior-product-manager-thinkific-157007",
       "reason": "relevance_duties_unconfirmed"
+    },
+    {
+      "id": "werkstudent-praktikant-m-w-d-product-management-operations-i-werkstudent-praktikant-produc",
+      "reason": "relevance_duties_unconfirmed"
+    },
+    {
+      "id": "data-migration-project-manager-dastra-data-migration-project-manager-paris-134113",
+      "reason": "relevance_duties_unconfirmed"
     }
   ],
   "errors": [],
-  "prev_jobicy_status_checked": 47,
+  "prev_jobicy_status_checked": 59,
   "counts": {
-    "publishable": 109,
-    "prev": 99,
-    "fresh": 109,
+    "publishable": 130,
+    "prev": 109,
+    "fresh": 130,
     "carried": 0,
     "archived": 3,
-    "excluded": 2
+    "excluded": 4
   },
   "fresh_verified_by_source": {
     "arbeitnow": {
-      "eligible": 176,
-      "fresh_success": 25
+      "eligible": 143,
+      "fresh_success": 24
     }
   },
   "publication_gate": {
@@ -61,8 +69,8 @@
       ]
     },
     "source_counts": {
-      "jobicy": 354,
-      "arbeitnow": 859
+      "jobicy": 369,
+      "arbeitnow": 844
     }
   },
   "build_sha256_16": null,
@@ -71,7 +79,7 @@
     "reason": null,
     "requests": null,
     "unique": null,
-    "eligible": 22,
+    "eligible": 20,
     "promoted": 0,
     "folded": 0,
     "dropped": 0,
