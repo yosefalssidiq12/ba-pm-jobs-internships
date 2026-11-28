@@ -1,24 +1,48 @@
 {
   "site": "bapm",
-  "run_at": "2026-11-27T03:12:40.834741+00:00",
+  "run_at": "2026-11-28T03:06:00.115949+00:00",
   "dry_run": false,
   "fresh_verified": {
-    "jobicy_status_endpoint": 122,
-    "bounded_content_check": 8
+    "jobicy_status_endpoint": 130,
+    "bounded_content_check": 3
   },
   "carried": [],
   "archived": [
     {
-      "id": "product-manager-isr-strike-signal-processing-engineer-rf-pro-product-manager-isr-strike-pa",
+      "id": "senior-product-manager-fulfilment-nivoda-senior-product-manager-fulfilment-amsterdam-43958",
       "reason": "carried verification older than 0d"
     },
     {
-      "id": "infrastructure-cybersecurity-manager-and-project-manager-f-m-infrastructure-cybersecurity-",
+      "id": "founding-product-manager-lemrock-founding-product-manager-paris-449894",
+      "reason": "carried verification older than 0d"
+    },
+    {
+      "id": "business-analyst-processes-and-data-swisspeak-partners-gmbh-business-analyst-processes-and",
+      "reason": "carried verification older than 0d"
+    },
+    {
+      "id": "staff-product-designer-b2c-getyourguide-staff-product-designer-b2c-zurich-221000",
+      "reason": "carried verification older than 0d"
+    },
+    {
+      "id": "staff-product-manager-snyk-staff-product-manager-zurich-314258",
+      "reason": "carried verification older than 0d"
+    },
+    {
+      "id": "expert-business-analyst-m-w-d-notbetrieb-wertschriften-kredi-business-analyst-business-eng",
+      "reason": "carried verification older than 0d"
+    },
+    {
+      "id": "senior-product-designer-m-f-d-klim-senior-product-designer-berlin-50865",
       "reason": "absent from fresh fetch and verification stale"
     },
     {
-      "id": "senior-product-manager-platform-experience-all-genders-justp-senior-product-manager-platfo",
+      "id": "product-owner-softwareentwicklung-m-w-d-encontec-gmbh-product-owner-softwareentwicklung-ob",
       "reason": "absent from fresh fetch and verification stale"
+    },
+    {
+      "id": "senior-program-manager-juniper-square-155920",
+      "reason": "jobicy status endpoint: closed"
     }
   ],
   "excluded": [
@@ -27,32 +51,44 @@
       "reason": "relevance_duties_unconfirmed"
     },
     {
+      "id": "principal-product-manager-brightwheel-164484",
+      "reason": "relevance_duties_unconfirmed"
+    },
+    {
       "id": "senior-product-manager-thinkific-157007",
       "reason": "relevance_duties_unconfirmed"
     },
     {
-      "id": "werkstudent-praktikant-m-w-d-product-management-operations-i-werkstudent-praktikant-produc",
+      "id": "senior-it-business-analyst-insurance-all-genders-de-bsi-soft-senior-it-business-analyst-in",
       "reason": "relevance_duties_unconfirmed"
     },
     {
-      "id": "data-migration-project-manager-dastra-data-migration-project-manager-paris-134113",
+      "id": "senior-meldewesenspezialist-in-it-business-analyst-w-m-d-bbh-remote-senior-meldewesenspezi",
+      "reason": "relevance_duties_unconfirmed"
+    },
+    {
+      "id": "senior-it-business-analyst-w-m-d-bbht-beratungsgesellschaft--remote-senior-it-business-ana",
+      "reason": "relevance_duties_unconfirmed"
+    },
+    {
+      "id": "senior-business-consultant-it-business-analyst-banking-insur-remote-senior-business-consul",
       "reason": "relevance_duties_unconfirmed"
     }
   ],
   "errors": [],
-  "prev_jobicy_status_checked": 59,
+  "prev_jobicy_status_checked": 65,
   "counts": {
-    "publishable": 130,
-    "prev": 109,
-    "fresh": 130,
+    "publishable": 133,
+    "prev": 130,
+    "fresh": 133,
     "carried": 0,
-    "archived": 3,
-    "excluded": 4
+    "archived": 9,
+    "excluded": 7
   },
   "fresh_verified_by_source": {
     "arbeitnow": {
-      "eligible": 143,
-      "fresh_success": 24
+      "eligible": 142,
+      "fresh_success": 13
     }
   },
   "publication_gate": {
@@ -69,8 +105,8 @@
       ]
     },
     "source_counts": {
-      "jobicy": 369,
-      "arbeitnow": 844
+      "jobicy": 356,
+      "arbeitnow": 874
     }
   },
   "build_sha256_16": null,
@@ -79,7 +115,7 @@
     "reason": null,
     "requests": null,
     "unique": null,
-    "eligible": 20,
+    "eligible": 40,
     "promoted": 0,
     "folded": 0,
     "dropped": 0,
